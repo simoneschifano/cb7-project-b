@@ -1,7 +1,6 @@
-
 # Readme
 
-- Descrizione
+## Descrizione
 
 Questo progetto punta ad avvicinare gli utenti allo spazio, argomento sempre più centrale nella società odierna.
 
@@ -15,13 +14,13 @@ Che aspetti?
 
 Indossa il tuo casco e parti alla scoperta dell’universo🚀🧑‍🚀
 
-- Tecnologie
+## Tecnologie
     - Next.js
     - SASS
     - Spline
     - Three.js
-- Funzionalità
-- Start project
+## Funzionalità
+##  Start project
     - npm i
     - npm run dev
-- Sviluppato con il ❤️ da: Salvo Falcone, Giovanni Geraci, Claudio Ventimiglia, Gabriele Salemi & Abdel Ibnorida
+## Sviluppato con il ❤️ da: Salvo Falcone, Giovanni Geraci, Claudio Ventimiglia, Gabriele Salemi & Abdel Ibnorida
