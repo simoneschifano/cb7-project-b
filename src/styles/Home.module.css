@@ -1,0 +1,46 @@
+
+.main {
+  background-color: rgba(92, 78, 183, 0.615);
+  height: 100vh;
+
+}
+.NavbarDetails {
+  display: flex;
+  align-items: flex-end;
+  justify-content: end;
+  flex-direction: column;
+  position: fixed;
+  bottom: 0;
+  left: 35%;
+  transform: translateX(-50%);
+  padding: 12px;
+  gap: 10px;
+}
+
+.AvatarHome {
+  padding: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.192);
+  border-radius: 50%;
+  width: 100px;
+}
+
+.SpacecraftHome {
+  width: 100px;
+  padding: 12px;
+  border: 1px solid;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.192);
+}
+
+.SpacecraftCursor {
+  filter: drop-shadow(8px 8px 10px black);
+
+  width: 80px;
+}
+
+@media screen and (max-width: 1023px) {
+  .SpacecraftCursor{
+    display: none;
+  }
+  
+}

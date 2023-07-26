@@ -1,23 +1,29 @@
-.login{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    gap: 60px;
-
-
+.LoginBody {
+  background-color: rgba(92, 78, 183, 0.615);
+  height: 100vh;
 }
 
-.Avatar{
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 60px;
+}
+.SpaceShipImg {
+  margin-bottom: 90px;
+  width: 200px;
+}
+
+.Avatar {
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 20px;
 }
-.SpaceCraft{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
-
+.SpaceCraft {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
 }
