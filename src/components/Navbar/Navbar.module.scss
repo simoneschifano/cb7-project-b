@@ -7,7 +7,6 @@
   align-items: flex-end;
 
   .navPng {
-    margin-bottom: 15px;
     border-radius: 12px;
     width: 60%;
     height: 25%;
@@ -16,10 +15,9 @@
 
 .NavbarDetails {
   display: flex;
-
   position: fixed;
+  bottom: 50px;
   gap: 12px;
-  border: 1px solid blue;
 }
 
 .wrapper_png {
@@ -30,7 +28,6 @@
   overflow: hidden;
   flex-wrap: wrap;
   width: 1450px;
-
   object-fit: cover;
 }
 
@@ -38,15 +35,17 @@
   padding: 12px;
   border: 1px solid rgba(0, 0, 0, 0.192);
   border-radius: 50%;
-  width: 100px;
+  width: 80px;
+  height: 80px;
 }
 
 .SpacecraftHome {
-  width: 100px;
+  width: 80px;
   padding: 12px;
   border: 1px solid;
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.192);
+  filter: drop-shadow(8px 8px 10px black);
 }
 
 //Top Navbar
@@ -63,11 +62,32 @@
   background-color: rgb(30, 97, 164);
   color: white;
   padding: 4px;
+  z-index: 999;
   li {
     cursor: pointer;
   }
   a {
     text-decoration: none;
     color: white;
+  }
+}
+
+.wrappertxt {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+}
+
+.provalink {
+  z-index: 999;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  .top_nav_ul {
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
   }
 }

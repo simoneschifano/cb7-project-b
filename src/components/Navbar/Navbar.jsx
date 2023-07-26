@@ -19,10 +19,9 @@ const Navbar = () => {
       <div className={styles.top_navbar}>
         <div className={styles.top_nav_ul}>
           <h2>Welcome, {state.username}!</h2>
-
-          <Link href={"/wiki"}>
-            <li>Wiki</li>{" "}
-          </Link>
+          <li>
+            <Link href="/wiki">Wiki</Link>{" "}
+          </li>{" "}
           <Link href={"/about"}>
             <li>About Us</li>
           </Link>
@@ -41,7 +40,10 @@ const Navbar = () => {
               <AvatarSvg skinColor={state.skinColor} suitColor={state.suitColor} />
             </div>
             <img className={styles.SpacecraftHome} src={`/spacecraft/${state.spacecraft}.png`}></img>
-            <h4>Distanza Percorsa: </h4>
+            <div className={styles.wrappertxt}>
+              <h5>Distanza Percorsa: </h5>
+              <h5>Pianeti trovati:</h5>
+            </div>
           </div>
         </div>
       </div>

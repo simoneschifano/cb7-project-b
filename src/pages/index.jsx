@@ -8,7 +8,7 @@ import Navbar from "@/components/Navbar";
 
 import styles from "@/styles/Home.module.css";
 
-//FUNCTIONS
+// FUNCTIONS
 const useMousePosition = () => {
   //Tieni traccia del movimento del mouse
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
