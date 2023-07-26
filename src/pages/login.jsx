@@ -1,5 +1,6 @@
-import LoginComp from "@/components/LoginComp/LoginComp";
 import Head from "next/head";
+
+import LoginComp from "@/components/LoginComp/LoginComp";
 
 //Rotta Login che richiama il componente LoginComp
 
@@ -14,9 +15,11 @@ export default function Login(){
           href="https://img.freepik.com/free-vector/astronaut-holding-flag-space-cartoon-icon-illustration-technology-space-icon-isolated-flat-cartoon-style_138676-3099.jpg?w=2000"
         />
       </Head>
+
         <div>
          <LoginComp/>
         </div>
+        
         </>
     )
 }

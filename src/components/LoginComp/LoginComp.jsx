@@ -1,9 +1,13 @@
-import styles from "./LoginComp.module.scss";
 import { useRouter } from "next/router";
+
 import { useState } from "react";
-import AvatarSvg from "../AvatarSvg";
-import { MainContext } from "@/state";
 import { useContext } from "react";
+
+import { MainContext } from "@/state";
+
+import AvatarSvg from "../AvatarSvg";
+
+import styles from "./LoginComp.module.scss";
 
 const spacecraftOptions = [
   { value: "spaceship1", label: "Navicella 1" },

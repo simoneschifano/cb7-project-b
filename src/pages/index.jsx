@@ -1,11 +1,14 @@
 import Head from "next/head";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import styles from "@/styles/Home.module.css";
-import AvatarSvg from "@/components/AvatarSvg";
-import { MainContext } from "@/state";
-import { useContext } from "react";
 
+import { useEffect, useState, useContext } from "react";
+
+import { MainContext } from "@/state";
+
+import Navbar from "@/components/Navbar";
+
+import styles from "@/styles/Home.module.css";
+
+//FUNCTIONS
 const useMousePosition = () => {
   //Tieni traccia del movimento del mouse
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -24,9 +27,6 @@ const useMousePosition = () => {
 };
 
 export default function Home() {
-  
-
-
   const { state, dispatch } = useContext(MainContext);
 
   const { x, y } = useMousePosition();
@@ -42,27 +42,14 @@ export default function Home() {
           href="https://img.freepik.com/free-vector/astronaut-holding-flag-space-cartoon-icon-illustration-technology-space-icon-isolated-flat-cartoon-style_138676-3099.jpg?w=2000"
         />
       </Head>
-      <main className={styles.main}>
-        <h2>Welcome, {state.username}!</h2> 
-        <div className={styles.NavbarDetails}>
-          <div className={styles.AvatarHome}>
-            <AvatarSvg
-              skinColor={state.skinColor}
-              suitColor={state.suitColor}
-            />
-        
-          </div>
 
-          <img
-            className={styles.SpacecraftHome}
-            src={`/spacecraft/${state.spacecraft}.png`}
-          ></img>
-        </div>
+      <main className={styles.Main}>
+        <Navbar />
+
         <img
           className={styles.SpacecraftCursor}
           src={`/spacecraft/${state.spacecraft}.png`}
-          style={{ position: "absolute", left: x, top: y }}
-        ></img>
+          style={{ position: "absolute", left: x, top: y }}></img>
       </main>
     </>
   );
@@ -72,9 +59,8 @@ export default function Home() {
 export async function getServerSideProps({ req, res }) {
   const user = req.user || req.cookies.user;
 
-  if (!user ) {
+  if (!user) {
     res.writeHead(302, { Location: "/login" });
-
 
     res.end();
   }

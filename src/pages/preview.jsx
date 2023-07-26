@@ -1,10 +1,15 @@
-import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import styles from "@/styles/Preview.module.scss";
-import AvatarSvg from "@/components/AvatarSvg";
-import { MainContext } from "@/state";
+
+//TODO Da eliminare?
+// import { useEffect, useState } from "react";
 import { useContext } from "react";
+
+import { MainContext } from "@/state";
+
+import AvatarSvg from "@/components/AvatarSvg";
+
+import styles from "@/styles/Preview.module.scss";
 
 const Preview = () => {
   const router = useRouter();
@@ -32,6 +37,7 @@ const Preview = () => {
           href="https://img.freepik.com/free-vector/astronaut-holding-flag-space-cartoon-icon-illustration-technology-space-icon-isolated-flat-cartoon-style_138676-3099.jpg?w=2000"
         />
       </Head>
+
       <main className={styles.Preview}>
         <form onSubmit={onHandleNext} className={styles.PreviewComp}>
           {state.username && <h1>Welcome, {state.username}!</h1>}{" "}
