@@ -46,10 +46,7 @@ export default function Home() {
       <main className={styles.Main}>
         <Navbar />
 
-        <img
-          className={styles.SpacecraftCursor}
-          src={`/spacecraft/${state.spacecraft}.png`}
-          style={{ position: "absolute", left: x, top: y }}></img>
+        <img className={styles.SpacecraftCursor} src={`/spacecraft/${state.spacecraft}.png`} style={{ position: "absolute", left: x, top: y }}></img>
       </main>
     </>
   );
