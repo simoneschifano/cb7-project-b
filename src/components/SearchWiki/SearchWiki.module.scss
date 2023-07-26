@@ -1,0 +1,14 @@
+.SearchForm {
+    display: flex;
+    justify-content: center;
+    .SearchInput{
+        border: 3px solid blue;
+    }
+}
+.listRandomStars{
+    display: flex;
+    flex-direction: row;
+}
+.listRandomPlanets{
+    display: flex;
+}
