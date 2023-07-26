@@ -34,7 +34,7 @@ const useMousePosition = () => {
 
 export default function Home() {
   const { state, dispatch } = useContext(MainContext);
-  
+
   // State/function relative allo swiper
   const [pageValue, setPageValue] = useState()
   const [distanceValue, setDistanceValue] = useState(0)
@@ -65,7 +65,7 @@ export default function Home() {
           className={styles.SpacecraftCursor}
           src={`/spacecraft/${state.spacecraft}.png`}
           style={{ position: "absolute", left: x, top: y }}></img>
-        
+      <div className={styles.swiperv}>
         <Swiper
             direction={'vertical'}
             className={`mySwiper ${styles.swiperv}`}
@@ -89,19 +89,34 @@ export default function Home() {
             initialSlide={3}      
         >
             <SwiperSlide className={styles.singleSlide}>
-              {/* <div position="relative">
-                  <div position="absolute/fixed">3D Model</div>
-              </div> */}
+              <div className={styles.content}>TESTO</div>
             </SwiperSlide>
-            <SwiperSlide className={styles.singleSlide}></SwiperSlide>
-            <SwiperSlide className={styles.singleSlide}></SwiperSlide>
-            <SwiperSlide className={styles.singleSlide}></SwiperSlide>
-            <SwiperSlide className={styles.singleSlide}></SwiperSlide>
-            <SwiperSlide className={styles.singleSlide}></SwiperSlide>
-            <SwiperSlide className={styles.singleSlide}></SwiperSlide>
-            <SwiperSlide className={styles.singleSlide}></SwiperSlide>
-            <SwiperSlide className={styles.singleSlide}></SwiperSlide>
+            <SwiperSlide className={styles.singleSlide}>
+              <div className={styles.content}>TESTO</div>
+            </SwiperSlide>
+            <SwiperSlide className={styles.singleSlide}>
+              <div className={styles.content}>TESTO</div>
+            </SwiperSlide>
+            <SwiperSlide className={styles.singleSlide}>  
+              <div className={styles.content}>TESTO</div>
+            </SwiperSlide>
+            <SwiperSlide className={styles.singleSlide}>
+              <div className={styles.content}>TESTO</div>
+            </SwiperSlide>
+            <SwiperSlide className={styles.singleSlide}>
+              <div className={styles.content}>TESTO</div>
+            </SwiperSlide>
+            <SwiperSlide className={styles.singleSlide}>
+              <div className={styles.content}>TESTO</div>
+            </SwiperSlide>
+            <SwiperSlide className={styles.singleSlide}>
+              <div className={styles.content}>TESTO</div>
+            </SwiperSlide>
+            <SwiperSlide className={styles.singleSlide}>
+              <div className={styles.content}>TESTO</div>
+            </SwiperSlide>
         </Swiper>
+        </div>
       </main>
     </>
   );
