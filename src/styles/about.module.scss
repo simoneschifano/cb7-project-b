@@ -1,0 +1,41 @@
+.wrapperText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper_devs {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 25px;
+  margin-top: 15px;
+  text-align: center;
+
+  img {
+    border-radius: 9px;
+  }
+
+  button {
+    padding: 10px;
+    border: none;
+    border-radius: 12px;
+    text-align: center;
+    background-color: lightskyblue;
+    transition: 0.5s all;
+    opacity: 1;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: white;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+}
