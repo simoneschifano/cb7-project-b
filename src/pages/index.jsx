@@ -31,6 +31,7 @@ import {
   Keyboard,
 } from "swiper/modules";
 
+
 //FUNCTIONS
 const useMousePosition = () => {
   //Tieni traccia del movimento del mouse
@@ -85,8 +86,8 @@ export default function Home() {
           src={`/spacecraft/${state.spacecraft}.png`}
           style={{ position: "absolute", left: x, top: y }}></img>
 
-        {/* Test senza swiper con pianeti funzionanti */}
 
+        {/* Test senza swiper con pianeti funzionanti */}
         <div className={styles.Planets}>
           <div className={styles.Planet}>
             <Sun />
@@ -129,6 +130,8 @@ export default function Home() {
           </div>
         </div>
 
+  
+       {/************ DA CONTROLLARE ************/}
         {/* Test swiper non funzionante */}
         {/*    <div className={styles.swiperv}>
           <Swiper
@@ -209,6 +212,7 @@ export default function Home() {
           </Swiper>
         </div> 
         */}
+
       </main>
     </>
   );
