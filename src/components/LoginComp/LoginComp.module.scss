@@ -1,10 +1,17 @@
 .LoginBody {
-  background-color: rgba(92, 78, 183, 0.615);
+  //Sistemare dimensione al ridimensionamento dell'immagine
+  background-image: url("/Milky.jpg");
+  background-size: cover;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  color: $color-text;
+}
+
+.Title {
+  color: $color-heading;
 }
 
 .login {
@@ -18,23 +25,10 @@
   position: relative;
   top: -140px;
   width: 150px;
-
   height: auto;
   overflow: visible;
   animation: Levitation 5s 1s infinite ease-in-out;
   filter: drop-shadow(8px 8px 10px black);
-}
-
-@keyframes Levitation {
-  0% {
-    transform: translateY(100px);
-  }
-  50% {
-    transform: translateY(80px);
-  }
-  100% {
-    transform: translateY(100px);
-  }
 }
 
 .ColorSelection {
@@ -61,27 +55,37 @@
   left: -155px;
 }
 
+@keyframes Levitation {
+  0% {
+    transform: translateY(100px);
+  }
+  50% {
+    transform: translateY(80px);
+  }
+  100% {
+    transform: translateY(100px);
+  }
+}
+
 @media screen and (max-width: 767px) {
   /* This is for mobile devices */
-  .LoginBody{
+  .LoginBody {
     height: 50%;
   }
   .login {
-    flex-direction: column; 
-
+    flex-direction: column;
   }
   .SpaceShipImg {
     top: -120px;
     width: 60px;
   }
   .LoginSubmit {
-    top: -10px; 
-    left: -3px; 
+    top: -10px;
+    left: -3px;
   }
- 
- }
- 
- /* This is for tablet devices */
+}
+
+/* This is for tablet devices */
 /*  @media screen and (min-width:601px) and (max-width :1024px) {
   .login {
     gap :40px;
@@ -95,18 +99,18 @@
     left :-115px; 
   }
  } */
- 
- /* This is for laptop devices */
- @media screen and (min-width :1025px) {
+
+/* This is for laptop devices */
+@media screen and (min-width: 1025px) {
   .login {
-    gap :60px; 
+    gap: 60px;
   }
   .SpaceShipImg {
-    top :-140px; 
-    width :150px;
+    top: -140px;
+    width: 150px;
   }
   .LoginSubmit {
-    top :220px;
-    left :-155px; 
+    top: 220px;
+    left: -155px;
   }
- }
+}

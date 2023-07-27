@@ -3,9 +3,14 @@
   align-items: center;
   justify-content: center;
   background-color: rgba(92, 78, 183, 0.615);
+  background-image: url("/Milky.jpg");
   height: 100vh;
-}
+  color: $color-text;
 
+}
+.Title {
+  color: $color-heading;
+}
 
 .SpaceCraftPreview {
   margin-top: 12px;
@@ -59,44 +64,37 @@
   margin-top: 80px;
 }
 
-@media screen and (max-width:767px) {
-
-  .Preview{
-
+@media screen and (max-width: 767px) {
+  .Preview {
     display: flex;
     align-items: center;
     justify-content: center;
-   
   }
-  .PreviewComp{
+  .PreviewComp {
     margin: 12px;
   }
 
-  .SpaceCraftPreview{
+  .SpaceCraftPreview {
     width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column  ;
+    flex-direction: column;
 
-    .SpaceParagraph{
-     
+    .SpaceParagraph {
       margin-top: 26px;
     }
   }
 
-  .AvatarPreview{
+  .AvatarPreview {
     width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column  ;
+    flex-direction: column;
 
-    .Paragraph{
-      margin-top: 12px
+    .Paragraph {
+      margin-top: 12px;
     }
-
   }
-  
-  
 }

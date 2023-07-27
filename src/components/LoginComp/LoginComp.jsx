@@ -37,27 +37,27 @@ const LoginComp = () => {
       alert(`Username must be at least ${minLength} characters long.`);
     }
   };
-  
-  //se i dati sono già stati caricati precendentemente fa un controllo in caso 
+
+  //se i dati sono già stati caricati precendentemente fa un controllo in caso
   useEffect(() => {
     const checkLocalStorage = () => {
       const username = localStorage.getItem("username");
       const skinColor = localStorage.getItem("skinColor");
       const suitColor = localStorage.getItem("suitColor");
       const spacecraft = localStorage.getItem("spacecraft");
-  
+
       if (username && skinColor && suitColor && spacecraft) {
         // Se i dati sono presenti, vai direttamente alla pagina di anteprima
         router.push("/preview");
-  
+
         // Mostra l'alert
         alert("Welcome back! Your previous settings have been loaded.");
       }
     };
-  
+
     checkLocalStorage();
   }, []);
-  //Parlane con simo su questo 
+  //Parlane con simo su questo
 
   //Funzione che fa un check ai dati del local storage
   const checkLocalStorage = () => {
@@ -67,15 +67,12 @@ const LoginComp = () => {
     const spacecraft = localStorage.getItem("spacecraft");
 
     if (username && skinColor && suitColor && spacecraft) {
-
-     
       // Carica i dati salvati nello stato
       dispatch({ type: "SET_USERNAME", payload: username });
       dispatch({ type: "SET_SKIN_COLOR", payload: skinColor });
       dispatch({ type: "SET_SUIT_COLOR", payload: suitColor });
       dispatch({ type: "SET_SPACECRAFT", payload: spacecraft });
     }
-    
   };
 
   useEffect(() => {
@@ -93,8 +90,10 @@ const LoginComp = () => {
 
   return (
     <div className={styles.LoginBody}>
-      <h1>Welcome to Spacemony</h1>
-      <h3>Choose you're avatar </h3> & spaceship
+      <h1 className={styles.Title}>Welcome to Spacemony</h1>
+      <h3>Choose you're avatar </h3>
+      <h3>& spaceship </h3>
+
       <form className={styles.login} onSubmit={onHandleSubmit}>
         <div className={styles.Avatar}>
           <AvatarSvg skinColor={state.skinColor} suitColor={state.suitColor} />

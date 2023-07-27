@@ -89,6 +89,7 @@ export default function Home() {
 
         {/* Test senza swiper con pianeti funzionanti */}
         <div className={styles.Planets}>
+
           <div className={styles.Planet}>
             <Sun />
           </div>
@@ -128,6 +129,7 @@ export default function Home() {
           <div className={styles.Planet}>
             <Pluto />
           </div>
+          
         </div>
 
   

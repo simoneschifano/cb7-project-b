@@ -46,7 +46,7 @@ const Preview = () => {
 
       <main className={styles.Preview}>
         <form onSubmit={onHandleNext} className={styles.PreviewComp}>
-          {state.username && <h1>Welcome, {state.username}!</h1>}{" "}
+          {state.username && <h1 className={styles.Title}>Welcome, {state.username}!</h1>}
           {/* usa lo stato dal contesto */}
           <div className={styles.AvatarPreview}>
             <p className={styles.Paragraph}>Selected Avatar</p>

@@ -39,6 +39,11 @@
   height: 80px;
 }
 
+.Avatar__Wrapper {
+  position: relative;
+  bottom: 40px;
+}
+
 .SpacecraftHome {
   width: 80px;
   padding: 12px;
@@ -89,5 +94,17 @@
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
+  }
+}
+
+@keyframes Levitation {
+  0% {
+    transform: translateY(100px);
+  }
+  50% {
+    transform: translateY(80px);
+  }
+  100% {
+    transform: translateY(100px);
   }
 }
