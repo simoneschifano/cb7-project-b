@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styles from './SearchWiki.module.scss'
 import { GET } from '@/utils/http';
 import PlanetCard from '../PlanetCard';
+import StarCard from '../StarCard';
 
 const SearchWiki = () => {
     const urlStars = "https://api.api-ninjas.com/v1/stars?name=";
@@ -39,7 +40,7 @@ const SearchWiki = () => {
             distance_light_year: 1794,
             host_star_mass: 1.22,
             host_star_temperature: 5857
-          }
+        }
     ]
     const listRandomStars = [
         {
@@ -68,57 +69,88 @@ const SearchWiki = () => {
             absolute_magnitude: "0.36",
             distance_light_year: "545",
             spectral_class: "B9Vp(Si)"
-          }
+        }
     ]
 
     const [resultPlanet, setResultPlanet] = useState(false);
     const [inputPlanetValue, setPlanetInputValue] = useState(false);
+    const [resultStar, setResultStar] = useState(false);
+    const [inputStarValue, setStarInputValue] = useState(false);
+    const [previewResultStar, setPreviewResultStar] = useState(false);
+    const [previewResultPlanet, setPreviewResultPlanet] = useState(false);
 
     const onHandlePlanetSearch = (e) => {
         e.preventDefault();
-        GET(urlPlanets,inputPlanetValue).then(data => setResultPlanet(data));
+        GET(urlPlanets, inputPlanetValue).then(data => setResultPlanet(data));
     }
     const onHandlePlanetInput = (e) => {
-        setPlanetInputValue(e.target.value);
+        if (e.target.value.length > 2 ) {
+            setPlanetInputValue(e.target.value);
+            GET(urlPlanets, e.target.value).then(data => setPreviewResultPlanet(data));
+        }
+        else
+        {
+            setPlanetInputValue(false)
+            setPreviewResultPlanet(false);
+            setResultPlanet(false);
+        }
     }
-
-    const [resultStar, setResultStar] = useState(false);
-    const [inputStarValue, setStarInputValue] = useState(false);
+    const onHandlePlanetPreviewClick = (planetName) => {
+        GET(urlPlanets, planetName).then(data => setResultPlanet(data));
+    }
 
     const onHandleStarSearch = (e) => {
         e.preventDefault();
         GET(urlStars, inputStarValue).then(data => setResultStar(data));
     }
     const onHandleStarInput = (e) => {
+        if (e.target.value.length > 2 ) {
         setStarInputValue(e.target.value);
+        GET(urlPlanets, e.target.value).then(data => setPreviewResultStar(data));
+    }
+    else
+    {
+        setStarInputValue(false)
+        setPreviewResultStar(false);
+        setResultStar(false);
+    }
+    }
+    const onHandleStarPreviewClick = (planetName) => {
+        GET(urlPlanets, planetName).then(data => setResultStar(data));
     }
 
     return (
         <>
             <form className={styles.SearchForm} onSubmit={onHandlePlanetSearch}>
                 <input className={styles.SearchInput} type="text" name="saerchText" placeholder="inserisci il pianeta da ricercare" onChange={onHandlePlanetInput} />
+                <button onClick={onHandlePlanetSearch}>Search</button>
             </form>
-
             {
-                resultPlanet ?
-                    <div>{resultPlanet.length > 0 ? resultPlanet.map(planet => <PlanetCard data={planet}/>):<div>not found</div>}</div>
+                previewResultPlanet.length > 0 && <div> {previewResultPlanet.slice(0, 5).map(planet => <p onClick={() => onHandlePlanetPreviewClick(planet.name)}>{planet.name}</p>)}</div>
+            }
+            {
+                resultPlanet  ?
+                    <div className={styles.listPlanets}>{resultPlanet.length > 0 ? resultPlanet.map(planet => <PlanetCard data={planet} />) : <div>not found</div>}</div>
                     :
-                    <div className={styles.listRandomPlanets}>
-                        {listRandomPlanets.map(planet => <PlanetCard data={planet}/>)}
+                    <div className={styles.listPlanets}>
+                        {listRandomPlanets.map(planet => <PlanetCard data={planet} />)}
                     </div>
             }
 
             <form className={styles.SearchForm} onSubmit={onHandleStarSearch}>
                 <input className={styles.SearchInput} type="text" name="saerchText" placeholder="inserisci la stella da ricercare" onChange={onHandleStarInput} />
+                <button onClick={onHandleStarSearch}>Search</button>
             </form>
-
+            {
+                previewResultStar.length > 0 && <div> {previewResultStar.slice(0, 5).map(star => <p onClick={() => onHandleStarPreviewClick(star.name)}>{star.name}</p>)}</div>
+            }
             {
                 resultStar ?
-                <div>{resultStar.length > 0 ? resultStar.map(planet => <PlanetCard data={planet}/>):<div>not found</div>}</div>
-                :
-                <div className={styles.listRandomStars}>
-                    {listRandomStars.map(star => <PlanetCard data={star}/>)}
-                </div>
+                    <div className={styles.listStars}>{resultStar.length > 0 ? resultStar.map(planet => <StarCard data={planet} />) : <div>not found</div>}</div>
+                    :
+                    <div className={styles.listStars}>
+                        {listRandomStars.map(star => <StarCard data={star} />)}
+                    </div>
             }
 
         </>
