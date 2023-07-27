@@ -1,0 +1,17 @@
+.SearchForm {
+    display: flex;
+    justify-content: center;
+    .SearchInput{
+        border: 3px solid blue;
+    }
+}
+.listStars{
+    display: flex;
+    gap:20px;
+    overflow-x: auto;
+}
+.listPlanets{
+    display: flex;
+    gap:20px;
+    overflow-x: auto;
+}
