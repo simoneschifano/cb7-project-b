@@ -16,6 +16,7 @@ import Saturn from "@/components/Planets/Saturn";
 import Uranus from "@/components/Planets/Uranus";
 import Neptune from "@/components/Planets/Neptune";
 import Pluto from "@/components/Planets/Pluto";
+import Moon from "@/components/Planets/Moon";
 
 import styles from "@/styles/Home.module.css";
 
@@ -23,6 +24,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
+import {
+  EffectCreative
+} from "swiper/modules" 
+
+
 
 //FUNCTIONS
 const useMousePosition = () => {
@@ -86,9 +92,21 @@ export default function Home() {
             parallax={true}
             slidesPerView={"1"}
             speed={1500}
-            effect="coverflow"
             onSlideChange={(swiper) => distanceCounter(swiper)}
-            initialSlide={3}>
+            initialSlide={3}
+            effect={"creative"}
+            grabCursor={true}
+            creativeEffect={{
+            prev: {
+              shadow: false,
+              translate: ["-50%", 250, 0], // orizzontale | verticale | profondità |
+            },
+            next: {
+              shadow: false,
+              translate: ["50%", 250, 0],
+            },
+            }}
+            modules={[EffectCreative]}>
 
             <SwiperSlide className={styles.Swiper__Slide}>
               <div className={styles.Swiper__Slide__Content}>
@@ -110,6 +128,7 @@ export default function Home() {
 
             <SwiperSlide className={styles.Swiper__Slide}>
               <div className={styles.Swiper__Slide__Content}>
+                <Moon/>
                 <Earth />
               </div>
             </SwiperSlide>

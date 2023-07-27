@@ -41,7 +41,7 @@ const SpherePlanet = () => {
 const Earth = () => {
   return (
     <div className={styles.Earth}>
-      <Moon/>
+     {/* <Moon/> */} 
       <Canvas className="canvas">
         <OrbitControls enableZoom={false} />
         <ambientLight intensity={0.9} />
