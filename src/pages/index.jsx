@@ -117,7 +117,6 @@ export default function Home() {
 
             <SwiperSlide className={styles.singleSlide}>
               <div className={styles.content}>
-
                 MERCURIO
               </div>
             </SwiperSlide>
@@ -125,34 +124,29 @@ export default function Home() {
             <SwiperSlide className={styles.singleSlide}>
               <div className={styles.content}>
                 VENERE
-
               </div>
             </SwiperSlide>
 
             <SwiperSlide className={styles.singleSlide}>
               <div className={styles.content}>
-
                 TERRA
               </div>
             </SwiperSlide>
 
             <SwiperSlide className={styles.singleSlide}>
               <div className={styles.content}>
-
                 MARTE
               </div>
             </SwiperSlide>
 
             <SwiperSlide className={styles.singleSlide}>
               <div className={styles.content}>
-
                 GIOVE
               </div>
             </SwiperSlide>
 
             <SwiperSlide className={styles.singleSlide}>
               <div className={styles.content}>
-
                 SATURNO
               </div>
             </SwiperSlide>
