@@ -13,15 +13,15 @@ import Link from "next/link";
 const Navbar = () => {
   const { state, dispatch } = useContext(MainContext);
 
-  console.log(state);
+
   return (
     <>
       <div className={styles.top_navbar}>
         <div className={styles.top_nav_ul}>
           <h2>Welcome, {state.username}!</h2>
           <li>
-            <Link href="/wiki">Wiki</Link>{" "}
-          </li>{" "}
+            <Link href="/wiki">Wiki</Link>
+          </li>
           <Link href={"/about"}>
             <li>About Us</li>
           </Link>
@@ -32,7 +32,7 @@ const Navbar = () => {
       </div>
 
       <div className={styles.wrapper}>
-        {/* Immagine di sfondo */}
+        
         <div className={styles.wrapper_png}>
           <Image
             className={styles.navPng}
@@ -52,11 +52,36 @@ const Navbar = () => {
             </div>
             <img
               className={styles.SpacecraftHome}
-              src={`/spacecraft/${state.spacecraft}.png`}></img>
+              src={`/spacecraft/${state.spacecraft}.png`}
+            ></img>
             <div className={styles.wrappertxt}>
               <h5>Distanza Percorsa: </h5>
               <h5>Pianeti trovati:</h5>
             </div>
+            <label className={styles.BurgerWrapper}>
+              <input type="checkbox" name="Burgher" className={styles.Burger} />
+              <span className={styles.menu}>
+                <span className={styles.hamburger}></span>
+              </span>
+              <ul className={styles.BurgerUl}>
+                <li className={styles.BurgerLi}>
+                  <Link href="/wiki">Wiki</Link>
+                </li>{" "}
+                <li className={styles.BurgerLi}>
+                  <Link href={"/about"}>About Us</Link>
+                </li>
+                <li className={styles.BurgerLi}>
+                <Link href={"/minigame"}>
+                 Mini-Game
+                </Link>
+                </li>
+                <li className={styles.BurgerLi}>
+                <Link href={"/preview"}>
+                 Back to Summary
+                </Link>
+                </li>
+              </ul>
+            </label>
           </div>
         </div>
       </div>
