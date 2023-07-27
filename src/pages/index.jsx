@@ -23,13 +23,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
-import {
-  EffectCoverflow,
-  Mousewheel,
-  Pagination,
-  Fade,
-  Keyboard,
-} from "swiper/modules";
 
 //FUNCTIONS
 const useMousePosition = () => {
@@ -80,10 +73,10 @@ export default function Home() {
 
         <Navbar />
 
-        <img
+        {/* <img
           className={styles.SpacecraftCursor}
           src={`/spacecraft/${state.spacecraft}.png`}
-          style={{ position: "absolute", left: x, top: y }}></img>
+          style={{ position: "absolute", left: x, top: y }}></img> */}
 
         <div className={styles.Swiper__Container}>
           <Swiper
@@ -96,6 +89,7 @@ export default function Home() {
             effect="coverflow"
             onSlideChange={(swiper) => distanceCounter(swiper)}
             initialSlide={3}>
+
             <SwiperSlide className={styles.Swiper__Slide}>
               <div className={styles.Swiper__Slide__Content}>
                 <Sun />
@@ -117,6 +111,13 @@ export default function Home() {
             <SwiperSlide className={styles.Swiper__Slide}>
               <div className={styles.Swiper__Slide__Content}>
                 <Earth />
+              </div>
+            </SwiperSlide>
+
+            <SwiperSlide className={styles.Swiper__Slide}>
+              <div className={styles.Swiper__Slide__Content}>
+                <p>Mars</p>
+                <Mars />
               </div>
             </SwiperSlide>
 
@@ -155,6 +156,7 @@ export default function Home() {
                 <Sun />
               </div>
             </SwiperSlide>
+            
           </Swiper>
         </div>
       </main>

@@ -1,4 +1,4 @@
-.SpacecraftCursor {
+/* .SpacecraftCursor {
   filter: drop-shadow(8px 8px 10px black);
   width: 80px;
 }
@@ -8,11 +8,11 @@
     display: none;
   }
 }
+ */
 
 .Main {
   height: 100%;
   overflow: hidden;
-  /* position: relative; */
 }
 
 .Background {
