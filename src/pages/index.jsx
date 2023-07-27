@@ -78,12 +78,56 @@ export default function Home() {
       <main className={styles.Main}>
         <div className={styles.Background}></div>
 
-        {/* <Navbar />
+        <Navbar />
 
         <img
           className={styles.SpacecraftCursor}
           src={`/spacecraft/${state.spacecraft}.png`}
-          style={{ position: "absolute", left: x, top: y }}></img> */}
+          style={{ position: "absolute", left: x, top: y }}></img>
+
+        {/* Test senza swiper con pianeti funzionanti */}
+
+        <div className={styles.Planets}>
+          <div className={styles.Planet}>
+            <Sun />
+          </div>
+
+          <div className={styles.Planet}>
+            <Mercury />
+          </div>
+
+          <div className={styles.Planet}>
+            <Venus />
+          </div>
+
+          <div className={styles.Planet}>
+            <Earth />
+          </div>
+
+          <div className={styles.Planet}>
+            <Mars />
+          </div>
+
+          <div className={styles.Planet}>
+            <Jupiter />
+          </div>
+
+          <div className={styles.Planet}>
+            <Saturn />
+          </div>
+
+          <div className={styles.Planet}>
+            <Uranus />
+          </div>
+
+          <div className={styles.Planet}>
+            <Neptune />
+          </div>
+
+          <div className={styles.Planet}>
+            <Pluto />
+          </div>
+        </div>
 
         {/* Test swiper non funzionante */}
         {/*    <div className={styles.swiperv}>
@@ -165,50 +209,6 @@ export default function Home() {
           </Swiper>
         </div> 
         */}
-
-        {/* Test senza swiper con pianeti funzionanti */}
-
-        <div className={styles.Planets}>
-          <div className={styles.Planet}>
-            <Sun />
-          </div>
-
-          <div className={styles.Planet}>
-            <Mercury />
-          </div>
-
-          <div className={styles.Planet}>
-            <Venus />
-          </div>
-
-          <div className={styles.Planet}>
-            <Earth />
-          </div>
-
-          <div className={styles.Planet}>
-            <Mars />
-          </div>
-
-          <div className={styles.Planet}>
-            <Jupiter />
-          </div>
-
-          <div className={styles.Planet}>
-            <Saturn />
-          </div>
-
-          <div className={styles.Planet}>
-            <Uranus />
-          </div>
-
-          <div className={styles.Planet}>
-            <Neptune />
-          </div>
-
-          <div className={styles.Planet}>
-            <Pluto />
-          </div>
-        </div>
       </main>
     </>
   );
