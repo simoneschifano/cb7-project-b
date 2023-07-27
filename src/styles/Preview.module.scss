@@ -1,26 +1,102 @@
 .Preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(92, 78, 183, 0.615);
+  height: 100vh;
+}
+
+
+.SpaceCraftPreview {
+  margin-top: 12px;
+  padding: 12px;
+  width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.AvatarPreview {
+  padding: 12px;
+  width: 300px;
+  gap: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .Paragraph {
+    margin-top: 140px;
+  }
+}
+
+.SpaceCraftImgPreview {
+  width: 100px;
+  filter: drop-shadow(8px 8px 10px black);
+  margin: 10px;
+
+  overflow: visible;
+  animation: Levitation 5s 1s infinite ease-in-out;
+}
+
+@keyframes Levitation {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+.NextorBack {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.PreviewBtn {
+  margin-top: 80px;
+}
+
+@media screen and (max-width:767px) {
+
+  .Preview{
+
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(92, 78, 183, 0.615);
-    height: 100vh;
+   
   }
-  
-  .AvatarPreview,
-  .SpaceCraftPreview {
-    padding: 12px;
-    width: 400px;
+  .PreviewComp{
+    margin: 12px;
+  }
+
+  .SpaceCraftPreview{
+    width: 50%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    flex-direction: column  ;
+
+    .SpaceParagraph{
+     
+      margin-top: 26px;
+    }
   }
-  
-  .SpaceCraftImgPreview {
-    width: 100px;
-  }
-  
-  .NextorBack {
+
+  .AvatarPreview{
+    width: 50%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    flex-direction: column  ;
+
+    .Paragraph{
+      margin-top: 12px
+    }
+
   }
+  
+  
+}

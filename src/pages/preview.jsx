@@ -21,8 +21,14 @@ const Preview = () => {
     router.push("/");
   };
 
+  //Cancella i dati nel local storage se si torna indietro
   const onHandleBack = (e) => {
     e.preventDefault();
+    // Resetta i dati nel localStorage
+    localStorage.removeItem("username");
+    localStorage.removeItem("skinColor");
+    localStorage.removeItem("suitColor");
+    localStorage.removeItem("spacecraft");
     router.push(`/login`);
   };
 
@@ -43,7 +49,7 @@ const Preview = () => {
           {state.username && <h1>Welcome, {state.username}!</h1>}{" "}
           {/* usa lo stato dal contesto */}
           <div className={styles.AvatarPreview}>
-            Avatar selezionato
+            <p className={styles.Paragraph}>Selected Avatar</p>
             <AvatarSvg
               skinColor={state.skinColor}
               suitColor={state.suitColor}
@@ -52,7 +58,7 @@ const Preview = () => {
           </div>
           {state.spacecraft && (
             <div className={styles.SpaceCraftPreview}>
-              <span>Navicella selezionata:</span>
+              <span className={styles.SpaceParagraph}>Selected Spaceship:</span>
               <img
                 className={styles.SpaceCraftImgPreview}
                 src={`/spacecraft/${state.spacecraft}.png`}
@@ -60,10 +66,14 @@ const Preview = () => {
               />
             </div>
           )}
-          <h3>Sicuro di cominciare con queste impostazioni?</h3>
+          <h3>Are you sure to continue with these settings?</h3>
           <div className={styles.NextorBack}>
-            <button onClick={onHandleBack}>Torna indietro</button>
-            <button onClick={onHandleNext}>Continua</button>
+            <button className={styles.PreviewBtn} onClick={onHandleBack}>
+              Torna indietro
+            </button>
+            <button className={styles.PreviewBtn} onClick={onHandleNext}>
+              Continua
+            </button>
           </div>
         </form>
       </main>
