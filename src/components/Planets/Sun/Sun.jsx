@@ -1,7 +1,7 @@
-import React, { Suspense, useEffect, useRef } from "react";
+import React, { Suspense, useRef } from "react";
 
 import { Canvas, useLoader, useFrame } from "@react-three/fiber";
-import { OrbitControls, useTexture } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import { MeshDistortMaterial, Sphere } from "@react-three/drei";
 
 import { TextureLoader } from "three";

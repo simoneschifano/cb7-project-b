@@ -25,10 +25,11 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
 import {
-  EffectCreative
-} from "swiper/modules" 
-
-
+  EffectCreative,
+  Keyboard,
+  Mousewheel,
+ /*  Pagination, */
+} from "swiper/modules";
 
 //FUNCTIONS
 const useMousePosition = () => {
@@ -86,7 +87,6 @@ export default function Home() {
 
         <div className={styles.Swiper__Container}>
           <Swiper
-            direction={"vertical"}
             className={`mySwiper ${styles.Swiper__Main}`}
             spaceBetween={100}
             parallax={true}
@@ -96,18 +96,24 @@ export default function Home() {
             initialSlide={3}
             effect={"creative"}
             grabCursor={true}
-            creativeEffect={{
-            prev: {
-              shadow: false,
-              translate: ["-50%", 250, 0], // orizzontale | verticale | profondità |
-            },
-            next: {
-              shadow: false,
-              translate: ["50%", 250, 0],
-            },
+            keyboard={{
+              enabled: true,
             }}
-            modules={[EffectCreative]}>
-
+            mousewheel={true}
+            /*     pagination={{
+              clickable: true,
+            }} */
+            creativeEffect={{
+              prev: {
+                shadow: false,
+                translate: ["-50%", 250, 0], // orizzontale | verticale | profondità |
+              },
+              next: {
+                shadow: false,
+                translate: ["50%", 250, 0],
+              },
+            }}
+            modules={[EffectCreative, Keyboard, Mousewheel/* , Pagination */]}>
             <SwiperSlide className={styles.Swiper__Slide}>
               <div className={styles.Swiper__Slide__Content}>
                 <Sun />
@@ -128,14 +134,13 @@ export default function Home() {
 
             <SwiperSlide className={styles.Swiper__Slide}>
               <div className={styles.Swiper__Slide__Content}>
-                <Moon/>
+                <Moon />
                 <Earth />
               </div>
             </SwiperSlide>
 
             <SwiperSlide className={styles.Swiper__Slide}>
               <div className={styles.Swiper__Slide__Content}>
-                <p>Mars</p>
                 <Mars />
               </div>
             </SwiperSlide>
@@ -175,7 +180,6 @@ export default function Home() {
                 <Sun />
               </div>
             </SwiperSlide>
-            
           </Swiper>
         </div>
       </main>

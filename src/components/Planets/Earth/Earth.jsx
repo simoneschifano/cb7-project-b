@@ -1,13 +1,12 @@
-import React, { Suspense, useEffect, useRef } from "react";
+import React, { Suspense, useRef } from "react";
 
 import { Canvas, useLoader, useFrame } from "@react-three/fiber";
-import { OrbitControls, useTexture } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import { MeshDistortMaterial, Sphere } from "@react-three/drei";
 
 import { TextureLoader } from "three";
 
 import styles from "./Earth.module.scss";
-import Moon from "../Moon";
 
 const SpherePlanet = () => {
   const SpherePlanetRef = useRef();
@@ -41,7 +40,6 @@ const SpherePlanet = () => {
 const Earth = () => {
   return (
     <div className={styles.Earth}>
-     {/* <Moon/> */} 
       <Canvas className="canvas">
         <OrbitControls enableZoom={false} />
         <ambientLight intensity={0.9} />
