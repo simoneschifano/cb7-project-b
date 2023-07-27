@@ -23,14 +23,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
-import {
-  EffectCoverflow,
-  Mousewheel,
-  Pagination,
-  Fade,
-  Keyboard,
-} from "swiper/modules";
-
 
 //FUNCTIONS
 const useMousePosition = () => {
@@ -81,140 +73,92 @@ export default function Home() {
 
         <Navbar />
 
-        <img
+        {/* <img
           className={styles.SpacecraftCursor}
           src={`/spacecraft/${state.spacecraft}.png`}
-          style={{ position: "absolute", left: x, top: y }}></img>
+          style={{ position: "absolute", left: x, top: y }}></img> */}
 
-
-        {/* Test senza swiper con pianeti funzionanti */}
-        <div className={styles.Planets}>
-
-          <div className={styles.Planet}>
-            <Sun />
-          </div>
-
-          <div className={styles.Planet}>
-            <Mercury />
-          </div>
-
-          <div className={styles.Planet}>
-            <Venus />
-          </div>
-
-          <div className={styles.Planet}>
-            <Earth />
-          </div>
-
-          <div className={styles.Planet}>
-            <Mars />
-          </div>
-
-          <div className={styles.Planet}>
-            <Jupiter />
-          </div>
-
-          <div className={styles.Planet}>
-            <Saturn />
-          </div>
-
-          <div className={styles.Planet}>
-            <Uranus />
-          </div>
-
-          <div className={styles.Planet}>
-            <Neptune />
-          </div>
-
-          <div className={styles.Planet}>
-            <Pluto />
-          </div>
-          
-        </div>
-
-  
-       {/************ DA CONTROLLARE ************/}
-        {/* Test swiper non funzionante */}
-        {/*    <div className={styles.swiperv}>
+        <div className={styles.Swiper__Container}>
           <Swiper
             direction={"vertical"}
-            className={`mySwiper ${styles.swiperv}`}
-            spaceBetween={1000}
+            className={`mySwiper ${styles.Swiper__Main}`}
+            spaceBetween={100}
             parallax={true}
             slidesPerView={"1"}
-            mousewheel={{ sensitivity: 0, releaseOnEdges: "true" }}
             speed={1500}
             effect="coverflow"
-            coverflowEffect={{
-              //Modifica animazione in ingresso
-              rotate: 0,
-              stretch: 0,
-              scale: 200,
-              depth: 500,
-              modifier: 0.8,
-              slideShadows: false,
-            }}
-            keyboard={{ enabled: true }}
             onSlideChange={(swiper) => distanceCounter(swiper)}
-            modules={[EffectCoverflow, Mousewheel, Keyboard]}
             initialSlide={3}>
-            <SwiperSlide className={styles.singleSlide}>
-              <div className={styles.content}>
-                SOLE
+
+            <SwiperSlide className={styles.Swiper__Slide}>
+              <div className={styles.Swiper__Slide__Content}>
+                <Sun />
               </div>
             </SwiperSlide>
 
-            <SwiperSlide className={styles.singleSlide}>
-              <div className={styles.content}>
-                MERCURIO
+            <SwiperSlide className={styles.Swiper__Slide}>
+              <div className={styles.Swiper__Slide__Content}>
+                <Mercury />
               </div>
             </SwiperSlide>
 
-            <SwiperSlide className={styles.singleSlide}>
-              <div className={styles.content}>
-                VENERE
+            <SwiperSlide className={styles.Swiper__Slide}>
+              <div className={styles.Swiper__Slide__Content}>
+                <Venus />
               </div>
             </SwiperSlide>
 
-            <SwiperSlide className={styles.singleSlide}>
-              <div className={styles.content}>
-                TERRA
+            <SwiperSlide className={styles.Swiper__Slide}>
+              <div className={styles.Swiper__Slide__Content}>
+                <Earth />
               </div>
             </SwiperSlide>
 
-            <SwiperSlide className={styles.singleSlide}>
-              <div className={styles.content}>
-                MARTE
+            <SwiperSlide className={styles.Swiper__Slide}>
+              <div className={styles.Swiper__Slide__Content}>
+                <p>Mars</p>
+                <Mars />
               </div>
             </SwiperSlide>
 
-            <SwiperSlide className={styles.singleSlide}>
-              <div className={styles.content}>
-                GIOVE
+            <SwiperSlide className={styles.Swiper__Slide}>
+              <div className={styles.Swiper__Slide__Content}>
+                <Jupiter />
               </div>
             </SwiperSlide>
 
-            <SwiperSlide className={styles.singleSlide}>
-              <div className={styles.content}>
-                SATURNO
+            <SwiperSlide className={styles.Swiper__Slide}>
+              <div className={styles.Swiper__Slide__Content}>
+                <Saturn />
               </div>
             </SwiperSlide>
 
-            <SwiperSlide className={styles.singleSlide}>
-              <div className={styles.content}>
-                URANO
+            <SwiperSlide className={styles.Swiper__Slide}>
+              <div className={styles.Swiper__Slide__Content}>
+                <Uranus />
               </div>
             </SwiperSlide>
 
-            <SwiperSlide className={styles.singleSlide}>
-              <div className={styles.content}>
-                NETTUNO
+            <SwiperSlide className={styles.Swiper__Slide}>
+              <div className={styles.Swiper__Slide__Content}>
+                <Neptune />
               </div>
             </SwiperSlide>
+
+            <SwiperSlide className={styles.Swiper__Slide}>
+              <div className={styles.Swiper__Slide__Content}>
+                <Pluto />
+              </div>
+            </SwiperSlide>
+
+            <SwiperSlide className={styles.Swiper__Slide}>
+              <div className={styles.Swiper__Slide__Content}>
+                <Sun />
+              </div>
+            </SwiperSlide>
+            
           </Swiper>
-        </div> 
-        */}
-
+        </div>
       </main>
     </>
   );
