@@ -18,17 +18,15 @@ import Neptune from "@/components/Planets/Neptune";
 import Pluto from "@/components/Planets/Pluto";
 import Moon from "@/components/Planets/Moon";
 
+import { planetsData } from "@/mock/planetsData";
+
 import styles from "@/styles/Home.module.css";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
-import {
-  EffectCreative
-} from "swiper/modules" 
-
-
+import { EffectCreative } from "swiper/modules";
 
 //FUNCTIONS
 const useMousePosition = () => {
@@ -62,6 +60,19 @@ export default function Home() {
 
   const { x, y } = useMousePosition();
 
+  //Crea gli stati della modale
+  const [showModal, setShowModal] = useState(false);
+  const [selectedPlanet, setSelectedPlanet] = useState(null);
+  //Funzione che all'onClick scorre l'array e trova la corrispondenza con nome di planetsData
+  const handlePlanetClick = (planetName) => {
+    const selectedPlanet = planetsData.find(
+      (planet) => planet.name === planetName
+    );
+    //stati della modale cambiati
+    setSelectedPlanet(selectedPlanet);
+    setShowModal(true);
+  };
+
   return (
     <>
       <Head>
@@ -84,6 +95,34 @@ export default function Home() {
           src={`/spacecraft/${state.spacecraft}.png`}
           style={{ position: "absolute", left: x, top: y }}></img> */}
 
+        {/* Oggetto della modale che viene scatenato all'onClick su un pianeta e genera i valori passati */}
+        {showModal && selectedPlanet && (
+          <div className={styles.Modal}>
+            <div className={styles.Modal__Content}>
+              <p
+                className={styles.Modal__Button}
+                onClick={() => setShowModal(false)}
+              >
+                ❌
+              </p>
+              <h2>{selectedPlanet.name}</h2>
+
+              <p>Mass: {selectedPlanet.mass}</p>
+              <p>Type: {selectedPlanet.type}</p>
+              <p>Radius: {selectedPlanet.radius}</p>
+              <p>Composition: {selectedPlanet.composition}</p>
+              <p>Description: {selectedPlanet.description}</p>
+              <p>Distance from the Sun: {selectedPlanet.distance_from_sun}</p>
+              {selectedPlanet.average_temperature && (
+                <p>Average Temperature: {selectedPlanet.average_temperature}</p>
+              )}
+              {selectedPlanet.surface_temperature && (
+                <p>Surface Temperature: {selectedPlanet.surface_temperature}</p>
+              )}
+            </div>
+          </div>
+        )}
+
         <div className={styles.Swiper__Container}>
           <Swiper
             direction={"vertical"}
@@ -97,75 +136,105 @@ export default function Home() {
             effect={"creative"}
             grabCursor={true}
             creativeEffect={{
-            prev: {
-              shadow: false,
-              translate: ["-50%", 250, 0], // orizzontale | verticale | profondità |
-            },
-            next: {
-              shadow: false,
-              translate: ["50%", 250, 0],
-            },
+              prev: {
+                shadow: false,
+                translate: ["-50%", 250, 0], // orizzontale | verticale | profondità |
+              },
+              next: {
+                shadow: false,
+                translate: ["50%", 250, 0],
+              },
             }}
-            modules={[EffectCreative]}>
-
+            modules={[EffectCreative]}
+          >
             <SwiperSlide className={styles.Swiper__Slide}>
-              <div className={styles.Swiper__Slide__Content}>
+              <div
+                className={styles.Swiper__Slide__Content}
+                onClick={() => handlePlanetClick("Sun")}
+              >
                 <Sun />
               </div>
             </SwiperSlide>
 
             <SwiperSlide className={styles.Swiper__Slide}>
-              <div className={styles.Swiper__Slide__Content}>
+              <div
+                className={styles.Swiper__Slide__Content}
+                onClick={() => handlePlanetClick("Mercury")}
+              >
                 <Mercury />
               </div>
             </SwiperSlide>
 
             <SwiperSlide className={styles.Swiper__Slide}>
-              <div className={styles.Swiper__Slide__Content}>
+              <div
+                className={styles.Swiper__Slide__Content}
+                onClick={() => handlePlanetClick("Venus")}
+              >
                 <Venus />
               </div>
             </SwiperSlide>
 
             <SwiperSlide className={styles.Swiper__Slide}>
-              <div className={styles.Swiper__Slide__Content}>
-                <Moon/>
+              <div
+                className={styles.Swiper__Slide__Content}
+                onClick={() => handlePlanetClick("Earth")}
+              >
+                <Moon />
                 <Earth />
               </div>
             </SwiperSlide>
 
             <SwiperSlide className={styles.Swiper__Slide}>
-              <div className={styles.Swiper__Slide__Content}>
+              <div
+                className={styles.Swiper__Slide__Content}
+                onClick={() => handlePlanetClick("Mars")}
+              >
                 <p>Mars</p>
                 <Mars />
               </div>
             </SwiperSlide>
 
             <SwiperSlide className={styles.Swiper__Slide}>
-              <div className={styles.Swiper__Slide__Content}>
+              <div
+                className={styles.Swiper__Slide__Content}
+                onClick={() => handlePlanetClick("Jupiter")}
+              >
                 <Jupiter />
               </div>
             </SwiperSlide>
 
             <SwiperSlide className={styles.Swiper__Slide}>
-              <div className={styles.Swiper__Slide__Content}>
+              <div
+                className={styles.Swiper__Slide__Content}
+                onClick={() => handlePlanetClick("Saturn")}
+              >
                 <Saturn />
               </div>
             </SwiperSlide>
 
             <SwiperSlide className={styles.Swiper__Slide}>
-              <div className={styles.Swiper__Slide__Content}>
+              <div
+                className={styles.Swiper__Slide__Content}
+                onClick={() => handlePlanetClick("Uranus")}
+              >
                 <Uranus />
               </div>
             </SwiperSlide>
 
             <SwiperSlide className={styles.Swiper__Slide}>
-              <div className={styles.Swiper__Slide__Content}>
+              <div
+                className={styles.Swiper__Slide__Content}
+                onClick={() => handlePlanetClick("Neptune")}
+              >
                 <Neptune />
               </div>
             </SwiperSlide>
 
             <SwiperSlide className={styles.Swiper__Slide}>
-              <div className={styles.Swiper__Slide__Content}>
+              <div
+                className={styles.Swiper__Slide__Content}
+                onClick={() => handlePlanetClick("Pluto")}
+              >
                 <Pluto />
               </div>
             </SwiperSlide>
@@ -175,7 +244,6 @@ export default function Home() {
                 <Sun />
               </div>
             </SwiperSlide>
-            
           </Swiper>
         </div>
       </main>
@@ -184,8 +252,10 @@ export default function Home() {
 }
 
 //Funzione per renderizzare sempre la rotta
-export async function getServerSideProps({ req, res }) {
+export async function getServerSideProps({ req, res}) {
   const user = req.user || req.cookies.user;
+
+
 
   if (!user) {
     res.writeHead(302, { Location: "/login" });
