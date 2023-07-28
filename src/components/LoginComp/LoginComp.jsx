@@ -51,7 +51,7 @@ const LoginComp = () => {
         router.push("/preview");
 
         // Mostra l'alert
-        alert("Welcome back! Your previous settings have been loaded.");
+        // alert("Welcome back! Your previous settings have been loaded.");
       }
     };
 
