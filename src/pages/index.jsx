@@ -150,7 +150,6 @@ export default function Home() {
       </Head>
 
       <main className={styles.Main}>
-        {/* <div className={styles.Background}></div> */}
 
         <Navbar />
 
@@ -206,6 +205,7 @@ export default function Home() {
                 onClick={() => setShowModal(false)}>
                 ❌
               </p>
+
               <h2>{selectedPlanet.name}</h2>
 
               <p>Mass: {selectedPlanet.mass}</p>
@@ -214,16 +214,21 @@ export default function Home() {
               <p>Composition: {selectedPlanet.composition}</p>
               <p>Description: {selectedPlanet.description}</p>
               <p>Distance from the Sun: {selectedPlanet.distance_from_sun}</p>
+
               {selectedPlanet.average_temperature && (
                 <p>Average Temperature: {selectedPlanet.average_temperature}</p>
               )}
+
               {selectedPlanet.surface_temperature && (
                 <p>Surface Temperature: {selectedPlanet.surface_temperature}</p>
               )}
+              
             </div>
           </div>
         )}
+
       </main>
+
     </>
   );
 }
