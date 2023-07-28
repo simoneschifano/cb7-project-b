@@ -13,7 +13,6 @@ import Link from "next/link";
 const Navbar = () => {
   const { state, dispatch } = useContext(MainContext);
 
-
   return (
     <>
       <div className={styles.top_navbar}>
