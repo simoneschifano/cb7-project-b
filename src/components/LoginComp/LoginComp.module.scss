@@ -168,7 +168,6 @@
     }
 
     &:hover span {
-      color: #e0aaff;
       transition: 0.3s;
     }
 
@@ -181,13 +180,16 @@
 }
 
 .SpaceShipImg {
-  height: 200px;
-  width: 300px;
+  /* TODO: fix dimensioni al ridimensionamento */
+  height: auto;
+  aspect-ratio: 1/1;
+  width: 100px;
   animation: Levitation 5s 1s infinite ease-in-out;
   overflow: visible;
 }
 
-/* ================ */
+/* ================================================================ */
+
 @keyframes Levitation {
   0% {
     transform: translateY(20px);

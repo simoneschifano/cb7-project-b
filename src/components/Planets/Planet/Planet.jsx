@@ -8,9 +8,10 @@ import { TextureLoader } from "three";
 
 import styles from "./Planet.module.scss";
 
-const SpherePlanet = ({ link, speed }) => {
+const SpherePlanet = ({ link, speed /* , dimension */ }) => {
   const linkImage = link;
   const speedPlanet = speed;
+  // const scaleDimension = dimension;
 
   const SpherePlanetRef = useRef();
 
@@ -40,7 +41,7 @@ const SpherePlanet = ({ link, speed }) => {
   );
 };
 
-const Planet = ({ link, speed, dimension }) => {
+const Planet = ({ link, speed /* , dimension */ }) => {
   return (
     <div className={styles.Planet}>
       <Canvas className="canvas">
@@ -48,7 +49,7 @@ const Planet = ({ link, speed, dimension }) => {
         <ambientLight intensity={0.9} />
         <directionalLight position={[-2, 5, 2]} />
         <Suspense fallback={null}>
-          <SpherePlanet link={link} speed={speed} />
+          <SpherePlanet link={link} speed={speed} /* dimension={dimension} */ />
         </Suspense>
       </Canvas>
     </div>
