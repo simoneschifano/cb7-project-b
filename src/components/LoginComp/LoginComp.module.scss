@@ -32,7 +32,11 @@
 }
 
 .ColorSelection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 12px;
+  gap: 8px;
 }
 
 .Avatar {

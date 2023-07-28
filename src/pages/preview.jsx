@@ -48,24 +48,18 @@ const Preview = () => {
         <form onSubmit={onHandleNext} className={styles.PreviewComp}>
           {state.username && <h1 className={styles.Title}>Welcome, {state.username}!</h1>}
           {/* usa lo stato dal contesto */}
-          <div className={styles.AvatarPreview}>
-            <p className={styles.Paragraph}>Selected Avatar</p>
-            <AvatarSvg
-              skinColor={state.skinColor}
-              suitColor={state.suitColor}
-            />{" "}
-            {/* usa lo stato dal contesto */}
-          </div>
-          {state.spacecraft && (
-            <div className={styles.SpaceCraftPreview}>
-              <span className={styles.SpaceParagraph}>Selected Spaceship:</span>
-              <img
-                className={styles.SpaceCraftImgPreview}
-                src={`/spacecraft/${state.spacecraft}.png`}
-                alt="Selected spacecraft"
-              />
+          <div className={styles.Preview__Wrapper}>
+            <div className={styles.AvatarPreview}>
+              <span className={styles.Paragraph}>Selected Avatar</span>
+              <AvatarSvg skinColor={state.skinColor} suitColor={state.suitColor} /> {/* usa lo stato dal contesto */}
             </div>
-          )}
+            {state.spacecraft && (
+              <div className={styles.SpaceCraftPreview}>
+                <span className={styles.SpaceParagraph}>Selected Spaceship:</span>
+                <img className={styles.SpaceCraftImgPreview} src={`/spacecraft/${state.spacecraft}.png`} alt="Selected spacecraft" />
+              </div>
+            )}
+          </div>
           <h3>Are you sure to continue with these settings?</h3>
           <div className={styles.NextorBack}>
             <button className={styles.PreviewBtn} onClick={onHandleBack}>

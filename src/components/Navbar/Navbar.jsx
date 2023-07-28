@@ -13,7 +13,6 @@ import Link from "next/link";
 const Navbar = () => {
   const { state, dispatch } = useContext(MainContext);
 
-
   return (
     <>
       <div className={styles.top_navbar}>
@@ -32,28 +31,15 @@ const Navbar = () => {
       </div>
 
       <div className={styles.wrapper}>
-        
         <div className={styles.wrapper_png}>
-          <Image
-            className={styles.navPng}
-            src="/navbar.svg"
-            width={700}
-            height={200}
-            alt="prova"
-          />
+          <Image className={styles.navPng} src="/navbar.svg" width={700} height={200} alt="prova" />
           <div className={styles.NavbarDetails}>
             <div className={styles.AvatarHome}>
               <div className={styles.Avatar__Wrapper}>
-                <AvatarSvg
-                  skinColor={state.skinColor}
-                  suitColor={state.suitColor}
-                />
+                <AvatarSvg skinColor={state.skinColor} suitColor={state.suitColor} />
               </div>
             </div>
-            <img
-              className={styles.SpacecraftHome}
-              src={`/spacecraft/${state.spacecraft}.png`}
-            ></img>
+            <img className={styles.SpacecraftHome} src={`/spacecraft/${state.spacecraft}.png`}></img>
             <div className={styles.wrappertxt}>
               <h5>Distanza Percorsa: </h5>
               <h5>Pianeti trovati:</h5>
@@ -71,14 +57,10 @@ const Navbar = () => {
                   <Link href={"/about"}>About Us</Link>
                 </li>
                 <li className={styles.BurgerLi}>
-                <Link href={"/minigame"}>
-                 Mini-Game
-                </Link>
+                  <Link href={"/minigame"}>Mini-Game</Link>
                 </li>
                 <li className={styles.BurgerLi}>
-                <Link href={"/preview"}>
-                 Back to Summary
-                </Link>
+                  <Link href={"/preview"}>Back to Summary</Link>
                 </li>
               </ul>
             </label>

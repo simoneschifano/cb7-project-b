@@ -1,12 +1,13 @@
 .Preview {
   display: flex;
   align-items: center;
+  text-align: center;
   justify-content: center;
   background-color: rgba(92, 78, 183, 0.615);
   background-image: url("/Milky.jpg");
   height: 100vh;
   color: $color-text;
-
+  overflow-y: hidden;
 }
 .Title {
   color: $color-heading;
@@ -17,21 +18,26 @@
   padding: 12px;
   width: 400px;
   display: flex;
+  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
 }
 .AvatarPreview {
   padding: 12px;
   width: 300px;
-  gap: 12px;
-
-  display: flex;
+  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+}
 
-  .Paragraph {
-    margin-top: 140px;
-  }
+.Preview__Wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 22px;
 }
 
 .SpaceCraftImgPreview {
@@ -58,6 +64,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  text-align: center;
+  border: 1px solid red;
 }
 
 .PreviewBtn {

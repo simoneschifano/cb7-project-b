@@ -91,7 +91,7 @@ const LoginComp = () => {
   return (
     <div className={styles.LoginBody}>
       <h1 className={styles.Title}>Welcome to Spacemony</h1>
-      <h3>Choose you're avatar </h3>
+      <h3>Choose your avatar </h3>
       <h3>& spaceship </h3>
 
       <form className={styles.login} onSubmit={onHandleSubmit}>
@@ -109,34 +109,28 @@ const LoginComp = () => {
           />
 
           <div className={styles.ColorSelection}>
-            <span>Choose you're skin color : </span>
+            <span>Choose your skin color : </span>
             <input
               type="color"
               value={state.skinColor} // usa lo stato dal contesto
               onChange={
-                (e) =>
-                  dispatch({ type: "SET_SKIN_COLOR", payload: e.target.value }) // invia l'azione al reducer
+                (e) => dispatch({ type: "SET_SKIN_COLOR", payload: e.target.value }) // invia l'azione al reducer
               }
             />
             <hr />
 
-            <span>Choose you're skin color suit : </span>
+            <span>Choose your skin color suit : </span>
             <input
               type="color"
               value={state.suitColor} // usa lo stato dal contesto
               onChange={
-                (e) =>
-                  dispatch({ type: "SET_SUIT_COLOR", payload: e.target.value }) // invia l'azione al reducer
+                (e) => dispatch({ type: "SET_SUIT_COLOR", payload: e.target.value }) // invia l'azione al reducer
               }
             />
           </div>
         </div>
         <div className={styles.SpaceCraft}>
-          <img
-            className={styles.SpaceShipImg}
-            src={`/spacecraft/${selectedSpacecraft}.png`}
-            alt="Selected spacecraft"
-          />
+          <img className={styles.SpaceShipImg} src={`/spacecraft/${selectedSpacecraft}.png`} alt="Selected spacecraft" />
 
           <select value={selectedSpacecraft} onChange={handleSpacecraftChange}>
             {spacecraftOptions.map((option) => (
