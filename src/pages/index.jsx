@@ -5,13 +5,15 @@ import { useEffect, useState, useContext } from "react";
 import { MainContext } from "@/state";
 
 import Navbar from "@/components/Navbar";
-
 import Planet from "@/components/Planets/Planet/Planet";
+
+import { planetsData } from "@/mock/planetsData";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
+
 import {
   EffectCreative,
   Keyboard,
@@ -20,24 +22,6 @@ import {
 } from "swiper/modules";
 
 import styles from "@/styles/Home.module.css";
-
-//FUNCTIONS
-const useMousePosition = () => {
-  //Tieni traccia del movimento del mouse
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  const updateMousePosition = (ev) => {
-    setMousePosition({ x: ev.clientX, y: ev.clientY });
-  };
-
-  useEffect(() => {
-    window.addEventListener("mousemove", updateMousePosition);
-
-    return () => window.removeEventListener("mousemove", updateMousePosition);
-  }, []);
-
-  return mousePosition;
-};
 
 export default function Home() {
   const { state, dispatch } = useContext(MainContext);
@@ -51,8 +35,18 @@ export default function Home() {
     setDistanceValue(distanceValue + 1);
   };
 
-  const { x, y } = useMousePosition();
-
+  //Crea gli stati della modale
+  const [showModal, setShowModal] = useState(false);
+  const [selectedPlanet, setSelectedPlanet] = useState(null);
+  //Funzione che all'onClick scorre l'array e trova la corrispondenza con nome di planetsData
+  const handlePlanetClick = (planetName) => {
+    const selectedPlanet = planetsData.find(
+      (planet) => planet.name === planetName
+    );
+    //stati della modale cambiati
+    setSelectedPlanet(selectedPlanet);
+    setShowModal(true);
+    
   const solarSistem = [
     {
       id: 1,
@@ -140,12 +134,13 @@ export default function Home() {
       </Head>
 
       <main className={styles.Main}>
+    
         {/* <div className={styles.Background}></div> */}
 
         <Navbar />
-
-        <div className={styles.Swiper__Container}>
-          <Swiper
+    
+       <div className={styles.Swiper__Container}>
+           <Swiper
             className={`mySwiper ${styles.Swiper__Main}`}
             spaceBetween={100}
             parallax={true}
@@ -171,6 +166,7 @@ export default function Home() {
               },
             }}
             modules={[EffectCreative, Keyboard, Mousewheel, Pagination]}>
+            
             {solarSistem.map((planet) => (
               <SwiperSlide className={styles.Swiper__Slide}>
                 <div className={styles.Swiper__Slide__Content}>
@@ -178,15 +174,44 @@ export default function Home() {
                 </div>
               </SwiperSlide>
             ))}
+            
           </Swiper>
         </div>
+
+        {/* Oggetto della modale che viene scatenato all'onClick su un pianeta e genera i valori passati */}
+        {showModal && selectedPlanet && (
+          <div className={styles.Modal}>
+            <div className={styles.Modal__Content}>
+              <p
+                className={styles.Modal__Button}
+                onClick={() => setShowModal(false)}
+              >
+                ❌
+              </p>
+              <h2>{selectedPlanet.name}</h2>
+
+              <p>Mass: {selectedPlanet.mass}</p>
+              <p>Type: {selectedPlanet.type}</p>
+              <p>Radius: {selectedPlanet.radius}</p>
+              <p>Composition: {selectedPlanet.composition}</p>
+              <p>Description: {selectedPlanet.description}</p>
+              <p>Distance from the Sun: {selectedPlanet.distance_from_sun}</p>
+              {selectedPlanet.average_temperature && (
+                <p>Average Temperature: {selectedPlanet.average_temperature}</p>
+              )}
+              {selectedPlanet.surface_temperature && (
+                <p>Surface Temperature: {selectedPlanet.surface_temperature}</p>
+              )}
+            </div>
+          </div>
+        )}
       </main>
     </>
   );
 }
 
 //Funzione per renderizzare sempre la rotta
-export async function getServerSideProps({ req, res }) {
+export async function getServerSideProps({ req, res}) {
   const user = req.user || req.cookies.user;
 
   if (!user) {
