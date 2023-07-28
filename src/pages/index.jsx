@@ -14,14 +14,14 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
 
+import styles from "@/styles/Home.module.css";
+
 import {
   EffectCreative,
   Keyboard,
   Mousewheel,
   Pagination,
 } from "swiper/modules";
-
-import styles from "@/styles/Home.module.css";
 
 export default function Home() {
   const { state, dispatch } = useContext(MainContext);
@@ -46,7 +46,8 @@ export default function Home() {
     //stati della modale cambiati
     setSelectedPlanet(selectedPlanet);
     setShowModal(true);
-    
+  };
+
   const solarSistem = [
     {
       id: 1,
@@ -134,13 +135,12 @@ export default function Home() {
       </Head>
 
       <main className={styles.Main}>
-    
         {/* <div className={styles.Background}></div> */}
 
         <Navbar />
-    
-       <div className={styles.Swiper__Container}>
-           <Swiper
+
+        <div className={styles.Swiper__Container}>
+          <Swiper
             className={`mySwiper ${styles.Swiper__Main}`}
             spaceBetween={100}
             parallax={true}
@@ -166,7 +166,6 @@ export default function Home() {
               },
             }}
             modules={[EffectCreative, Keyboard, Mousewheel, Pagination]}>
-            
             {solarSistem.map((planet) => (
               <SwiperSlide className={styles.Swiper__Slide}>
                 <div className={styles.Swiper__Slide__Content}>
@@ -174,7 +173,6 @@ export default function Home() {
                 </div>
               </SwiperSlide>
             ))}
-            
           </Swiper>
         </div>
 
@@ -184,8 +182,7 @@ export default function Home() {
             <div className={styles.Modal__Content}>
               <p
                 className={styles.Modal__Button}
-                onClick={() => setShowModal(false)}
-              >
+                onClick={() => setShowModal(false)}>
                 ❌
               </p>
               <h2>{selectedPlanet.name}</h2>
@@ -211,7 +208,7 @@ export default function Home() {
 }
 
 //Funzione per renderizzare sempre la rotta
-export async function getServerSideProps({ req, res}) {
+export async function getServerSideProps({ req, res }) {
   const user = req.user || req.cookies.user;
 
   if (!user) {
