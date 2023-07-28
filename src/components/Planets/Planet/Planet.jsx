@@ -1,26 +1,28 @@
 import React, { Suspense, useRef } from "react";
 
-
 import { Canvas, useLoader, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { MeshDistortMaterial, Sphere } from "@react-three/drei";
 
 import { TextureLoader } from "three";
 
-import styles from "./Mars.module.scss";
+import styles from "./Planet.module.scss";
 
-const SpherePlanet = () => {
+const SpherePlanet = ({ link, speed }) => {
+  const linkImage = link;
+  const speedPlanet = speed;
+
   const SpherePlanetRef = useRef();
 
   let texture = null;
 
   if (typeof document !== "undefined") {
-    texture = useLoader(TextureLoader, "/Textures/Mars.jpg");
+    texture = useLoader(TextureLoader, linkImage);
   }
 
   useFrame(() => {
     if (SpherePlanetRef.current) {
-      SpherePlanetRef.current.rotation.y -= 0.0026;
+      SpherePlanetRef.current.rotation.y += speedPlanet;
     }
   });
 
@@ -38,19 +40,19 @@ const SpherePlanet = () => {
   );
 };
 
-const Mars = () => {
+const Planet = ({ link, speed, dimension }) => {
   return (
-    <div className={styles.Mars}>
+    <div className={styles.Planet}>
       <Canvas className="canvas">
         <OrbitControls enableZoom={false} />
         <ambientLight intensity={0.9} />
         <directionalLight position={[-2, 5, 2]} />
         <Suspense fallback={null}>
-          <SpherePlanet />
+          <SpherePlanet link={link} speed={speed} />
         </Suspense>
       </Canvas>
     </div>
   );
 };
 
-export default Mars;
+export default Planet;

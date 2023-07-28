@@ -10,28 +10,29 @@
 }
  */
 
- .Main {
+.Main {
   height: 100%;
   overflow: hidden;
+  background-image: url("/Milky.jpg");
 }
 
-.Background {
-  background-image: url("/Milky.jpg");
+/* .Background {
   z-index: -10;
   position: fixed;
   top: 0;
   left: 0;
   height: 100vh;
   width: 100vw;
-}
+} */
 
 .Swiper__Container {
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   position: absolute;
+/* deve stare in relative */
   top: 0;
   left: 0;
-  z-index: 99;
+  z-index: 99999;
 }
 
 .Swiper__Main {
@@ -50,6 +51,7 @@
   filter: drop-shadow(0 0 100px black);
 }
 
-.swiper-pagination {
-  border: 2px solid red;
-}
+/* .swiper-pagination {
+} */
+
+/* .swiper-slide-active{} */

@@ -6,19 +6,7 @@ import { MainContext } from "@/state";
 
 import Navbar from "@/components/Navbar";
 
-import Sun from "@/components/Planets/Sun";
-import Mercury from "@/components/Planets/Mercury";
-import Venus from "@/components/Planets/Venus";
-import Earth from "@/components/Planets/Earth";
-import Mars from "@/components/Planets/Mars";
-import Jupiter from "@/components/Planets/Jupiter";
-import Saturn from "@/components/Planets/Saturn";
-import Uranus from "@/components/Planets/Uranus";
-import Neptune from "@/components/Planets/Neptune";
-import Pluto from "@/components/Planets/Pluto";
-import Moon from "@/components/Planets/Moon";
-
-import styles from "@/styles/Home.module.css";
+import Planet from "@/components/Planets/Planet/Planet";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -28,8 +16,10 @@ import {
   EffectCreative,
   Keyboard,
   Mousewheel,
- /*  Pagination, */
+  Pagination,
 } from "swiper/modules";
+
+import styles from "@/styles/Home.module.css";
 
 //FUNCTIONS
 const useMousePosition = () => {
@@ -63,6 +53,80 @@ export default function Home() {
 
   const { x, y } = useMousePosition();
 
+  const solarSistem = [
+    {
+      id: 1,
+      name: "Sun",
+      link: "/Textures/Sun.jpg",
+      speed: -0.01,
+    },
+
+    {
+      id: 2,
+      name: "Mercury",
+      link: "/Textures/Mercury.jpg",
+      speed: -0.0008,
+    },
+
+    {
+      id: 3,
+      name: "Venus",
+      link: "/Textures/Venus_Surph.jpg",
+      speed: -0.0009,
+    },
+
+    {
+      id: 4,
+      name: "Earth",
+      link: "/Textures/Earth.jpg",
+      speed: -0.003,
+    },
+
+    { id: 5, name: "Mars", link: "/Textures/Mars.jpg", speed: -0.0026 },
+
+    {
+      id: 6,
+      name: "Jupiter",
+      link: "/Textures/Jupiter.jpg",
+      speed: -0.009,
+    },
+
+    {
+      id: 7,
+      name: "Saturn",
+      link: "/Textures/Saturn.jpg",
+      speed: +0.003,
+    },
+
+    {
+      id: 8,
+      name: "Uranus",
+      link: "/Textures/Uranus.jpg",
+      speed: -0.003,
+    },
+
+    {
+      id: 9,
+      name: "Neptune",
+      link: "/Textures/Neptune.jpg",
+      speed: +0.0055,
+    },
+
+    {
+      id: 10,
+      name: "Pluto",
+      link: "/Textures/Pluto.jpg",
+      speed: -0.0009,
+    },
+  ];
+
+  const pagination = {
+    clickable: true,
+    renderBullet: function (index, className) {
+      return '<span class="' + className + '">' + (index + 1) + "</span>";
+    },
+  };
+
   return (
     <>
       <Head>
@@ -76,14 +140,9 @@ export default function Home() {
       </Head>
 
       <main className={styles.Main}>
-        <div className={styles.Background}></div>
+        {/* <div className={styles.Background}></div> */}
 
         <Navbar />
-
-        {/* <img
-          className={styles.SpacecraftCursor}
-          src={`/spacecraft/${state.spacecraft}.png`}
-          style={{ position: "absolute", left: x, top: y }}></img> */}
 
         <div className={styles.Swiper__Container}>
           <Swiper
@@ -100,86 +159,25 @@ export default function Home() {
               enabled: true,
             }}
             mousewheel={true}
-            /*     pagination={{
-              clickable: true,
-            }} */
+            pagination={pagination}
             creativeEffect={{
               prev: {
                 shadow: false,
-                translate: ["-50%", 250, 0], // orizzontale | verticale | profondità |
+                translate: ["-50%", 250, 0],
               },
               next: {
                 shadow: false,
                 translate: ["50%", 250, 0],
               },
             }}
-            modules={[EffectCreative, Keyboard, Mousewheel/* , Pagination */]}>
-            <SwiperSlide className={styles.Swiper__Slide}>
-              <div className={styles.Swiper__Slide__Content}>
-                <Sun />
-              </div>
-            </SwiperSlide>
-
-            <SwiperSlide className={styles.Swiper__Slide}>
-              <div className={styles.Swiper__Slide__Content}>
-                <Mercury />
-              </div>
-            </SwiperSlide>
-
-            <SwiperSlide className={styles.Swiper__Slide}>
-              <div className={styles.Swiper__Slide__Content}>
-                <Venus />
-              </div>
-            </SwiperSlide>
-
-            <SwiperSlide className={styles.Swiper__Slide}>
-              <div className={styles.Swiper__Slide__Content}>
-                <Moon />
-                <Earth />
-              </div>
-            </SwiperSlide>
-
-            <SwiperSlide className={styles.Swiper__Slide}>
-              <div className={styles.Swiper__Slide__Content}>
-                <Mars />
-              </div>
-            </SwiperSlide>
-
-            <SwiperSlide className={styles.Swiper__Slide}>
-              <div className={styles.Swiper__Slide__Content}>
-                <Jupiter />
-              </div>
-            </SwiperSlide>
-
-            <SwiperSlide className={styles.Swiper__Slide}>
-              <div className={styles.Swiper__Slide__Content}>
-                <Saturn />
-              </div>
-            </SwiperSlide>
-
-            <SwiperSlide className={styles.Swiper__Slide}>
-              <div className={styles.Swiper__Slide__Content}>
-                <Uranus />
-              </div>
-            </SwiperSlide>
-
-            <SwiperSlide className={styles.Swiper__Slide}>
-              <div className={styles.Swiper__Slide__Content}>
-                <Neptune />
-              </div>
-            </SwiperSlide>
-
-            <SwiperSlide className={styles.Swiper__Slide}>
-              <div className={styles.Swiper__Slide__Content}>
-                <Pluto />
-              </div>
-            </SwiperSlide>
-
-            <SwiperSlide className={styles.Swiper__Slide}>
-              <div className={styles.Swiper__Slide__Content}>
-                <Sun />
-              </div>
-            </SwiperSlide>
+            modules={[EffectCreative, Keyboard, Mousewheel, Pagination]}>
+            {solarSistem.map((planet) => (
+              <SwiperSlide className={styles.Swiper__Slide}>
+                <div className={styles.Swiper__Slide__Content}>
+                  <Planet link={planet.link} speed={planet.speed} />
+                </div>
+              </SwiperSlide>
+            ))}
           </Swiper>
         </div>
       </main>
