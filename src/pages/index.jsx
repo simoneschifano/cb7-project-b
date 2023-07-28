@@ -6,6 +6,7 @@ import { MainContext } from "@/state";
 
 import Navbar from "@/components/Navbar";
 import Planet from "@/components/Planets/Planet/Planet";
+// import Topbar from "@/components/Topbar";
 
 import { planetsData } from "@/mock/planetsData";
 
@@ -150,8 +151,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.Main}>
-
-        <Navbar />
+        {/* <Topbar /> */}
 
         <div className={styles.Swiper__Container}>
           <Swiper
@@ -197,38 +197,71 @@ export default function Home() {
         </div>
 
         {/* Oggetto della modale che viene scatenato all'onClick su un pianeta e genera i valori passati */}
+        {/* TODO: necessario aggiornamento allo swipe del pianeta */}
         {showModal && selectedPlanet && (
           <div className={styles.Modal}>
             <div className={styles.Modal__Content}>
-              <p
+              {/* <p
                 className={styles.Modal__Button}
                 onClick={() => setShowModal(false)}>
                 ❌
-              </p>
+              </p> */}
 
               <h2>{selectedPlanet.name}</h2>
 
-              <p>Mass: {selectedPlanet.mass}</p>
-              <p>Type: {selectedPlanet.type}</p>
-              <p>Radius: {selectedPlanet.radius}</p>
-              <p>Composition: {selectedPlanet.composition}</p>
-              <p>Description: {selectedPlanet.description}</p>
-              <p>Distance from the Sun: {selectedPlanet.distance_from_sun}</p>
+              <p>
+                <span className={styles.Modal__Important}> Mass: </span>
+                {selectedPlanet.mass}
+              </p>
+
+              <p>
+                <span className={styles.Modal__Important}>Type: </span>
+                {selectedPlanet.type}
+              </p>
+
+              <p>
+                <span className={styles.Modal__Important}>Radius: </span>
+                {selectedPlanet.radius}
+              </p>
+
+              <p>
+                <span className={styles.Modal__Important}>Composition:</span>{" "}
+                {selectedPlanet.composition}
+              </p>
+              <p>
+                <span className={styles.Modal__Important}>Description:</span>{" "}
+                {selectedPlanet.description}
+              </p>
+              <p>
+                <span className={styles.Modal__Important}>
+                  Distance from the Sun:
+                </span>
+                {selectedPlanet.distance_from_sun}
+              </p>
 
               {selectedPlanet.average_temperature && (
-                <p>Average Temperature: {selectedPlanet.average_temperature}</p>
+                <p>
+                  <span className={styles.Modal__Important}>
+                    Average Temperature:
+                  </span>
+                  {selectedPlanet.average_temperature}
+                </p>
               )}
 
               {selectedPlanet.surface_temperature && (
-                <p>Surface Temperature: {selectedPlanet.surface_temperature}</p>
+                <p>
+                  <span className={styles.Modal__Important}>
+                    Surface Temperature:
+                  </span>
+                  {selectedPlanet.surface_temperature}
+                </p>
               )}
-              
             </div>
           </div>
         )}
 
+        <Navbar />
       </main>
-
     </>
   );
 }

@@ -14,28 +14,6 @@ const Navbar = () => {
 
   return (
     <>
-      {/* TODO: creare nuovo componente <Topbar /> e inserire il contenuto sottostante */}
-
-      {/*
-      <div className={styles.top_navbar}>
-        <h2>Welcome, {state.username}!</h2>
-
-        <ul className={styles.top_nav_ul}>
-          <li>
-            <Link href="/wiki">Wiki</Link>
-          </li>
-
-          <li>
-            <Link href={"/about"}>About Us</Link>
-          </li>
-
-          <li>
-            <Link href={"/minigame"}>Mini-Game</Link>
-          </li>
-        </ul>
-      </div> 
-      */}
-
       <div className={styles.Navbar}>
         
         <Image

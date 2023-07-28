@@ -34,13 +34,14 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  padding: 20px;
+  padding: 24px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   z-index: 9999;
   color: #ffffff;
+  line-height: 1.5rem;
 
-  /* TODO: scegliere uno dei seguenti stili */
+  /************** TODO: scegliere uno dei seguenti stili **************/
   /*   background: rgba(0, 0, 0, 0.34);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -59,6 +60,11 @@
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(6.1px);
   -webkit-backdrop-filter: blur(6.1px);
+}
+
+.Modal__Important {
+  /* font-weight: bold; */
+  text-transform: uppercase;
 }
 
 .Modal__Button {
