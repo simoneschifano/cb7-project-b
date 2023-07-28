@@ -46,7 +46,7 @@ export default function Home() {
     //stati della modale cambiati
     setSelectedPlanet(selectedPlanet);
     setShowModal(true);
-  }
+  };
 
     const solarSistem = [
       {
