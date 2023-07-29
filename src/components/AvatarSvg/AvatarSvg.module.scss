@@ -36,6 +36,7 @@
   overflow: visible;
   animation: Levitation 5s 1s infinite ease-in-out;
 }
+
 @keyframes Levitation {
   0% {
     transform: translateY(40px);
@@ -47,6 +48,7 @@
     transform: translateY(40px);
   }
 }
+
 .legRight {
   animation: LegSwipe 5s 1s infinite ease-out;
   transform-origin: left bottom;
