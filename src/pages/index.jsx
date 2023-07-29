@@ -31,63 +31,21 @@ export default function Home() {
   const [pageValue, setPageValue] = useState();
   const [distanceValue, setDistanceValue] = useState(0);
 
-  /* TODO: sistemare con una funzione che gestisca tutto */
-  const distanceCounter = (reference) => {
-    const totalDistance = 39.44;
+  const distanceCalc = (reference) => {
+    const activeIndex = reference.activeIndex;
+    const previousIndex = reference.previousIndex;
 
-    setPageValue(reference.realIndex);
-
-    if (
-      (reference.previousIndex === 0 && reference.activeIndex === 1) ||
-      (reference.previousIndex === 1 && reference.activeIndex === 0)
-    ) {
-      setDistanceValue(distanceValue + 0.39);
-    } else if (
-      (reference.previousIndex === 1 && reference.activeIndex === 2) ||
-      (reference.previousIndex === 2 && reference.activeIndex === 1)
-    ) {
-      setDistanceValue(distanceValue + 0.34);
-    } else if (
-      (reference.previousIndex === 2 && reference.activeIndex === 3) ||
-      (reference.previousIndex === 3 && reference.activeIndex === 2)
-    ) {
-      setDistanceValue(distanceValue + 0.28);
-    } else if (
-      (reference.previousIndex === 3 && reference.activeIndex === 4) ||
-      (reference.previousIndex === 4 && reference.activeIndex === 3)
-    ) {
-      setDistanceValue(distanceValue + 0.52);
-    } else if (
-      (reference.previousIndex === 4 && reference.activeIndex === 5) ||
-      (reference.previousIndex === 5 && reference.activeIndex === 4)
-    ) {
-      setDistanceValue(distanceValue + 3.68);
-    } else if (
-      (reference.previousIndex === 5 && reference.activeIndex === 6) ||
-      (reference.previousIndex === 6 && reference.activeIndex === 5)
-    ) {
-      setDistanceValue(distanceValue + 4.32);
-    } else if (
-      (reference.previousIndex === 6 && reference.activeIndex === 7) ||
-      (reference.previousIndex === 7 && reference.activeIndex === 6)
-    ) {
-      setDistanceValue(distanceValue + 9.7);
-    } else if (
-      (reference.previousIndex === 7 && reference.activeIndex === 8) ||
-      (reference.previousIndex === 8 && reference.activeIndex === 7)
-    ) {
-      setDistanceValue(distanceValue + 10.88);
-    } else if (
-      (reference.previousIndex === 8 && reference.activeIndex === 9) ||
-      (reference.previousIndex === 9 && reference.activeIndex === 8)
-    ) {
-      setDistanceValue(distanceValue + 9.42);
-    } else if (
-      (reference.previousIndex === 9 && reference.activeIndex === 10) ||
-      (reference.previousIndex === 10 && reference.activeIndex === 9)
-    ) {
-      setDistanceValue(distanceValue + 99);
-    }
+    const firstPlanetDistance = solarSystem.find(
+      (planet) => planet.id === activeIndex + 1
+    );
+    const secondPlanetDistance = solarSystem.find(
+      (planet) => planet.id === previousIndex + 1
+    );
+    const shift = Math.abs(
+      firstPlanetDistance.distance - secondPlanetDistance.distance
+    );
+    setDistanceValue(distanceValue + shift);
+    /* TODO: arrotondare il risultato di distanceValue */
   };
 
   //Crea gli stati della modale
@@ -199,10 +157,14 @@ export default function Home() {
   const pagination = {
     clickable: true,
     renderBullet: function (index, className) {
-      const currentPlanet = solarSystem.find((planet) => planet.id === index+1);
+      const currentPlanet = solarSystem.find(
+        (planet) => planet.id === index + 1
+      );
 
       if (currentPlanet) {
-        return '<span class="' + className + '">' + currentPlanet.name + "</span>";
+        return (
+          '<span class="' + className + '">' + currentPlanet.name + "</span>"
+        );
       } else {
         return '<span class="' + className + '">' + "ERRORE " + "</span>";
       }
@@ -233,7 +195,7 @@ export default function Home() {
             parallax={true}
             slidesPerView={"1"}
             speed={1500}
-            onSlideChange={(swiper) => distanceCounter(swiper)}
+            onSlideChange={(swiper) => distanceCalc(swiper)}
             initialSlide={3}
             effect={"creative"}
             grabCursor={true}
@@ -254,7 +216,7 @@ export default function Home() {
             }}
             modules={[EffectCreative, Keyboard, Mousewheel, Pagination]}>
             {solarSystem.map((planet) => (
-              <SwiperSlide className={styles.Swiper__Slide}>
+              <SwiperSlide className={styles.Swiper__Slide} key={planet.id}>
                 <div
                   className={styles.Swiper__Slide__Content}
                   onClick={() => handlePlanetClick(planet.name)}>
