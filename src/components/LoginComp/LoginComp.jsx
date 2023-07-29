@@ -47,37 +47,19 @@ const LoginComp = () => {
       const spacecraft = localStorage.getItem("spacecraft");
 
       if (username && skinColor && suitColor && spacecraft) {
-        // Se i dati sono presenti, vai direttamente alla pagina di anteprima
-        router.push("/preview");
-
-        // Mostra l'alert
-        // alert("Welcome back! Your previous settings have been loaded.");
+        // Setta gli dati dell'user come stato
+        dispatch({ type: "SET_USERNAME", payload: username });
+        dispatch({ type: "SET_SKIN_COLOR", payload: skinColor });
+        dispatch({ type: "SET_SUIT_COLOR", payload: suitColor });
+        dispatch({ type: "SET_SPACECRAFT", payload: spacecraft });
+        // Va alla home direttamente se esistono i dati
+        router.push("/");
       }
     };
 
     checkLocalStorage();
   }, []);
   //Parlane con simo su questo
-
-  //Funzione che fa un check ai dati del local storage
-  const checkLocalStorage = () => {
-    const username = localStorage.getItem("username");
-    const skinColor = localStorage.getItem("skinColor");
-    const suitColor = localStorage.getItem("suitColor");
-    const spacecraft = localStorage.getItem("spacecraft");
-
-    if (username && skinColor && suitColor && spacecraft) {
-      // Carica i dati salvati nello stato
-      dispatch({ type: "SET_USERNAME", payload: username });
-      dispatch({ type: "SET_SKIN_COLOR", payload: skinColor });
-      dispatch({ type: "SET_SUIT_COLOR", payload: suitColor });
-      dispatch({ type: "SET_SPACECRAFT", payload: spacecraft });
-    }
-  };
-
-  useEffect(() => {
-    checkLocalStorage();
-  }, []);
 
   const { state, dispatch } = useContext(MainContext); // usa il contesto
 

@@ -1,6 +1,7 @@
 import Head from "next/head";
 
 import { useEffect, useState, useContext } from "react";
+import { useRouter } from "next/router";
 
 import { MainContext } from "@/state";
 
@@ -24,7 +25,21 @@ import {
 import styles from "@/styles/Home.module.css";
 
 export default function Home() {
+
   const { state, dispatch } = useContext(MainContext);
+  const router = useRouter();
+//Rendering della pagina, esegue un controllo sui dati se non esistono va in /login altrimenti
+  useEffect(() => {
+   
+    if (
+      !state.username ||
+      !state.skinColor ||
+      !state.suitColor ||
+      !state.spacecraft
+    ) {
+      router.push("/login");
+    }
+  }, []);
 
   // State/function relative allo swiper
   const [pageValue, setPageValue] = useState();
@@ -214,18 +229,3 @@ export default function Home() {
     );
   };
 
-
-//Funzione per renderizzare sempre la rotta
-export async function getServerSideProps({ req, res }) {
-  const user = req.user || req.cookies.user;
-
-  if (!user) {
-    res.writeHead(302, { Location: "/login" });
-
-    res.end();
-  }
-
-  return {
-    props: {},
-  };
-}

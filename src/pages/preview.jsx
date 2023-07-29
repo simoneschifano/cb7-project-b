@@ -13,6 +13,7 @@ import styles from "@/styles/Preview.module.scss";
 
 const Preview = () => {
   const router = useRouter();
+  
 
   const { state, dispatch } = useContext(MainContext);
 
