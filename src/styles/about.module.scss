@@ -1,11 +1,11 @@
-.wrapperText {
+.Wrapper__Text {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.wrapper_devs {
+.Wrapper__Devs {
   height: 50vh;
   display: flex;
   justify-content: center;
@@ -37,5 +37,19 @@
   a {
     text-decoration: none;
     color: black;
+  }
+}
+
+.Wrapper__Buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  margin-top: 8px;
+
+  button {
+    display: flex;
   }
 }
