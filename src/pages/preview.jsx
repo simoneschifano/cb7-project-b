@@ -1,15 +1,29 @@
-import Head from "next/head";
-import styles from "@/styles/Home.module.css";
 import { useRouter } from "next/router";
+import Head from "next/head";
+
+//TODO Da eliminare?
+// import { useEffect, useState } from "react";
+import { useContext } from "react";
+
+import { MainContext } from "@/state";
+
 import AvatarSvg from "@/components/AvatarSvg";
+
+import styles from "@/styles/Preview.module.scss";
 
 const Preview = () => {
   const router = useRouter();
-  const { username, skinColor, spacecraft } = router.query;
 
-  const onHandleSubmit = (e) => {
+  const { state, dispatch } = useContext(MainContext);
+
+  const onHandleNext = (e) => {
     e.preventDefault();
-    router.push(`/`);
+    router.push("/");
+  };
+
+  const onHandleBack = (e) => {
+    e.preventDefault();
+    router.push(`/login`);
   };
 
   return (
@@ -23,31 +37,34 @@ const Preview = () => {
           href="https://img.freepik.com/free-vector/astronaut-holding-flag-space-cartoon-icon-illustration-technology-space-icon-isolated-flat-cartoon-style_138676-3099.jpg?w=2000"
         />
       </Head>
-      <main className={styles.main}>
-        <form onSubmit={onHandleSubmit} className={styles.PreviewComp}>
-          {username && <h1>Welcome, {username}!</h1>}
-          {skinColor && (
-            <div>
-              <span>Avatar selezionato</span>
-              <div
-                style={{
-                  width: "90px",
-                  height: "90px",
-                  backgroundColor: skinColor,
-                }}
-              ><AvatarSvg/></div>
-            </div>
-          )}
-          {spacecraft && (
-            <div>
+
+      <main className={styles.Preview}>
+        <form onSubmit={onHandleNext} className={styles.PreviewComp}>
+          {state.username && <h1>Welcome, {state.username}!</h1>}{" "}
+          {/* usa lo stato dal contesto */}
+          <div className={styles.AvatarPreview}>
+            Avatar selezionato
+            <AvatarSvg
+              skinColor={state.skinColor}
+              suitColor={state.suitColor}
+            />{" "}
+            {/* usa lo stato dal contesto */}
+          </div>
+          {state.spacecraft && (
+            <div className={styles.SpaceCraftPreview}>
               <span>Navicella selezionata:</span>
               <img
-                src={`/path/to/spacecraft/${spacecraft}.png`}
+                className={styles.SpaceCraftImgPreview}
+                src={`/spacecraft/${state.spacecraft}.png`}
                 alt="Selected spacecraft"
               />
             </div>
           )}
-          <button onClick={onHandleSubmit}>Continua</button>
+          <h3>Sicuro di cominciare con queste impostazioni?</h3>
+          <div className={styles.NextorBack}>
+            <button onClick={onHandleBack}>Torna indietro</button>
+            <button onClick={onHandleNext}>Continua</button>
+          </div>
         </form>
       </main>
     </>

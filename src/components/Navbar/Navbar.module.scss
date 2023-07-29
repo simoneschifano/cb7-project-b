@@ -1,0 +1,43 @@
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  .navPng {
+    margin-bottom: 15px;
+    border-radius: 12px;
+    width: 60%;
+    height: 25%;
+  }
+}
+
+.NavbarDetails {
+  display: flex;
+  align-items: flex-end;
+  justify-content: end;
+  flex-direction: column;
+  position: fixed;
+  bottom: 0;
+  left: 35%;
+  transform: translateX(-50%);
+  padding: 12px;
+  gap: 10px;
+}
+
+.AvatarHome {
+  padding: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.192);
+  border-radius: 50%;
+  width: 100px;
+}
+
+.SpacecraftHome {
+  width: 100px;
+  padding: 12px;
+  border: 1px solid;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.192);
+}

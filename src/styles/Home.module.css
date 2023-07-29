@@ -1,0 +1,16 @@
+.Main {
+  background-color: rgba(92, 78, 183, 0.615);
+  height: 100vh;
+}
+
+.SpacecraftCursor {
+  filter: drop-shadow(8px 8px 10px black);
+
+  width: 80px;
+}
+
+@media screen and (max-width: 1023px) {
+  .SpacecraftCursor {
+    display: none;
+  }
+}

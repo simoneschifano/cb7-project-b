@@ -1,12 +1,9 @@
+import Navbar from "@/components/Navbar";
+import SearchWiki from "@/components/SearchWiki";
+import { GET } from "@/utils/http";
 import Head from "next/head";
 
-import styles from "@/styles/Home.module.css";
-
-
-
-export default function Home() {
-
-
+export default function Wiki() {
   return (
     <>
       <Head>
@@ -18,27 +15,9 @@ export default function Home() {
           href="https://img.freepik.com/free-vector/astronaut-holding-flag-space-cartoon-icon-illustration-technology-space-icon-isolated-flat-cartoon-style_138676-3099.jpg?w=2000"
         />
       </Head>
-      <main className={styles.main}>
-        Ciao Sono la home
+      <main>
+        <SearchWiki />
       </main>
     </>
   );
-}
-
-
-
-//Funzione per renderizzare sempre la rotta
-export async function getServerSideProps({ req, res }) {
-  const user = req.user || req.cookies.user;
-
-  if (!user) {
-    res.writeHead(302, { Location: "/login" });
-    res.end();
-  }
-
-  return {
-    props: {
-      
-    },
-  };
 }
