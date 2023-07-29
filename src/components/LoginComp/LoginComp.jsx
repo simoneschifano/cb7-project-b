@@ -1,13 +1,7 @@
-import { useRouter } from "next/router";
-
-import { useState } from "react";
-import { useContext } from "react";
-
-import { MainContext } from "@/state";
-
-import AvatarSvg from "../AvatarSvg";
-
 import styles from "./LoginComp.module.scss";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import AvatarSvg from "../AvatarSvg";
 
 const spacecraftOptions = [
   { value: "spaceship1", label: "Navicella 1" },
@@ -18,60 +12,62 @@ const spacecraftOptions = [
 const LoginComp = () => {
   const router = useRouter();
 
-  //Controllo dell'input se è maggiore di 4 , in caso push
-  const onHandleSubmit = (e) => {
-    e.preventDefault();
-    const minLength = 4;
-    if (state.username.length >= minLength) {
-      router.push("/preview");
-    } else {
-      alert(`Username must be at least ${minLength} characters long.`);
-    }
-  };
+  const [username, setUsername] = useState("");
+  const [skinColor, setSkinColor] = useState("#ffcc66");
+  const [spacecraft, setSpacecraft] = useState("spaceship1");
 
-
-  const { state, dispatch } = useContext(MainContext); // usa il contesto
-
+  const [suitColor, setSuitColor] = useState("white");
   const [selectedSpacecraft, setSelectedSpacecraft] = useState("spaceship1");
 
   const handleSpacecraftChange = (e) => {
     setSelectedSpacecraft(e.target.value);
-    dispatch({ type: "SET_SPACECRAFT", payload: e.target.value }); // invia l'azione al reducer
   };
 
-  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (username.length > 0 && username.length < 20) {
+      // Pass the selected avatar data to the preview page
+      const query = `username=${encodeURIComponent(
+        username
+      )}&skinColor=${encodeURIComponent(
+        skinColor
+      )}&spacecraft=${encodeURIComponent(spacecraft)}`;
+      router.push(`/preview?${query}`, "/Preview", { shallow: true });
+    } else {
+      alert("Username must be between 1 and 20 characters");
+    }
+  };
+
   return (
-    <div className={styles.LoginBody}>
+    <div className={styles.Login}>
       <h1>Login</h1>
-      <form className={styles.login}  onSubmit={onHandleSubmit}>
+      <form className={styles.login} onSubmit={handleSubmit}>
         <div className={styles.Avatar}>
           Scegli il tuo avatar
-          <AvatarSvg skinColor={state.skinColor} suitColor={state.suitColor} /> 
+          <AvatarSvg
+            skinColor={skinColor}
+           
+            suitColor={suitColor}
+          />
           <input
             type="text"
             placeholder="Username ..."
-            value={state.username} // usa lo stato dal contesto
-            onChange={(e) =>
-              dispatch({ type: "SET_USERNAME", payload: e.target.value }) // invia l'azione al reducer
-            }
-            />
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
           <div>
-            <span>Seleziona il colore della pelle: </span>
+            <span>Seleziona il colore della pelle:</span>
             <input
               type="color"
-              value={state.skinColor} // usa lo stato dal contesto
-              onChange={(e) =>
-                dispatch({ type: "SET_SKIN_COLOR", payload: e.target.value }) // invia l'azione al reducer
-              }
-              />
+              value={skinColor}
+              onChange={(e) => setSkinColor(e.target.value)}
+            />
             <hr />
-            <span>Seleziona il colore della tuta:  </span>
+             <span>Seleziona il colore della tuta:</span>
             <input
               type="color"
-              value={state.suitColor} // usa lo stato dal contesto
-              onChange={(e) =>
-                dispatch({ type: "SET_SUIT_COLOR", payload: e.target.value }) // invia l'azione al reducer
-              }
+              value={suitColor}
+              onChange={(e) => setSuitColor(e.target.value)}
             />
           </div>
         </div>
@@ -85,16 +81,14 @@ const LoginComp = () => {
             ))}
           </select>
           <img
-            className={styles.SpaceShipImg}
-            src={`/spacecraft/${selectedSpacecraft}.png`}
+            src={`/path/to/spacecraft/${selectedSpacecraft}.png`}
             alt="Selected spacecraft"
-            />
+          />
         </div>
         <input type="submit" value="Login" />
       </form>
     </div>
   );
 };
-
 
 export default LoginComp;
