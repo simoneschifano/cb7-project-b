@@ -29,7 +29,6 @@ import {
 } from "swiper/modules" 
 
 
-
 //FUNCTIONS
 const useMousePosition = () => {
   //Tieni traccia del movimento del mouse
