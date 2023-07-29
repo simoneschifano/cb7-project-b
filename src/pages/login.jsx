@@ -4,9 +4,10 @@ import LoginComp from "@/components/LoginComp/LoginComp";
 
 //Rotta Login che richiama il componente LoginComp
 
-export default function Login(){
-    return(<>
-        <Head>
+export default function Login() {
+  return (
+    <>
+      <Head>
         <title>Cb-7 Final Project gruppo-B</title>
         <meta name="description" content="Cb-7 Final Project gruppo-B" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,11 +17,9 @@ export default function Login(){
         />
       </Head>
 
-        <div>
-         <LoginComp/>
-        </div>
-        
-        </>
-    )
+      <main>
+        <LoginComp />
+      </main>
+    </>
+  );
 }
-
