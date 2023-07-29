@@ -10,7 +10,7 @@ export default function About() {
         </div>
         <div className={styles.Wrapper__Devs}>
           <div className={styles.Container__Dev__1}>
-            <img src="https://picsum.photos/200/300" alt="Giovanni Geraci" />
+            <img src="https://avatars.githubusercontent.com/u/122461896?v=4" width={250} height={250} alt="Giovanni Geraci" />
             <h3>Giovanni Geraci</h3>
             <p>Front-End Developer</p>
             <div className={styles.Wrapper__Buttons}>
@@ -24,7 +24,7 @@ export default function About() {
             </div>
           </div>
           <div className={styles.Container__Dev__2}>
-            <img src="https://picsum.photos/200/300" alt="Salvo Falcone" />
+            <img src="https://avatars.githubusercontent.com/u/70477447?v=4" width={250} height={250} alt="Salvo Falcone" />
             <h3>Salvo Falcone</h3>
             <p>Front-End Developer</p>
             <div className={styles.Wrapper__Buttons}>
@@ -39,7 +39,7 @@ export default function About() {
             </div>
           </div>
           <div className={styles.Container__Dev__3}>
-            <img src="https://picsum.photos/200/300" alt="Claudio Ventimiglia" />
+            <img src="https://avatars.githubusercontent.com/u/96233085?v=4" width={250} height={250} alt="Claudio Ventimiglia" />
             <h3>Claudio Ventimiglia</h3>
             <p>Front-End Developer</p>
             <div className={styles.Wrapper__Buttons}>
@@ -54,7 +54,12 @@ export default function About() {
             </div>
           </div>
           <div className={styles.Container__Dev__4}>
-            <img src="https://picsum.photos/200/300" alt="Gabriele Salemi" />
+            <img
+              src="https://media.licdn.com/dms/image/C4E35AQH-uSi-DAefhw/profile-framedphoto-shrink_800_800/0/1618839058346?e=1691229600&v=beta&t=A1-xQCk3QmU_hwdooKSc6RTIVHr8iXE2I52r_MDndfk"
+              width={250}
+              height={250}
+              alt="Gabriele Salemi"
+            />
             <h3>Gabriele Salemi</h3>
             <p>Front-End Developer</p>
             <div className={styles.Wrapper__Buttons}>
@@ -69,7 +74,12 @@ export default function About() {
             </div>
           </div>
           <div className={styles.Container__Dev__5}>
-            <img src="https://picsum.photos/200/300" alt="Abdel Ibnorida" />
+            <img
+              src="https://media.licdn.com/dms/image/D4D03AQES8Ysrhi1shg/profile-displayphoto-shrink_800_800/0/1689799572864?e=1695859200&v=beta&t=bMSpe_VSEQPrLKviIw2muBnrSiMK0YlGpVUf2w5l5dA"
+              width={250}
+              height={250}
+              alt="Abdel Ibnorida"
+            />
             <h3>Abdel Ibnorida</h3>
             <p>Front-End Developer</p>
             <div className={styles.Wrapper__Buttons}>
@@ -83,6 +93,13 @@ export default function About() {
               </button>
             </div>
           </div>
+          <p className={styles.paragraph}>
+            Questo progetto punta ad avvicinare gli utenti allo spazio, argomento sempre più centrale nella società odierna. Grazie all’utilizzo di
+            modelli 3D l’utente avrà la possibilità di creare il proprio avatar e scegliere un’astronave per affrontare un viaggio alla scoperta dei
+            pianeti del sistema solare. Ogni pianeta avrà una card con le informazioni relative, così da unire la parte ludica del viaggio con quella
+            informativa. La sezione Wiki sarà dedicata alla ricerca di corpi celesti anche esterni al Sistema Solare…l’unico limite è quello posto da
+            noi stessi! 🚀★
+          </p>
         </div>
       </div>
     </>

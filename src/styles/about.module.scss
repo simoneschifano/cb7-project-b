@@ -1,8 +1,23 @@
+.Wrapper {
+  background-image: url("../../public/Milky.jpg");
+  min-width: 100%;
+  min-height: 100vh;
+}
+
 .Wrapper__Text {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  h1 {
+    margin-top: 25px;
+    color: #7af683ff;
+  }
+
+  h3 {
+    color: white;
+  }
 }
 
 .Wrapper__Devs {
@@ -15,6 +30,18 @@
   margin-top: 15px;
   text-align: center;
 
+  .paragraph {
+    padding: 40px;
+  }
+
+  h3 {
+    color: #7af683ff;
+  }
+
+  p {
+    color: white;
+  }
+
   img {
     border-radius: 9px;
   }
@@ -24,14 +51,14 @@
     border: none;
     border-radius: 12px;
     text-align: center;
-    background-color: lightskyblue;
+    background-color: white;
     transition: 0.5s all;
     opacity: 1;
     cursor: pointer;
   }
 
   button:hover {
-    background-color: white;
+    background-color: #7af683ff;
   }
 
   a {
