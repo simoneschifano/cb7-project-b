@@ -1,193 +1,233 @@
-.Quiz__main { 
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-    background-image: url("/Milky.jpg");
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    h1 {
-       padding: 20px;
-       color: $color-heading;
-    }
-    h2 {
-        padding: 10px;
-        color: $color-text;
-    }
-    .Quiz__Info {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 20px;
-        color: $color-heading;
-    }
-    .Quiz__Container {
-       padding: 20px;
-       background-color: transparent;
-       width: 60%;
-       height: 60%;
-       border-top-left-radius: 24px;
-       border-bottom-right-radius: 24px;
-       display: flex;
-       flex-direction: column;
-       align-items: center;
-       justify-content: center;
-       position: relative;
-       .Question__Container {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        height: 100%;
-        width: 100%;
-        padding: 60px;
-        color: $color-text;
-        background-color: transparent;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        border-top-left-radius: 24px;
-        border-bottom-right-radius: 24px;
-        animation: Neon 3s linear infinite;
-        button {
-            position: relative;
-            background-color: $color-text;
-            border-radius: 12px;
-            padding: 12px;
-            color: $color-black;
-            width: 40%;
-            height: 20%;
-            &:hover {
-                background-color: $color-black;
-                color: $color-text;
-                border: 2px solid $color-text;
-            }
-    /*         &::after {
-                content: "";
-                height: 2px;
-                width: 0%;
-                position: absolute;
-                left: 0;
-                top: 0;
-                background-color: $color-heading;
-                animation: snakeNeon 10s linear infinite;
-            } */
-        }
-       }
-       .Answers__Container {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-between;
-        .Single__Answer {
-            background-color: $color-text;
-            border-radius: 12px;
-            padding: 12px;
-            color: $color-black;
-            &:hover {
-                background-color: $color-black;
-                color: $color-text;
-                border: 2px solid $color-text;
-            }
-        }
-       }
-    }
-}
+.Quiz__main {
+  background-image: url("/Milky.jpg");
 
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  padding: 24px;
 
- .Navbar__Container{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  h1 {
+    font-size: 3rem;
+    color: $color-heading;
+  }
+
+  h2 {
+    color: $color-text;
+  }
+
+  .Quiz__Info {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+
+    color: $color-heading;
+    font-size: 1.2rem;
+  }
+
+  .Quiz__Container {
+    // background-color: transparent;
+    position: relative;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    height: 600px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    .Navbar__Element{
-        width: 40%;
-        height: 100%;
-        border-top: 2px solid $color-heading;
-        &:after {
-            position: absolute;
-            right: 26%;
-            bottom: 0;
-            content: "*";
-            width: 2px;
-            height: 100%;
-            border-right: 2px solid $color-heading;
-            background-color: transparent;
-            transform: skew(40deg);
+
+    border-top-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+
+    .Question__Container {
+      //   background-color: transparent;
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      height: 100%;
+      width: 100%;
+      padding: 24px;
+
+      color: $color-text;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      border-top-left-radius: 24px;
+      border-bottom-right-radius: 24px;
+
+      animation: Neon 3s linear infinite;
+
+      font-size: 2rem;
+      text-align: center;
+
+      button {
+        cursor: pointer;
+        position: relative;
+        background-color: $color-text;
+        border-radius: 12px;
+        padding: 12px;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        color: $color-text;
+        width: 250px;
+        height: 80px;
+        background: rgba(35, 35, 35, 0.581);
+        border: 2px solid red;
+
+        &:hover {
+          background-color: $color-black;
+          color: $color-heading;
+          border: 2px solid $color-text;
+          transform: scale(1.04);
+          transition: all 400ms ease;
         }
-        &:before {
-            position: absolute;
-            left: 26%;
-            bottom: 0;
+
+        /*  
+        &::after {
             content: "";
-            width: 2px;
-            height: 100%;
-            border-left: 2px solid $color-heading;
-            background-color: transparent;
-            transform: skew(-40deg);
-        }
+            height: 2px;
+            width: 0%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: $color-heading;
+            animation: snakeNeon 10s linear infinite;
+            } */
+      }
     }
- }
+    .Answers__Container {
+      width: 100%;
+      height: 100%;
 
- @keyframes Neon {
-    20% {
-        box-shadow: none;
-    }
-    40% {
-        box-shadow: 0 0 2px 2px $color-text;
-    }
-    45% {
-        box-shadow: 0 0 4px 4px $color-text;
-    }
-    50% {
-        box-shadow: 0 0 2px 2px $color-text;
-    }
-    60% {
-        box-shadow: none;
-    }
-    80% {
-        box-shadow: 0 0 2px 2px $color-text;
-    }
-    85% {
-        box-shadow: 0 0 4px 4px $color-text;
-    }
-    90% {
-        box-shadow: 0 0 2px 2px $color-text;
-    }
- }
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
 
- @keyframes snakeNeon {
-    0% {
-        height: 2px;
-        width: 0%;
-        position: absolute;
-        left: 0;
-        top: 0;
-    }
-    5% {
-        width: 20%;
-    }
-    10% {
+      height: fit-content;
+      padding: 24px;
+
+      .Single__Answer {
+        background-color: $color-text;
+        border-radius: 12px;
+        padding: 12px;
+        color: $color-black;
+        font-size: 1rem;
+        cursor: pointer;
         width: 40%;
+
+        &:hover {
+          background-color: $color-black;
+          color: $color-text;
+          border: 2px solid $color-text;
+        }
+      }
     }
-    15% {
-        width: 60%;
+  }
+}
+
+.Navbar__Container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  .Navbar__Element {
+    width: 40%;
+    height: 100%;
+    border-top: 2px solid $color-heading;
+    &:after {
+      position: absolute;
+      right: 26%;
+      bottom: 0;
+      content: "*";
+      width: 2px;
+      height: 100%;
+      border-right: 2px solid $color-heading;
+      background-color: transparent;
+      transform: skew(40deg);
     }
-    20% {
-        width: 80%;
+    &:before {
+      position: absolute;
+      left: 26%;
+      bottom: 0;
+      content: "";
+      width: 2px;
+      height: 100%;
+      border-left: 2px solid $color-heading;
+      background-color: transparent;
+      transform: skew(-40deg);
     }
- 
-    
- }
+  }
+}
+
+@keyframes Neon {
+  20% {
+    box-shadow: none;
+  }
+  40% {
+    box-shadow: 0 0 2px 2px $color-text;
+  }
+  45% {
+    box-shadow: 0 0 4px 4px $color-text;
+  }
+  50% {
+    box-shadow: 0 0 2px 2px $color-text;
+  }
+  60% {
+    box-shadow: none;
+  }
+  80% {
+    box-shadow: 0 0 2px 2px $color-text;
+  }
+  85% {
+    box-shadow: 0 0 4px 4px $color-text;
+  }
+  90% {
+    box-shadow: 0 0 2px 2px $color-text;
+  }
+}
+
+@keyframes snakeNeon {
+  0% {
+    height: 2px;
+    width: 0%;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  5% {
+    width: 20%;
+  }
+  10% {
+    width: 40%;
+  }
+  15% {
+    width: 60%;
+  }
+  20% {
+    width: 80%;
+  }
+}
