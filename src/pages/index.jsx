@@ -31,14 +31,69 @@ export default function Home() {
   const [pageValue, setPageValue] = useState();
   const [distanceValue, setDistanceValue] = useState(0);
 
+  /* TODO: sistemare con una funzione che gestisca tutto */
   const distanceCounter = (reference) => {
+    const totalDistance = 39.44;
+
     setPageValue(reference.realIndex);
-    setDistanceValue(distanceValue + 1);
+
+    if (
+      (reference.previousIndex === 0 && reference.activeIndex === 1) ||
+      (reference.previousIndex === 1 && reference.activeIndex === 0)
+    ) {
+      setDistanceValue(distanceValue + 0.39);
+    } else if (
+      (reference.previousIndex === 1 && reference.activeIndex === 2) ||
+      (reference.previousIndex === 2 && reference.activeIndex === 1)
+    ) {
+      setDistanceValue(distanceValue + 0.34);
+    } else if (
+      (reference.previousIndex === 2 && reference.activeIndex === 3) ||
+      (reference.previousIndex === 3 && reference.activeIndex === 2)
+    ) {
+      setDistanceValue(distanceValue + 0.28);
+    } else if (
+      (reference.previousIndex === 3 && reference.activeIndex === 4) ||
+      (reference.previousIndex === 4 && reference.activeIndex === 3)
+    ) {
+      setDistanceValue(distanceValue + 0.52);
+    } else if (
+      (reference.previousIndex === 4 && reference.activeIndex === 5) ||
+      (reference.previousIndex === 5 && reference.activeIndex === 4)
+    ) {
+      setDistanceValue(distanceValue + 3.68);
+    } else if (
+      (reference.previousIndex === 5 && reference.activeIndex === 6) ||
+      (reference.previousIndex === 6 && reference.activeIndex === 5)
+    ) {
+      setDistanceValue(distanceValue + 4.32);
+    } else if (
+      (reference.previousIndex === 6 && reference.activeIndex === 7) ||
+      (reference.previousIndex === 7 && reference.activeIndex === 6)
+    ) {
+      setDistanceValue(distanceValue + 9.7);
+    } else if (
+      (reference.previousIndex === 7 && reference.activeIndex === 8) ||
+      (reference.previousIndex === 8 && reference.activeIndex === 7)
+    ) {
+      setDistanceValue(distanceValue + 10.88);
+    } else if (
+      (reference.previousIndex === 8 && reference.activeIndex === 9) ||
+      (reference.previousIndex === 9 && reference.activeIndex === 8)
+    ) {
+      setDistanceValue(distanceValue + 9.42);
+    } else if (
+      (reference.previousIndex === 9 && reference.activeIndex === 10) ||
+      (reference.previousIndex === 10 && reference.activeIndex === 9)
+    ) {
+      setDistanceValue(distanceValue + 99);
+    }
   };
 
   //Crea gli stati della modale
   const [showModal, setShowModal] = useState(false);
   const [selectedPlanet, setSelectedPlanet] = useState(null);
+
   //Funzione che all'onClick scorre l'array e trova la corrispondenza con nome di planetsData
   const handlePlanetClick = (planetName) => {
     const selectedPlanet = planetsData.find(
@@ -49,12 +104,13 @@ export default function Home() {
     setShowModal(true);
   };
 
-  const solarSistem = [
+  const solarSystem = [
     {
       id: 1,
       name: "Sun",
       link: "/Textures/Sun.jpg",
       speed: -0.01,
+      distance: 0,
       // dimension: 3,
     },
 
@@ -63,6 +119,7 @@ export default function Home() {
       name: "Mercury",
       link: "/Textures/Mercury.jpg",
       speed: -0.0008,
+      distance: 0.387,
       // dimension: 3,
     },
 
@@ -71,6 +128,7 @@ export default function Home() {
       name: "Venus",
       link: "/Textures/Venus_Surph.jpg",
       speed: -0.0009,
+      distance: 0.723,
       // dimension: 5,
     },
 
@@ -79,6 +137,7 @@ export default function Home() {
       name: "Earth",
       link: "/Textures/Earth.jpg",
       speed: -0.003,
+      distance: 0.94,
       // dimension: 4,
     },
 
@@ -87,6 +146,7 @@ export default function Home() {
       name: "Mars",
       link: "/Textures/Mars.jpg",
       speed: -0.0026,
+      distance: 1.524,
       // dimension: 3,
     },
 
@@ -95,6 +155,7 @@ export default function Home() {
       name: "Jupiter",
       link: "/Textures/Jupiter.jpg",
       speed: -0.009,
+      distance: 5.209,
       // dimension: 5,
     },
 
@@ -103,6 +164,7 @@ export default function Home() {
       name: "Saturn",
       link: "/Textures/Saturn.jpg",
       speed: +0.003,
+      distance: 9.539,
       // dimension: 3,
     },
 
@@ -111,6 +173,7 @@ export default function Home() {
       name: "Uranus",
       link: "/Textures/Uranus.jpg",
       speed: -0.003,
+      distance: 19.18,
       // dimension: 2,
     },
 
@@ -119,6 +182,7 @@ export default function Home() {
       name: "Neptune",
       link: "/Textures/Neptune.jpg",
       speed: +0.0055,
+      distance: 30.06,
       // dimension: 2,
     },
 
@@ -127,6 +191,7 @@ export default function Home() {
       name: "Pluto",
       link: "/Textures/Pluto.jpg",
       speed: -0.0009,
+      distance: 39.44,
       // dimension: 3,
     },
   ];
@@ -134,7 +199,13 @@ export default function Home() {
   const pagination = {
     clickable: true,
     renderBullet: function (index, className) {
-      return '<span class="' + className + '">' + (index + 1) + "</span>";
+      const currentPlanet = solarSystem.find((planet) => planet.id === index+1);
+
+      if (currentPlanet) {
+        return '<span class="' + className + '">' + currentPlanet.name + "</span>";
+      } else {
+        return '<span class="' + className + '">' + "ERRORE " + "</span>";
+      }
     },
   };
 
@@ -152,6 +223,8 @@ export default function Home() {
 
       <main className={styles.Main}>
         {/* <Topbar /> */}
+
+        <span className={styles.Distance}> {distanceValue} au</span>
 
         <div className={styles.Swiper__Container}>
           <Swiper
@@ -180,7 +253,7 @@ export default function Home() {
               },
             }}
             modules={[EffectCreative, Keyboard, Mousewheel, Pagination]}>
-            {solarSistem.map((planet) => (
+            {solarSystem.map((planet) => (
               <SwiperSlide className={styles.Swiper__Slide}>
                 <div
                   className={styles.Swiper__Slide__Content}

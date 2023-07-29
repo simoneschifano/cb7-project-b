@@ -4,6 +4,10 @@
   background-image: url("/Milky.jpg");
 }
 
+.Distance {
+  color: white;
+}
+
 .Swiper__Container {
   height: 100%;
   width: 100vw;
