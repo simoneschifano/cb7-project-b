@@ -1,17 +1,90 @@
+.Wrapper__Wiki {
+  background-image: url("../../../public/Milky.jpg");
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  h1,
+  h2,
+  h3 {
+    color: white;
+  }
+}
+
 .SearchForm {
-    display: flex;
-    justify-content: center;
-    .SearchInput{
-        border: 3px solid blue;
+  font-size: 0.9rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  position: relative;
+  // isolation: isolate;
+  .SearchInput {
+    width: 100%;
+    max-width: 220px;
+    height: 40px;
+    padding: 9px;
+    border-radius: 12px;
+    border: 1.5px solid lightgrey;
+    outline: none;
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    box-shadow: 0px 0px 20px -18px;
+    background-color: transparent;
+
+    &:hover {
+      background-color: white;
+      border: 2px solid lightgrey;
+      box-shadow: 0px 0px 20px -17px;
     }
-}
-.listStars{
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    &:focus {
+      border: 2px solid grey;
+    }
+  }
+  button {
+    width: 150px;
+    height: 40px;
     display: flex;
-    gap:20px;
-    overflow-x: auto;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: rgb(161, 255, 20);
+    border-radius: 30px;
+    color: rgb(19, 19, 19);
+
+    border: none;
+    position: relative;
+    cursor: pointer;
+    transition-duration: 0.2s;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.116);
+    transition-duration: 0.5s;
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    .svgIcon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 25px;
+      transition-duration: 1.5s;
+    }
+  }
 }
-.listPlanets{
-    display: flex;
-    gap:20px;
-    overflow-x: auto;
+.listStars {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+}
+.listPlanets {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
 }
