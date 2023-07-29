@@ -47,37 +47,19 @@ const LoginComp = () => {
       const spacecraft = localStorage.getItem("spacecraft");
 
       if (username && skinColor && suitColor && spacecraft) {
-        // Se i dati sono presenti, vai direttamente alla pagina di anteprima
-        router.push("/preview");
-
-        // Mostra l'alert
-        alert("Welcome back! Your previous settings have been loaded.");
+        // Setta gli dati dell'user come stato
+        dispatch({ type: "SET_USERNAME", payload: username });
+        dispatch({ type: "SET_SKIN_COLOR", payload: skinColor });
+        dispatch({ type: "SET_SUIT_COLOR", payload: suitColor });
+        dispatch({ type: "SET_SPACECRAFT", payload: spacecraft });
+        // Va alla home direttamente se esistono i dati
+        router.push("/");
       }
     };
 
     checkLocalStorage();
   }, []);
   //Parlane con simo su questo
-
-  //Funzione che fa un check ai dati del local storage
-  const checkLocalStorage = () => {
-    const username = localStorage.getItem("username");
-    const skinColor = localStorage.getItem("skinColor");
-    const suitColor = localStorage.getItem("suitColor");
-    const spacecraft = localStorage.getItem("spacecraft");
-
-    if (username && skinColor && suitColor && spacecraft) {
-      // Carica i dati salvati nello stato
-      dispatch({ type: "SET_USERNAME", payload: username });
-      dispatch({ type: "SET_SKIN_COLOR", payload: skinColor });
-      dispatch({ type: "SET_SUIT_COLOR", payload: suitColor });
-      dispatch({ type: "SET_SPACECRAFT", payload: spacecraft });
-    }
-  };
-
-  useEffect(() => {
-    checkLocalStorage();
-  }, []);
 
   const { state, dispatch } = useContext(MainContext); // usa il contesto
 
@@ -89,64 +71,92 @@ const LoginComp = () => {
   };
 
   return (
-    <div className={styles.LoginBody}>
-      <h1 className={styles.Title}>Welcome to Spacemony</h1>
-      <h3>Choose you're avatar </h3>
-      <h3>& spaceship </h3>
+    <div className={styles.Login}>
+      <div className={styles.Login__Info}>
+        <h1 className={styles.Login__Info__Title}>Welcome to Spacemony</h1>
+        <h3>Choose you're avatar </h3>
+        <h3>& spaceship </h3>
+      </div>
 
-      <form className={styles.login} onSubmit={onHandleSubmit}>
-        <div className={styles.Avatar}>
-          <AvatarSvg skinColor={state.skinColor} suitColor={state.suitColor} />
+      <form className={styles.Login__Form} onSubmit={onHandleSubmit}>
+        <div className={styles.Login__Settings}>
+          <div className={styles.Login__Settings__Avatar}>
+            <AvatarSvg
+              skinColor={state.skinColor}
+              suitColor={state.suitColor}
+              className={styles.Avatar__Svg}
+            />
 
-          <input
-            className={styles.AvatarName}
-            type="text"
-            placeholder="Username ..."
-            value={state.username} // usa lo stato dal contesto
-            onChange={
-              (e) => dispatch({ type: "SET_USERNAME", payload: e.target.value }) // invia l'azione al reducer
-            }
-          />
-
-          <div className={styles.ColorSelection}>
-            <span>Choose you're skin color : </span>
             <input
-              type="color"
-              value={state.skinColor} // usa lo stato dal contesto
+              className={styles.Avatar__Name}
+              type="text"
+              placeholder="Username ..."
+              value={state.username} // usa lo stato dal contesto
               onChange={
                 (e) =>
-                  dispatch({ type: "SET_SKIN_COLOR", payload: e.target.value }) // invia l'azione al reducer
+                  dispatch({ type: "SET_USERNAME", payload: e.target.value }) // invia l'azione al reducer
               }
             />
-            <hr />
 
-            <span>Choose you're skin color suit : </span>
-            <input
-              type="color"
-              value={state.suitColor} // usa lo stato dal contesto
-              onChange={
-                (e) =>
-                  dispatch({ type: "SET_SUIT_COLOR", payload: e.target.value }) // invia l'azione al reducer
-              }
+            <div className={styles.Avatar__Color}>
+              <div className={styles.Avatar__Color__Skin}>
+                <span>Choose you're skin color : </span>
+                <input
+                  type="color"
+                  value={state.skinColor} // usa lo stato dal contesto
+                  onChange={
+                    (e) =>
+                      dispatch({
+                        type: "SET_SKIN_COLOR",
+                        payload: e.target.value,
+                      }) // invia l'azione al reducer
+                  }
+                />
+              </div>
+
+              <div className={styles.Avatar__Color__Suit}>
+                <span>Choose you're skin color suit : </span>
+                <input
+                  type="color"
+                  value={state.suitColor} // usa lo stato dal contesto
+                  onChange={
+                    (e) =>
+                      dispatch({
+                        type: "SET_SUIT_COLOR",
+                        payload: e.target.value,
+                      }) // invia l'azione al reducer
+                  }
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.Login__Settings__Spacecraft}>
+            <img
+              className={styles.SpaceShipImg}
+              src={`/spacecraft/${selectedSpacecraft}.png`}
+              alt="Selected spacecraft"
             />
+            <select
+              value={selectedSpacecraft}
+              onChange={handleSpacecraftChange}>
+              {spacecraftOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
-        <div className={styles.SpaceCraft}>
-          <img
-            className={styles.SpaceShipImg}
-            src={`/spacecraft/${selectedSpacecraft}.png`}
-            alt="Selected spacecraft"
-          />
 
-          <select value={selectedSpacecraft} onChange={handleSpacecraftChange}>
-            {spacecraftOptions.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
+        <div className={styles.Login__Submit}>
+          <input
+            className={styles.Login__Submit__Input}
+            type="submit"
+            value="Login"
+          />
+          <span className={styles.Login__Submit__Span}></span>
         </div>
-        <input className={styles.LoginSubmit} type="submit" value="Login" />
       </form>
     </div>
   );

@@ -8,5 +8,58 @@
 
 body {
   font-family: "Jura", sans-serif;
-  cursor: url(/spacecraft/spaceship1.png), auto;
+  /*   cursor: url(/spacecraft/spaceship1.png), auto; */
 }
+
+.swiper-pagination {
+  margin-bottom: 90%;
+  height: 100px;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 40px;
+}
+
+/* .swiper-pagination-bullet{
+} */
+
+.swiper-pagination .swiper-pagination-bullet {
+  width: 30px;
+  background-color: transparent;
+}
+
+.swiper-pagination-bullet-active {
+  text-transform: uppercase;
+  color: rgb(139, 219, 20);
+}
+
+/* 
+.swiper-pagination {
+  padding: 12px;
+  background-color: white;
+  height: 200px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+
+  width: 300px;
+}
+
+.swiper-pagination-bullet {
+  border: 100%;
+  background-color: none;
+  height: 30px;
+  width: 40px;
+}
+
+.swiper-pagination-bullet-active {
+  color: black;
+  font-size: 1.1rem;
+  background-color: none;
+}
+ */
