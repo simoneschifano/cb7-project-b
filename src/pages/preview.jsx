@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
 
-import { useContext } from "react";
+import { useContext ,useEffect } from "react";
 
 import { MainContext } from "@/state";
 
@@ -14,6 +14,13 @@ const Preview = () => {
   
 
   const { state, dispatch } = useContext(MainContext);
+
+  useEffect(() => {
+    const usernameFromLocalStorage = localStorage.getItem("username");
+    if (usernameFromLocalStorage) {
+      dispatch({ type: "SET_USERNAME", payload: usernameFromLocalStorage });
+    }
+  }, []);
 
   const onHandleNext = (e) => {
     e.preventDefault();
