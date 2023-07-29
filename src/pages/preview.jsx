@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
 
-import { useContext ,useEffect } from "react";
+import { useContext, useEffect } from "react";
 
 import { MainContext } from "@/state";
 
@@ -11,14 +11,28 @@ import styles from "@/styles/Preview.module.scss";
 
 const Preview = () => {
   const router = useRouter();
-  
 
   const { state, dispatch } = useContext(MainContext);
 
   useEffect(() => {
     const usernameFromLocalStorage = localStorage.getItem("username");
+    const skinColorFromLocalStorage = localStorage.getItem("skinColor");
+    const suitColorFromLocalStorage = localStorage.getItem("suitColor");
+    const spacecraftFromLocalStorage = localStorage.getItem("spacecraft");
+
     if (usernameFromLocalStorage) {
       dispatch({ type: "SET_USERNAME", payload: usernameFromLocalStorage });
+    }
+    if (skinColorFromLocalStorage) {
+      dispatch({ type: "SET_SKIN_COLOR", payload: skinColorFromLocalStorage });
+    }
+
+    if (suitColorFromLocalStorage) {
+      dispatch({ type: "SET_SUIT_COLOR", payload: suitColorFromLocalStorage });
+    }
+
+    if (spacecraftFromLocalStorage) {
+      dispatch({ type: "SET_SPACECRAFT", payload: spacecraftFromLocalStorage });
     }
   }, []);
 
@@ -90,13 +104,15 @@ const Preview = () => {
           <div className={styles.Preview__Buttons}>
             <button
               className={`${styles.Preview__Btn} ${styles.Preview__Btn__Back}`}
-              onClick={onHandleBack}>
+              onClick={onHandleBack}
+            >
               <span>Go back</span>
             </button>
 
             <button
               className={`${styles.Preview__Btn} ${styles.Preview__Btn__Forward}`}
-              onClick={onHandleNext}>
+              onClick={onHandleNext}
+            >
               <span>Go on!</span>
             </button>
           </div>
