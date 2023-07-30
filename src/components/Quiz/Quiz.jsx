@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import styles from "./Quiz.module.scss"
-import { useAspect } from "@react-three/drei";
+import Leaderboard from "../Leaderboard";
 
 const Quiz = ({data}) => {
     const [randomQuest, setRandomQuest] = useState(false)
@@ -15,6 +15,8 @@ const Quiz = ({data}) => {
     useEffect(() => {
         timer && timer > 0 && setTimeout(() => setTimer(timer - 1), 1000);
       }, [timer]);
+
+    
     
     const startQuiz = () => {
         setStartedQuiz(true)
@@ -85,6 +87,9 @@ const Quiz = ({data}) => {
                             <h4>Your time: <strong>{timer}</strong></h4>
                         </div>
                     </div> }
+        </div>
+        <div className={styles.Leaderboard__modal}>
+            <Leaderboard score={score}/>
         </div>
     </div>
 }
