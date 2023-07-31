@@ -39,7 +39,7 @@ const Leaderboard = ({score}) => {
         </div>
         <div className={styles.Leaderboard__Main}>
             {scoresData && scoresData.map((score, index) => {
-                return <div>
+                return <div className={styles.Leaderboard__row} key={Math.floor(Math.random() * 10000)}>
                     <h3>{index + 1}</h3>
                     <h4>{score.username}</h4>
                     <p>{score.score}</p>
