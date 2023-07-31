@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { useContext } from "react";
 
@@ -11,20 +12,62 @@ import styles from "./Navbar.module.scss";
 const Navbar = () => {
   const { state, dispatch } = useContext(MainContext);
 
-  console.log(state);
   return (
     <>
-      <h2>Welcome, {state.username}!</h2>
-      <div className={styles.wrapper}>
-        {/* Immagine di sfondo */}
-        <Image className={styles.navPng} src="/navbar.png" width={700} height={200} alt="prova" />
+     <div className={styles.Navbar}>
+        
+        <Image
+          className={styles.Navbar__Image}
+          src="/navbar.svg"
+          width={700}
+          height={200}
+          alt="navbar"
+        />
 
-        <div className={styles.NavbarDetails}>
+        <div className={styles.Navbar__Details}>
           <div className={styles.AvatarHome}>
-            <AvatarSvg skinColor={state.skinColor} suitColor={state.suitColor} />
+            <div className={styles.Avatar__Wrapper}>
+              <AvatarSvg
+                skinColor={state.skinColor}
+                suitColor={state.suitColor}
+              />
+            </div>
           </div>
 
-          <img className={styles.SpacecraftHome} src={`/spacecraft/${state.spacecraft}.png`}></img>
+          <img
+            className={styles.SpacecraftHome}
+            src={`/spacecraft/${state.spacecraft}.png`}></img>
+
+          <div className={styles.wrappertxt}>
+            <h5>Distanza Percorsa: </h5>
+            <h5>Pianeti trovati:</h5>
+          </div>
+
+          <label className={styles.BurgerWrapper}>
+            <input type="checkbox" name="Burgher" className={styles.Burger} />
+
+            <span className={styles.menu}>
+              <span className={styles.hamburger}></span>
+            </span>
+
+            <ul className={styles.BurgerUl}>
+              <li className={styles.BurgerLi}>
+                <Link href="/wiki">Wiki</Link>
+              </li>
+
+              <li className={styles.BurgerLi}>
+                <Link href={"/about"}>About Us</Link>
+              </li>
+
+              <li className={styles.BurgerLi}>
+                <Link href={"/minigame"}>Mini-Game</Link>
+              </li>
+
+              <li className={styles.BurgerLi}>
+                <Link href={"/preview"}>Back to Settings</Link>
+              </li>
+            </ul>
+          </label>
         </div>
       </div>
     </>

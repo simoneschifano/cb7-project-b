@@ -1,14 +1,11 @@
 import Head from "next/head";
+import Quiz from "@/components/Quiz";
 
-import LoginComp from "@/components/LoginComp/LoginComp";
-
-//Rotta Login che richiama il componente LoginComp
-
-export default function Login() {
+export default function Astroquiz({ data }) {
   return (
     <>
       <Head>
-        <title>Cb-7 Final Project gruppo-B</title>
+        <title>Spacemony - Astroquiz</title>
         <meta name="description" content="Cb-7 Final Project gruppo-B" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link
@@ -18,8 +15,18 @@ export default function Login() {
       </Head>
 
       <main>
-        <LoginComp />
+        <Quiz data={data} />
       </main>
     </>
   );
+}
+
+export async function getServerSideProps() {
+  // https://api.npoint.io/3f1369f30e5911d71f1b
+  // + /n/id
+
+  const res = await fetch(`https://api.npoint.io/92fd30e95786d9a41d9a`);
+  const data = res.status === 200 ? await res.json() : {};
+
+  return { props: { data } };
 }

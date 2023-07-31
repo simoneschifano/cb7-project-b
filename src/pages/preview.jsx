@@ -1,9 +1,7 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
 
-//TODO Da eliminare?
-// import { useEffect, useState } from "react";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 import { MainContext } from "@/state";
 
@@ -16,14 +14,47 @@ const Preview = () => {
 
   const { state, dispatch } = useContext(MainContext);
 
+  useEffect(() => {
+    const usernameFromLocalStorage = localStorage.getItem("username");
+    const skinColorFromLocalStorage = localStorage.getItem("skinColor");
+    const suitColorFromLocalStorage = localStorage.getItem("suitColor");
+    const spacecraftFromLocalStorage = localStorage.getItem("spacecraft");
+
+    if (usernameFromLocalStorage) {
+      dispatch({ type: "SET_USERNAME", payload: usernameFromLocalStorage });
+    }
+    if (skinColorFromLocalStorage) {
+      dispatch({ type: "SET_SKIN_COLOR", payload: skinColorFromLocalStorage });
+    }
+
+    if (suitColorFromLocalStorage) {
+      dispatch({ type: "SET_SUIT_COLOR", payload: suitColorFromLocalStorage });
+    }
+
+    if (spacecraftFromLocalStorage) {
+      dispatch({ type: "SET_SPACECRAFT", payload: spacecraftFromLocalStorage });
+    }
+  }, []);
+
   const onHandleNext = (e) => {
     e.preventDefault();
+  
     router.push("/");
   };
 
+  //Cancella i dati nel local storage se si torna indietro
   const onHandleBack = (e) => {
     e.preventDefault();
-    router.push(`/login`);
+    // Mostra un alert con conferma
+    const confirmed = window.confirm("If you go back you will discard all changes");
+    if (confirmed) {
+      // Resetta i dati nel localStorage
+      localStorage.removeItem("username");
+      localStorage.removeItem("skinColor");
+      localStorage.removeItem("suitColor");
+      localStorage.removeItem("spacecraft");
+      router.push(`/login`);
+    }
   };
 
   return (
@@ -38,32 +69,57 @@ const Preview = () => {
         />
       </Head>
 
-      <main className={styles.Preview}>
-        <form onSubmit={onHandleNext} className={styles.PreviewComp}>
-          {state.username && <h1>Welcome, {state.username}!</h1>}{" "}
+      <main className={styles.Preview__Main}>
+        <form onSubmit={onHandleNext} className={styles.Preview}>
+          {state.username && (
+            <h1 className={styles.Preview__Header}>
+              Welcome, {state.username}!
+            </h1>
+          )}
+
           {/* usa lo stato dal contesto */}
-          <div className={styles.AvatarPreview}>
-            Avatar selezionato
-            <AvatarSvg
-              skinColor={state.skinColor}
-              suitColor={state.suitColor}
-            />{" "}
-            {/* usa lo stato dal contesto */}
-          </div>
-          {state.spacecraft && (
-            <div className={styles.SpaceCraftPreview}>
-              <span>Navicella selezionata:</span>
-              <img
-                className={styles.SpaceCraftImgPreview}
-                src={`/spacecraft/${state.spacecraft}.png`}
-                alt="Selected spacecraft"
+          <div className={styles.Preview__Container}>
+            <p>Selected avatar:</p>
+            <div className={styles.Preview__Container__Svg}>
+              <AvatarSvg
+                skinColor={state.skinColor}
+                suitColor={state.suitColor}
               />
             </div>
+            {/* usa lo stato dal contesto */}
+          </div>
+
+          <span className={styles.Preview__Divider}></span>
+
+          {state.spacecraft && (
+            <div className={styles.Preview__Container}>
+              <p>Selected spaceship:</p>
+              <div className={styles.Preview__Container__Img}>
+                <img
+                  className={styles.SpaceCraftImgPreview}
+                  src={`/spacecraft/${state.spacecraft}.png`}
+                  alt="Selected spacecraft"
+                />
+              </div>
+            </div>
           )}
-          <h3>Sicuro di cominciare con queste impostazioni?</h3>
-          <div className={styles.NextorBack}>
-            <button onClick={onHandleBack}>Torna indietro</button>
-            <button onClick={onHandleNext}>Continua</button>
+
+          <h3>Are you sure to continue with these settings?</h3>
+
+          <div className={styles.Preview__Buttons}>
+            <button
+              className={`${styles.Preview__Btn} ${styles.Preview__Btn__Back}`}
+              onClick={onHandleBack}
+            >
+              <span>Go back</span>
+            </button>
+
+            <button
+              className={`${styles.Preview__Btn} ${styles.Preview__Btn__Forward}`}
+              onClick={onHandleNext}
+            >
+              <span>Go on!</span>
+            </button>
           </div>
         </form>
       </main>
