@@ -18,10 +18,19 @@
 
   li {
     cursor: pointer;
+  
   }
 
   a {
     text-decoration: none;
     color: white;
+  }
+
+  .topNavbar__Header{
+
+    color: $color-heading;
+  
+    z-index: 999;
+
   }
 }

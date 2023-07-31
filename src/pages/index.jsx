@@ -7,7 +7,6 @@ import { MainContext } from "@/state";
 
 import Navbar from "@/components/Navbar";
 import Planet from "@/components/Planets/Planet/Planet";
-// import Topbar from "@/components/Topbar";
 
 import { planetsData } from "@/mock/planetsData";
 
@@ -24,15 +23,14 @@ import {
 } from "swiper/modules";
 
 import styles from "@/styles/Home.module.css";
-
+import Topbar from "@/components/Topbar";
 
 export default function Home() {
-
   const { state, dispatch } = useContext(MainContext);
   const router = useRouter();
-//Rendering della pagina, esegue un controllo sui dati se non esistono va in /login altrimenti
+  //Rendering della pagina, esegue un controllo sui dati se non esistono va in /login altrimenti
+
   useEffect(() => {
-   
     if (
       !state.username ||
       !state.skinColor ||
@@ -41,7 +39,7 @@ export default function Home() {
     ) {
       router.push("/login");
     }
-  }, []);
+  }, [router, state]);
 
   // State/function relative allo swiper
   const [pageValue, setPageValue] = useState();
@@ -200,7 +198,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.Main}>
-        {/* <Topbar /> */}
+        <Topbar />
 
         <span className={styles.Distance}> {distanceValue} au</span>
 
@@ -252,11 +250,11 @@ export default function Home() {
         {showModal && selectedPlanet && (
           <div className={styles.Modal}>
             <div className={styles.Modal__Content}>
-              {/* <p
+              <p
                 className={styles.Modal__Button}
                 onClick={() => setShowModal(false)}>
                 ❌
-              </p> */}
+              </p>
 
               <h2>{selectedPlanet.name}</h2>
 
@@ -310,10 +308,9 @@ export default function Home() {
             </div>
           </div>
         )}
-        
+
         <Navbar />
       </main>
     </>
   );
 }
-

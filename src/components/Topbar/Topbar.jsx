@@ -1,14 +1,31 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+
+import { MainContext } from "@/state";
+
+import Link from "next/link";
 
 import styles from "./Topbar.module.scss";
 
 const Topbar = () => {
-  /* TODO: aggiungere stati e funzioni */
+  const { state, dispatch } = useContext(MainContext);
+  useEffect(() => {
+    const usernameFromLocalStorage = localStorage.getItem("username");
+
+    if (usernameFromLocalStorage) {
+      dispatch({ type: "SET_USERNAME", payload: usernameFromLocalStorage });
+    }
+  }, [dispatch]);
+
   return (
     <div className={styles.top_navbar}>
-      <h2>Welcome, {state.username}!</h2>
-
       <ul className={styles.top_nav_ul}>
+        <li>
+          {state.username && (
+            <h1 className={styles.topNavbar__Header}>
+              Welcome, {state.username}!
+            </h1>
+          )}
+        </li>
         <li>
           <Link href="/wiki">Wiki</Link>
         </li>
@@ -18,7 +35,10 @@ const Topbar = () => {
         </li>
 
         <li>
-          <Link href={"/minigame"}>Mini-Game</Link>
+          <Link href={"/astroquiz"}>Mini-Game</Link>
+        </li>
+        <li>
+          <Link href={"/preview"}>Back to settings</Link>
         </li>
       </ul>
     </div>
