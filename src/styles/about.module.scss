@@ -2,6 +2,7 @@
   background-image: url("../../public/Milky.jpg");
   min-width: 100%;
   min-height: 100vh;
+  overflow: auto;
 }
 
 .Wrapper__Text {
@@ -31,7 +32,7 @@
   text-align: center;
 
   .paragraph {
-    padding: 40px;
+    padding: 20px;
   }
 
   h3 {
@@ -79,4 +80,7 @@
   button {
     display: flex;
   }
+}
+
+.paragraph {
 }
