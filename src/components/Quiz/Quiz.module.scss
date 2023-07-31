@@ -20,78 +20,78 @@
   h2 {
     color: $color-text;
   }
-  
-    .Quiz__Info {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 20px;
-        color: $color-heading;
-    }
-  
-    .Close__Button {
-        color: white;
-        font-size: 3rem;
-        cursor: pointer;
-        position: absolute;
-        top: 0;
-        left: 0;
-        transform: rotate(180deg);
-        padding: 20px;
-    }
 
-    .Question__Container {
-      //   background-color: transparent;
+  .Quiz__Info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    color: $color-heading;
+  }
 
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+  .Close__Button {
+    color: white;
+    font-size: 3rem;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(180deg);
+    padding: 20px;
+  }
 
-      height: 100%;
-      width: 100%;
-      padding: 24px;
+  .Question__Container {
+    //   background-color: transparent;
 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    height: 100%;
+    width: 100%;
+    padding: 24px;
+
+    color: $color-text;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border-top-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+
+    animation: Neon 3s linear infinite;
+
+    font-size: 2rem;
+    text-align: center;
+
+    button {
+      cursor: pointer;
+      position: relative;
+      background-color: $color-text;
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 1.2rem;
+      text-transform: uppercase;
       color: $color-text;
+      width: 250px;
+      height: 80px;
+      background: rgba(35, 35, 35, 0.581);
+      border: 2px solid red;
 
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      &:hover {
+        background-color: $color-black;
+        color: $color-heading;
+        border: 2px solid $color-text;
+        transform: scale(1.04);
+        transition: all 400ms ease;
+      }
 
-      border-top-left-radius: 24px;
-      border-bottom-right-radius: 24px;
-
-      animation: Neon 3s linear infinite;
-
-      font-size: 2rem;
-      text-align: center;
-
-      button {
-        cursor: pointer;
-        position: relative;
-        background-color: $color-text;
-        border-radius: 12px;
-        padding: 12px;
-        font-size: 1.2rem;
-        text-transform: uppercase;
-        color: $color-text;
-        width: 250px;
-        height: 80px;
-        background: rgba(35, 35, 35, 0.581);
-        border: 2px solid red;
-
-        &:hover {
-          background-color: $color-black;
-          color: $color-heading;
-          border: 2px solid $color-text;
-          transform: scale(1.04);
-          transition: all 400ms ease;
-        }
-
-        /*  
+      /*  
         &::after {
             content: "";
             height: 2px;
@@ -102,36 +102,36 @@
             background-color: $color-heading;
             animation: snakeNeon 10s linear infinite;
             } */
-      }
     }
-    .Answers__Container {
-      width: 100%;
-      height: 100%;
+  }
 
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
+  .Answers__Container {
+    width: 100%;
+    height: 100%;
 
-      height: fit-content;
-      padding: 24px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
 
-      .Single__Answer {
-        background-color: $color-text;
-        border-radius: 12px;
-        padding: 12px;
-        color: $color-black;
-        font-size: 1rem;
-        cursor: pointer;
-        width: 40%;
+    height: fit-content;
+    padding: 24px;
 
-        &:hover {
-          background-color: $color-black;
-          color: $color-text;
-          border: 2px solid $color-text;
-        }
+    .Single__Answer {
+      background-color: $color-text;
+      border-radius: 12px;
+      padding: 12px;
+      color: $color-black;
+      font-size: 1rem;
+      cursor: pointer;
+      width: 40%;
+
+      &:hover {
+        background-color: $color-black;
+        color: $color-text;
+        border: 2px solid $color-text;
       }
     }
   }
