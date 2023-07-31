@@ -1,4 +1,4 @@
-import React, { Suspense, useRef } from "react";
+import React, { Suspense, useEffect, useState, useRef } from "react";
 
 import { Canvas, useLoader, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
@@ -33,7 +33,12 @@ const SpherePlanet = ({ speed, texture }) => {
 };
 
 const Planet = ({ link, speed }) => {
-  const texture = useLoader(TextureLoader, link);
+  const [texture, setTexture] = useState(null);
+
+  useEffect(() => {
+    const textureLoader = new TextureLoader();
+    setTexture(textureLoader.load(link));
+  }, [link]);
 
   return (
     <div className={styles.Planet}>
