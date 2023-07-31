@@ -22,8 +22,16 @@ const Quiz = ({ data }) => {
     }
   }, [timer]);
 
-  // TODO: sistemare funzione
-  const rightAnswer =(pippo)=>{console.log(pippo)}
+  const rightAnswer = (difficulty) => {
+    setCorrectCounter(correctCounter + 1)
+    setScore(score + (difficulty))
+    setAnswerCounter(answerCounter + 1)
+    setTimeout(() => {
+        doneAnswer.current.style.display = 'none';
+        startQuiz()
+    }, 1500)
+    doneAnswer.current.style.boxShadow = '2px 2px #7af683ff';
+}
 
   const startQuiz = () => {
     setStartedQuiz(true);

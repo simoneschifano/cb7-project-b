@@ -1,6 +1,5 @@
 import React, { Suspense, useRef } from "react";
 
-
 import { Canvas, useLoader, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { MeshDistortMaterial, Sphere } from "@react-three/drei";
@@ -9,14 +8,8 @@ import { TextureLoader } from "three";
 
 import styles from "./Moon.module.scss";
 
-const SpherePlanet = () => {
+const SpherePlanet = ({texture}) => {
   const SpherePlanetRef = useRef();
-
-  let texture = null;
-
-  if (typeof document !== "undefined") {
-    texture = useLoader(TextureLoader, "/Textures/Moon.jpg");
-  }
 
   useFrame(() => {
     if (SpherePlanetRef.current) {
@@ -39,6 +32,8 @@ const SpherePlanet = () => {
 };
 
 const Moon = () => {
+  texture = useLoader(TextureLoader, "/Textures/Moon.jpg");
+
   return (
     <div className={styles.Moon}>
       <Canvas className="canvas">
@@ -46,7 +41,7 @@ const Moon = () => {
         <ambientLight intensity={0.9} />
         <directionalLight position={[-2, 5, 2]} />
         <Suspense fallback={null}>
-          <SpherePlanet />
+          <SpherePlanet texture={texture} />
         </Suspense>
       </Canvas>
     </div>

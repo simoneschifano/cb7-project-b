@@ -11,13 +11,15 @@ import AvatarSvg from "../AvatarSvg";
 import styles from "./LoginComp.module.scss";
 
 const spacecraftOptions = [
-  { value: "spaceship1", label: "Spaceship 1" },
-  { value: "spaceship2", label: "Spaceship 2" },
-  { value: "spaceship3", label: "Spaceship 3" },
+  { value: "spaceShip1", label: "Spaceship 1" },
+  { value: "spaceShip2", label: "Spaceship 2" },
+  { value: "spaceShip3", label: "Spaceship 3" },
 ];
 
 const LoginComp = () => {
   const router = useRouter();
+  const { state, dispatch } = useContext(MainContext); // usa il contesto
+  const [selectedSpacecraft, setSelectedSpacecraft] = useState("spaceShip1");
 
   //Intercetta i dati localStorage
   const saveUserDataToLocalStorage = () => {
@@ -59,11 +61,7 @@ const LoginComp = () => {
     };
 
     checkLocalStorage();
-  }, []);
-
-  const { state, dispatch } = useContext(MainContext); // usa il contesto
-
-  const [selectedSpacecraft, setSelectedSpacecraft] = useState("spaceship1");
+  }, [dispatch, router]);
 
   const handleSpacecraftChange = (e) => {
     setSelectedSpacecraft(e.target.value);
@@ -74,7 +72,7 @@ const LoginComp = () => {
     <div className={styles.Login}>
       <div className={styles.Login__Info}>
         <h1 className={styles.Login__Info__Title}>Welcome to Spacemony</h1>
-        <h3>Choose you're avatar </h3>
+        <h3>{"Choose your avatar"}</h3>
         <h3>& spaceship </h3>
       </div>
 
@@ -100,7 +98,7 @@ const LoginComp = () => {
 
             <div className={styles.Avatar__Color}>
               <div className={styles.Avatar__Color__Skin}>
-                <span>Choose you're skin color : </span>
+                <span>{"Choose your skin color : "}</span>
                 <input
                   type="color"
                   value={state.skinColor} // usa lo stato dal contesto
@@ -115,7 +113,7 @@ const LoginComp = () => {
               </div>
 
               <div className={styles.Avatar__Color__Suit}>
-                <span>Choose you're skin color suit : </span>
+                <span>{"Choose your skin color suit : "}</span>
                 <input
                   type="color"
                   value={state.suitColor} // usa lo stato dal contesto

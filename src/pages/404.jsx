@@ -1,6 +1,9 @@
-import styles from "@/styles/Custom404.module.scss";
-import { useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
+
+import { useEffect } from "react";
+
+import styles from "@/styles/Custom404.module.scss";
 
 export default function Custom404() {
   useEffect(() => {
@@ -12,7 +15,7 @@ export default function Custom404() {
     }
 
     function rndColor() {
-      var c = "#";
+      let c = "#";
       for (let i = 0; i < 6; i++) {
         c += rnd(0, 15).toString(16);
       }
@@ -59,7 +62,6 @@ export default function Custom404() {
 
   return (
     <div className={styles.Error}>
-        
       <div className={styles.Canvas}>
         <canvas id="box" width="1580" height="780"></canvas>
       </div>
@@ -67,7 +69,13 @@ export default function Custom404() {
         You get lost in the deep space...
         <Link href={"/"}>Back to home..</Link>
       </p>
-        <img className={styles.Error__Img} src="spaceman.jpg" alt="" />
+      <Image
+        className={styles.Error__Img}
+        src="/spaceman.jpg"
+        alt="error image"
+        width={100}
+        height={160}
+      />
     </div>
   );
 }

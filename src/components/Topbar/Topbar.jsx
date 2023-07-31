@@ -14,11 +14,8 @@ const Topbar = () => {
     if (usernameFromLocalStorage) {
       dispatch({ type: "SET_USERNAME", payload: usernameFromLocalStorage });
     }
-  }, []);
+  }, [dispatch]);
 
-
-
-  /* TODO: aggiungere stati e funzioni */
   return (
     <div className={styles.top_navbar}>
       <ul className={styles.top_nav_ul}>

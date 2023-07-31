@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
+import Image from "next/image";
 
 import { useContext, useEffect } from "react";
 
@@ -34,11 +35,11 @@ const Preview = () => {
     if (spacecraftFromLocalStorage) {
       dispatch({ type: "SET_SPACECRAFT", payload: spacecraftFromLocalStorage });
     }
-  }, []);
+  }, [dispatch]);
 
   const onHandleNext = (e) => {
     e.preventDefault();
-  
+
     router.push("/");
   };
 
@@ -46,7 +47,9 @@ const Preview = () => {
   const onHandleBack = (e) => {
     e.preventDefault();
     // Mostra un alert con conferma
-    const confirmed = window.confirm("If you go back you will discard all changes");
+    const confirmed = window.confirm(
+      "If you go back you will discard all changes"
+    );
     if (confirmed) {
       // Resetta i dati nel localStorage
       localStorage.removeItem("username");
@@ -95,10 +98,12 @@ const Preview = () => {
             <div className={styles.Preview__Container}>
               <p>Selected spaceship:</p>
               <div className={styles.Preview__Container__Img}>
-                <img
+                <Image
                   className={styles.SpaceCraftImgPreview}
                   src={`/spacecraft/${state.spacecraft}.png`}
                   alt="Selected spacecraft"
+                  width={100}
+                  height={100}
                 />
               </div>
             </div>
@@ -109,15 +114,13 @@ const Preview = () => {
           <div className={styles.Preview__Buttons}>
             <button
               className={`${styles.Preview__Btn} ${styles.Preview__Btn__Back}`}
-              onClick={onHandleBack}
-            >
+              onClick={onHandleBack}>
               <span>Go back</span>
             </button>
 
             <button
               className={`${styles.Preview__Btn} ${styles.Preview__Btn__Forward}`}
-              onClick={onHandleNext}
-            >
+              onClick={onHandleNext}>
               <span>Go on!</span>
             </button>
           </div>

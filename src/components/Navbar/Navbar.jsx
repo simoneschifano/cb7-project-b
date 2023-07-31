@@ -34,9 +34,13 @@ const Navbar = () => {
             </div>
           </div>
 
-          <img
+          <Image
             className={styles.SpacecraftHome}
-            src={`/spacecraft/${state.spacecraft}.png`}></img>
+            src={`/spacecraft/${state.spacecraft}.png`}
+            alt="Selected spacecraft image"
+            width={80}
+            height={80}
+            />
 
           <div className={styles.wrappertxt}>
             <h5>Distanza Percorsa: </h5>
@@ -44,7 +48,7 @@ const Navbar = () => {
           </div>
 
           <label className={styles.BurgerWrapper}>
-            <input type="checkbox" name="Burgher" className={styles.Burger} />
+            <input type="checkbox" name="Burger" className={styles.Burger} />
 
             <span className={styles.menu}>
               <span className={styles.hamburger}></span>
