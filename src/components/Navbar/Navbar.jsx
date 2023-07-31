@@ -14,7 +14,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className={styles.Navbar}>
+     <div className={styles.Navbar}>
         
         <Image
           className={styles.Navbar__Image}
