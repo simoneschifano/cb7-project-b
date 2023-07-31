@@ -1,6 +1,6 @@
-import React, { Suspense, useRef } from "react";
+import React, { Suspense, useRef, useState, useEffect } from "react";
 
-import { Canvas, useLoader, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { MeshDistortMaterial, Sphere } from "@react-three/drei";
 
@@ -8,7 +8,7 @@ import { TextureLoader } from "three";
 
 import styles from "./Moon.module.scss";
 
-const SpherePlanet = ({texture}) => {
+const SpherePlanet = ({ texture }) => {
   const SpherePlanetRef = useRef();
 
   useFrame(() => {
@@ -32,7 +32,12 @@ const SpherePlanet = ({texture}) => {
 };
 
 const Moon = () => {
-  texture = useLoader(TextureLoader, "/Textures/Moon.jpg");
+  const [texture, setTexture] = useState(null);
+
+  useEffect(() => {
+    const textureLoader = new TextureLoader();
+    setTexture(textureLoader.load("/Textures/Moon.jpg"));
+  }, []);
 
   return (
     <div className={styles.Moon}>
