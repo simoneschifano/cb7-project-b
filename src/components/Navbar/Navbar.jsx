@@ -64,7 +64,7 @@ const Navbar = () => {
               </li>
 
               <li className={styles.BurgerLi}>
-                <Link href={"/preview"}>Back to Summary</Link>
+                <Link href={"/preview"}>Back to Settings</Link>
               </li>
             </ul>
           </label>

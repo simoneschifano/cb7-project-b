@@ -38,18 +38,23 @@ const Preview = () => {
 
   const onHandleNext = (e) => {
     e.preventDefault();
+  
     router.push("/");
   };
 
   //Cancella i dati nel local storage se si torna indietro
   const onHandleBack = (e) => {
     e.preventDefault();
-    // Resetta i dati nel localStorage
-    localStorage.removeItem("username");
-    localStorage.removeItem("skinColor");
-    localStorage.removeItem("suitColor");
-    localStorage.removeItem("spacecraft");
-    router.push(`/login`);
+    // Mostra un alert con conferma
+    const confirmed = window.confirm("If you go back you will discard all changes");
+    if (confirmed) {
+      // Resetta i dati nel localStorage
+      localStorage.removeItem("username");
+      localStorage.removeItem("skinColor");
+      localStorage.removeItem("suitColor");
+      localStorage.removeItem("spacecraft");
+      router.push(`/login`);
+    }
   };
 
   return (
