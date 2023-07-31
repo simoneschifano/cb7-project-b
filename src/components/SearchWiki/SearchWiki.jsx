@@ -131,20 +131,19 @@ const SearchWiki = () => {
         </form>
         {previewResultPlanet.length > 0 && (
           <div>
-            {" "}
-            {previewResultPlanet.slice(0, 5).map((planet) => (
-              <p onClick={() => onHandlePlanetPreviewClick(planet.name)}>{planet.name}</p>
+            {previewResultPlanet.slice(0, 5).map((planet, index) => (
+              <p onClick={() => onHandlePlanetPreviewClick(planet.name)} key={index}>{planet.name}</p>
             ))}
           </div>
         )}
         {resultPlanet ? (
           <div className={styles.listPlanets}>
-            {resultPlanet.length > 0 ? resultPlanet.map((planet) => <PlanetCard data={planet} />) : <div>not found</div>}
+            {resultPlanet.length > 0 ? resultPlanet.map((planet, index) => <PlanetCard data={planet} key={index} />) : <div>not found</div>}
           </div>
         ) : (
           <div className={styles.listPlanets}>
-            {listRandomPlanets.map((planet) => (
-              <PlanetCard data={planet} />
+            {listRandomPlanets.map((planet, index) => (
+              <PlanetCard data={planet} key={index} />
             ))}
           </div>
         )}
@@ -160,20 +159,19 @@ const SearchWiki = () => {
         </form>
         {previewResultStar.length > 0 && (
           <div>
-            {" "}
-            {previewResultStar.slice(0, 5).map((star) => (
-              <p onClick={() => onHandleStarPreviewClick(star.name)}>{star.name}</p>
+            {previewResultStar.slice(0, 5).map((star, index) => (
+              <p onClick={() => onHandleStarPreviewClick(star.name)} key={index}>{star.name}</p>
             ))}
           </div>
         )}
         {resultStar ? (
           <div className={styles.listStars}>
-            {resultStar.length > 0 ? resultStar.map((planet) => <StarCard data={planet} />) : <div>not found</div>}
+            {resultStar.length > 0 ? resultStar.map((planet, index) => <StarCard data={planet} key={index} />) : <div>not found</div>}
           </div>
         ) : (
           <div className={styles.listStars}>
-            {listRandomStars.map((star) => (
-              <StarCard data={star} />
+            {listRandomStars.map((star, index) => (
+              <StarCard data={star} key={index}/>
             ))}
           </div>
         )}

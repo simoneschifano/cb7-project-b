@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useRouter } from "next/router";
 
 import { useState, useEffect } from "react";
@@ -38,6 +39,7 @@ const LoginComp = () => {
     }
   };
 
+<<<<<<< Updated upstream
   //se i dati sono già stati caricati precendentemente fa un controllo in caso
   useEffect(() => {
     const checkLocalStorage = () => {
@@ -61,6 +63,8 @@ const LoginComp = () => {
   }, []);
   //Parlane con simo su questo
 
+=======
+>>>>>>> Stashed changes
   const { state, dispatch } = useContext(MainContext); // usa il contesto
 
   const [selectedSpacecraft, setSelectedSpacecraft] = useState("spaceship1");
@@ -148,6 +152,7 @@ const LoginComp = () => {
             </select>
           </div>
         </div>
+<<<<<<< Updated upstream
 
         <div className={styles.Login__Submit}>
           <input
@@ -156,6 +161,25 @@ const LoginComp = () => {
             value="Login"
           />
           <span className={styles.Login__Submit__Span}></span>
+=======
+        <div className={styles.SpaceCraft}>
+          Scegli la tua Navicella
+          <select value={selectedSpacecraft} onChange={handleSpacecraftChange}>
+            {spacecraftOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+          {/* TODO: Da sistemare */}
+          <Image
+            className={styles.SpaceShipImg}
+            src={`/spacecraft/${selectedSpacecraft}.png`}
+            alt="Selected spacecraft"
+            width={200}
+            height={200}
+          />
+>>>>>>> Stashed changes
         </div>
       </form>
     </div>
