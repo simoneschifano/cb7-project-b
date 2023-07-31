@@ -8,7 +8,7 @@ import { TextureLoader } from "three";
 
 import styles from "./Planet.module.scss";
 
-const SpherePlanet = ({ speed, texture }) => {
+const SpherePlanet = ({ speed, texture, scale }) => {
   const speedPlanet = speed;
   const SpherePlanetRef = useRef();
 
@@ -19,7 +19,7 @@ const SpherePlanet = ({ speed, texture }) => {
   });
 
   return (
-    <Sphere visible args={[1, 100, 200]} scale={2} ref={SpherePlanetRef}>
+    <Sphere visible args={[1, 100, 200]} scale={scale} ref={SpherePlanetRef}>
       <MeshDistortMaterial
         color="#ffffff"
         attach="material"
@@ -32,7 +32,7 @@ const SpherePlanet = ({ speed, texture }) => {
   );
 };
 
-const Planet = ({ link, speed }) => {
+const Planet = ({ link, speed, scale}) => {
   const [texture, setTexture] = useState(null);
 
   useEffect(() => {
@@ -47,7 +47,7 @@ const Planet = ({ link, speed }) => {
         <ambientLight intensity={0.9} />
         <directionalLight position={[-2, 5, 2]} />
         <Suspense fallback={null}>
-          <SpherePlanet speed={speed} texture={texture} />
+          <SpherePlanet speed={speed} texture={texture} scale={scale} />
         </Suspense>
       </Canvas>
     </div>

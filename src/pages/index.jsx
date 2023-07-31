@@ -86,7 +86,7 @@ export default function Home() {
       link: "/Textures/Sun.jpg",
       speed: -0.01,
       distance: 0,
-      // dimension: 3,
+      dimension: 3,
     },
 
     {
@@ -95,7 +95,7 @@ export default function Home() {
       link: "/Textures/Mercury.jpg",
       speed: -0.0008,
       distance: 0.387,
-      // dimension: 3,
+      dimension: 1.5,
     },
 
     {
@@ -104,7 +104,7 @@ export default function Home() {
       link: "/Textures/Venus_Surph.jpg",
       speed: -0.0009,
       distance: 0.723,
-      // dimension: 5,
+      dimension: 1.75,
     },
 
     {
@@ -113,7 +113,7 @@ export default function Home() {
       link: "/Textures/Earth.jpg",
       speed: -0.003,
       distance: 0.94,
-      // dimension: 4,
+      dimension: 1.85,
     },
 
     {
@@ -122,7 +122,7 @@ export default function Home() {
       link: "/Textures/Mars.jpg",
       speed: -0.0026,
       distance: 1.524,
-      // dimension: 3,
+      dimension: 1.65,
     },
 
     {
@@ -131,7 +131,7 @@ export default function Home() {
       link: "/Textures/Jupiter.jpg",
       speed: -0.009,
       distance: 5.209,
-      // dimension: 5,
+      dimension: 2.8,
     },
 
     {
@@ -140,7 +140,7 @@ export default function Home() {
       link: "/Textures/Saturn.jpg",
       speed: +0.003,
       distance: 9.539,
-      // dimension: 3,
+      dimension: 2.65,
     },
 
     {
@@ -149,7 +149,7 @@ export default function Home() {
       link: "/Textures/Uranus.jpg",
       speed: -0.003,
       distance: 19.18,
-      // dimension: 2,
+      dimension: 2.3,
     },
 
     {
@@ -158,7 +158,7 @@ export default function Home() {
       link: "/Textures/Neptune.jpg",
       speed: +0.0055,
       distance: 30.06,
-      // dimension: 2,
+      dimension: 2.1,
     },
 
     {
@@ -167,7 +167,7 @@ export default function Home() {
       link: "/Textures/Pluto.jpg",
       speed: -0.0009,
       distance: 39.44,
-      // dimension: 3,
+      dimension: 1,
     },
   ];
 
@@ -240,7 +240,7 @@ export default function Home() {
                   <Planet
                     link={planet.link}
                     speed={planet.speed}
-                    /* dimension={planet.dimension} */
+                    scale={planet.dimension}
                   />
                 </div>
               </SwiperSlide>
