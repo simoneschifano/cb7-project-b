@@ -1,5 +1,4 @@
-
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef} from "react";
 import styles from "./Quiz.module.scss"
 import Leaderboard from "../Leaderboard";
 import Router from "next/router";
@@ -8,43 +7,47 @@ import Router from "next/router";
 const Quiz = ({ data }) => {
   const [randomQuest, setRandomQuest] = useState(false);
   const [startedQuiz, setStartedQuiz] = useState(false);
+  const [username, setUsername] = useState("")
   const doneAnswer = useRef();
-  const { state, dispatch } = useContext(MainContext);
   const [correctCounter, setCorrectCounter] = useState(0);
   const [answerCounter, setAnswerCounter] = useState(0);
   const [completedQuiz, setCompletedQuiz] = useState(false);
   const [score, setScore] = useState(0);
-
-
+  const [openModal, setOpenModal] = useState(false)
   const [timer, setTimer] = useState("");
+
   useEffect(() => {
-    timer && timer > 0 && setTimeout(() => setTimer(timer - 1), 1000);
     if (timer === 0) {
-      setCompletedQuiz(true);
-      setStartedQuiz(false);
+    setTimer(0)
+    setCompletedQuiz(true);
+    setStartedQuiz(false);
     }
-  }, [timer]);
+    timer && timer > 0 && setTimeout(() => setTimer(timer - 1), 1000);
+  }, [timer]); 
+
+
 
   const rightAnswer = (difficulty) => {
     setCorrectCounter(correctCounter + 1)
     setScore(score + (difficulty))
     setAnswerCounter(answerCounter + 1)
+    doneAnswer.current.style.border = '4px 4px #7af683ff'
     setTimeout(() => {
         doneAnswer.current.style.display = 'none';
         startQuiz()
-    }, 1500)
-    doneAnswer.current.style.boxShadow = '2px 2px #7af683ff';
+    }, 1000)
+    ;
 }
 
   const startQuiz = () => {
     setStartedQuiz(true);
     if (startedQuiz === false) {
-      setTimer(10);
+      setTimer(60);
       const randomData = [...data].sort(() => 0.5 - Math.random());
       setRandomQuest(randomData[[Math.floor(Math.random() * 9)]]);
     } else if (timer === 0) {
       setCompletedQuiz(true);
-      setScore(score * timer);
+      setScore(score * timer); 
     } else if (answerCounter < 9) {
       const randomData = [...data].sort(() => 0.5 - Math.random());
       setRandomQuest(randomData[[Math.floor(Math.random() * 9)]]);
@@ -52,26 +55,31 @@ const Quiz = ({ data }) => {
       setCompletedQuiz(true);
       setScore(score * timer);
     }
+    setUsername(localStorage.getItem("username"))
   };
 
   const wrongAnswer = () => {
     setAnswerCounter(answerCounter + 1);
+    doneAnswer.current.style.border = '4px 4px #dc143c'
     setTimeout(() => {
       doneAnswer.current.style.display = "none";
       startQuiz();
-    }, 1500);
-    doneAnswer.current.style.boxShadow = "2px 2px #dc143c";
-
-    // const returnHome = () => {
-    //   Router.push("/");
-    // };
+    }, 1000);
   };
+
+  const returnHome = () => {
+      Router.push("/");
+    };
+
+    const onHandleModal = () => {
+        setOpenModal(!openModal)
+    }
 
   return (
     <div className={styles.Quiz__main}>
       <h1>ASTROquiz</h1>
-      {completedQuiz ? null : <h2>{state.username}</h2>}
-      <div className={styles.Close__Button} >
+      {completedQuiz ? null : <h2>{username}</h2>}
+      <div className={styles.Close__Button} onClick={returnHome}>
         ᐅ
       </div>
 
@@ -96,7 +104,6 @@ const Quiz = ({ data }) => {
             ref={doneAnswer}>
             <h4>{randomQuest.question}</h4>
             <div className={styles.Answers__Container}>
-              {/* <p onClick={rightAnswer} className={styles.Single__Answer}>{randomQuest.answers.correctAnswer}</p> */}
               {randomQuest &&
                 randomQuest.answers.map((answer, index) => {
                   return (
@@ -125,11 +132,15 @@ const Quiz = ({ data }) => {
               <h3>
                 Your score: <strong>{score}</strong>
               </h3>
-              <button>Scoreboard</button>
+              <button onClick={() => onHandleModal()}>Scoreboard</button>
             </div>
           </div>
         )}
       </div>
+      {completedQuiz && openModal && 
+      <div className={styles.Leaderboard__Sidebar}>
+        <Leaderboard score={score} complete={completedQuiz}/>
+      </div>}
     </div>
   );
 };
