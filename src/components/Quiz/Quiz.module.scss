@@ -15,6 +15,17 @@
         padding: 10px;
         color: $color-text;
     }
+    .Close__Button {
+        color: white;
+        font-size: 3rem;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: rotate(180deg);
+        padding: 20px;
+
+    }
     .Quiz__Info {
         display: flex;
         flex-direction: row;
@@ -35,6 +46,7 @@
        flex-direction: column;
        align-items: center;
        justify-content: center;
+       gap: 12px;
        position: relative;
        .Question__Container {
         position: absolute;
@@ -59,8 +71,8 @@
             border-radius: 12px;
             padding: 12px;
             color: $color-black;
-            width: 40%;
-            height: 20%;
+            width: auto;
+            height: auto;
             &:hover {
                 background-color: $color-black;
                 color: $color-text;
