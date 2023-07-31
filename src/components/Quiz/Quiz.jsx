@@ -1,7 +1,9 @@
-import { useState, useEffect, useRef, useContext } from "react";
-import styles from "./Quiz.module.scss";
+
+import { useState, useEffect, useRef } from "react";
+import styles from "./Quiz.module.scss"
+import Leaderboard from "../Leaderboard";
 import Router from "next/router";
-import { MainContext } from "@/state";
+
 
 const Quiz = ({ data }) => {
   const [randomQuest, setRandomQuest] = useState(false);
@@ -12,6 +14,7 @@ const Quiz = ({ data }) => {
   const [answerCounter, setAnswerCounter] = useState(0);
   const [completedQuiz, setCompletedQuiz] = useState(false);
   const [score, setScore] = useState(0);
+
 
   const [timer, setTimer] = useState("");
   useEffect(() => {
@@ -78,6 +81,7 @@ const Quiz = ({ data }) => {
           <h4>Correct answers: {correctCounter}</h4>
           <h6>Given answers: {answerCounter}</h6>
         </div>
+
       )}
       <div className={styles.Quiz__Container}>
         {startedQuiz === false && completedQuiz === false ? (
