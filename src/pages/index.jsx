@@ -48,6 +48,8 @@ export default function Home() {
   const distanceCalc = (reference) => {
     const activeIndex = reference.activeIndex;
     const previousIndex = reference.previousIndex;
+    const currentPlanet = solarSystem[activeIndex];
+    handlePlanetClick(currentPlanet.name);
 
     const firstPlanetDistance = solarSystem.find(
       (planet) => planet.id === activeIndex + 1
@@ -65,6 +67,7 @@ export default function Home() {
   //Crea gli stati della modale
   const [showModal, setShowModal] = useState(false);
   const [selectedPlanet, setSelectedPlanet] = useState(null);
+  
 
   //Funzione che all'onClick scorre l'array e trova la corrispondenza con nome di planetsData
   const handlePlanetClick = (planetName) => {
@@ -200,7 +203,7 @@ export default function Home() {
       <main className={styles.Main}>
         <Topbar />
 
-        <span className={styles.Distance}> {distanceValue} au</span>
+  
 
         <div className={styles.Swiper__Container}>
           <Swiper
@@ -308,8 +311,9 @@ export default function Home() {
             </div>
           </div>
         )}
+        
 
-        <Navbar />
+        <Navbar distanceValue={distanceValue} />
       </main>
     </>
   );

@@ -40,6 +40,8 @@
     left: 0;
     transform: rotate(180deg);
     padding: 20px;
+    cursor: pointer;
+    z-index: 999;
   }
 
   .Question__Container {

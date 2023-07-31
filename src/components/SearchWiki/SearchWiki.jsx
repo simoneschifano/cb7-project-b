@@ -2,6 +2,7 @@ import { useState } from "react";
 import { GET } from "@/utils/http";
 import PlanetCard from "../PlanetCard";
 import StarCard from "../StarCard";
+import Router from "next/router";
 
 import styles from "./SearchWiki.module.scss";
 
@@ -116,9 +117,16 @@ const SearchWiki = () => {
     GET(urlPlanets, planetName).then((data) => setResultStar(data));
   };
 
+  const returnHome = () => {
+    Router.push("/");
+    };
+
   return (
     <>
       <div className={styles.Wrapper__Wiki}>
+      <div className={styles.Close__Button} onClick={returnHome} >
+        ᐅ
+      </div>
         <h1>Welcome to the Wiki 🌎</h1>
         <form className={styles.SearchForm} onSubmit={onHandlePlanetSearch}>
           <input className={styles.SearchInput} type="text" name="searchText" placeholder="Insert your planet here!" onChange={onHandlePlanetInput} />

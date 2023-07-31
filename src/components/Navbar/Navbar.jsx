@@ -9,13 +9,12 @@ import AvatarSvg from "@/components/AvatarSvg";
 
 import styles from "./Navbar.module.scss";
 
-const Navbar = () => {
+const Navbar = ({ distanceValue }) => {
   const { state, dispatch } = useContext(MainContext);
 
   return (
     <>
-     <div className={styles.Navbar}>
-        
+      <div className={styles.Navbar}>
         <Image
           className={styles.Navbar__Image}
           src="/navbar.svg"
@@ -40,11 +39,12 @@ const Navbar = () => {
             alt="Selected spacecraft image"
             width={80}
             height={80}
-            />
+          />
 
           <div className={styles.wrappertxt}>
-            <h5>Distanza Percorsa: </h5>
-            <h5>Pianeti trovati:</h5>
+            <h5 className={styles.navbar__currentDistance}>
+              Distanza Percorsa: <br /> {distanceValue.toFixed(2) } au{" "}
+            </h5>
           </div>
 
           <label className={styles.BurgerWrapper}>

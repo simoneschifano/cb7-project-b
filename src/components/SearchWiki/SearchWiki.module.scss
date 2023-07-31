@@ -88,3 +88,16 @@
   gap: 20px;
   overflow-x: auto;
 }
+
+.Close__Button {
+  color: white;
+  font-size: 3rem;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(180deg);
+  padding: 20px;
+  cursor: pointer;
+  z-index: 999;
+}
