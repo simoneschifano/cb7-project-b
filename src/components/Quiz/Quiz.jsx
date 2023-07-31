@@ -59,16 +59,16 @@ const Quiz = ({ data }) => {
     }, 1500);
     doneAnswer.current.style.boxShadow = "2px 2px #dc143c";
 
-    // const returnHome = () => {
-    //   Router.push("/");
-    // };
+  };
+  const returnHome = () => {
+  Router.push("/");
   };
 
   return (
     <div className={styles.Quiz__main}>
       <h1>ASTROquiz</h1>
       {completedQuiz ? null : <h2>{state.username}</h2>}
-      <div className={styles.Close__Button} >
+      <div className={styles.Close__Button} onClick={returnHome} >
         ᐅ
       </div>
 
