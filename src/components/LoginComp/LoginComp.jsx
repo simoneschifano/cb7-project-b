@@ -19,7 +19,7 @@ const spacecraftOptions = [
 const LoginComp = () => {
   const router = useRouter();
   const { state, dispatch } = useContext(MainContext); // usa il contesto
-  const [selectedSpacecraft, setSelectedSpacecraft] = useState("spaceShip1");
+  const [selectedSpacecraft, setSelectedSpacecraft] = useState("space-Ship1");
 
   //Intercetta i dati localStorage
   const saveUserDataToLocalStorage = () => {
