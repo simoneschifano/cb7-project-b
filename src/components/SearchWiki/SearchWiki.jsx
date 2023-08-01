@@ -3,6 +3,7 @@ import { GET } from "@/utils/http";
 import PlanetCard from "../PlanetCard";
 import StarCard from "../StarCard";
 import Router from "next/router";
+import Image from "next/image";
 
 import styles from "./SearchWiki.module.scss";
 
@@ -130,7 +131,7 @@ const SearchWiki = () => {
     <>
       <div className={styles.Wrapper__Wiki}>
         <div className={styles.Close__Button} onClick={returnHome} >
-          ᐅ
+          <Image className={styles.Back__Button__Image} src={'https://www.svgrepo.com/show/18507/back-button.svg'} width={40} height={40} alt="back_button_image" />
         </div>
         <h1>Welcome to the Wiki 🌎</h1>
 

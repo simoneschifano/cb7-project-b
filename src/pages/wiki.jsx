@@ -15,7 +15,7 @@ export default function Wiki() {
           href="https://img.freepik.com/free-vector/astronaut-holding-flag-space-cartoon-icon-illustration-technology-space-icon-isolated-flat-cartoon-style_138676-3099.jpg?w=2000"
         />
       </Head>
-      <main>
+      <main className="Main__Wiki">
         <SearchWiki />
       </main>
     </>
