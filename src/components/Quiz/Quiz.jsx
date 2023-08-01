@@ -4,6 +4,7 @@ import { collection, getDocs, addDoc } from "firebase/firestore";
 import styles from "./Quiz.module.scss"
 import Leaderboard from "../Leaderboard";
 import Router from "next/router";
+import Image from "next/image";
 
 
 const Quiz = ({ data }) => {
@@ -101,7 +102,7 @@ const addData = async () => {
       <h1>ASTROquiz</h1>
       {completedQuiz ? null : <h2>{username}</h2>}
       <div className={styles.Close__Button} onClick={returnHome}>
-        ᐅ
+        <Image className={styles.Back__Button__Image} src={'https://www.svgrepo.com/show/18507/back-button.svg'} width={40} height={40} alt="back_button_image" />
       </div>
 
       {completedQuiz ? null : (
