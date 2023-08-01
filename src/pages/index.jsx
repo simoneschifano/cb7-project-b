@@ -7,6 +7,7 @@ import { MainContext } from "@/state";
 
 import Navbar from "@/components/Navbar";
 import Planet from "@/components/Planets/Planet/Planet";
+import Menu from "@/components/Menu";
 
 import { planetsData } from "@/mock/planetsData";
 
@@ -42,7 +43,7 @@ export default function Home() {
   }, [router, state]);
 
   // State/function relative allo swiper
-  const [pageValue, setPageValue] = useState();
+  // const [pageValue, setPageValue] = useState();
   const [distanceValue, setDistanceValue] = useState(0);
 
   const distanceCalc = (reference) => {
@@ -61,7 +62,6 @@ export default function Home() {
       firstPlanetDistance.distance - secondPlanetDistance.distance
     );
     setDistanceValue(distanceValue + shift);
-    /* TODO: arrotondare il risultato di distanceValue */
   };
 
   //Crea gli stati della modale
@@ -210,7 +210,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Cb-7 Final Project gruppo-B</title>
+        <title>Spacemony</title>
         <meta name="description" content="Cb-7 Final Project gruppo-B" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link
@@ -232,10 +232,11 @@ export default function Home() {
             onSlideChange={(swiper) => distanceCalc(swiper)}
             initialSlide={3}
             effect={"creative"}
-            grabCursor={true}
+            // grabCursor={true}
             keyboard={{
               enabled: true,
             }}
+            /* lazy={true} */
             mousewheel={true}
             pagination={pagination}
             creativeEffect={{
@@ -330,6 +331,7 @@ export default function Home() {
         )}
 
         <Navbar distanceValue={distanceValue} />
+        <Menu />
       </main>
     </>
   );

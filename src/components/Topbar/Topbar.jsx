@@ -17,13 +17,13 @@ const Topbar = () => {
   }, [dispatch]);
 
   return (
-    <div className={styles.Navbar}>
+    <div className={styles.Topbar}>
          {state.username && (
-            <h1 className={styles.Navbar__Title}>
+            <h1 className={styles.Topbar__Title}>
               Welcome, {state.username}!
             </h1>
           )}
-      <ul className={styles.Navbar__List}>
+      <ul className={styles.Topbar__List}>
         <li>
           <Link href="/wiki">Wiki</Link>
         </li>
