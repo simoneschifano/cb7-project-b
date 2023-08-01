@@ -30,7 +30,9 @@
 
 .Modal {
   position: fixed;
-  top: 30%;
+  border: 1px solid #7af683ff;
+  text-align: center;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 24px;
@@ -40,13 +42,21 @@
 
   background: rgba(68, 68, 68, 0.4);
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
+  box-shadow: 0 0 10px #bebebe, 0px 0px 10px #7af683ff;
   backdrop-filter: blur(6.1px);
   -webkit-backdrop-filter: blur(6.1px);
 }
 
+.Modal__Title {
+  font-size: 1.7rem;
+  margin-bottom: 10px;
+  color: #7af683ff;
+}
+
 .Modal__Important {
   text-transform: uppercase;
+  font-weight: 700;
 }
 
 .Modal__Button {
@@ -287,9 +297,8 @@
   .Modal__BtnContinue {
     top: 140%;
     left: 50%;
-    transform: translate(-50% , -50%);
- 
-   }
+    transform: translate(-50%, -50%);
+  }
 }
 
 /* @media screen and (min-width: 601px) and (max-width: 1024px) {
