@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef} from "react";
+import { db } from "@/plugins/firebase";
+import { collection, getDocs, addDoc } from "firebase/firestore";
 import styles from "./Quiz.module.scss"
 import Leaderboard from "../Leaderboard";
 import Router from "next/router";
@@ -15,6 +17,7 @@ const Quiz = ({ data }) => {
   const [score, setScore] = useState(0);
   const [openModal, setOpenModal] = useState(false)
   const [timer, setTimer] = useState("");
+  const [finalScore, setFinalScore] = useState(false)
 
   useEffect(() => {
     if (timer === 0) {
@@ -24,6 +27,19 @@ const Quiz = ({ data }) => {
     }
     timer && timer > 0 && setTimeout(() => setTimer(timer - 1), 1000);
   }, [timer]); 
+
+/* 
+const addData = async () => {
+    console.log("added data")
+    if (finalScore) {
+      console.log("testo")
+    const docRef = await addDoc(collection(db, "scores-list"), {
+        id: `${localStorage.getItem("username")}${localStorage.getItem("skinColor")}${localStorage.getItem("suitColor")}`,
+        score: finalScore,
+        username: localStorage.getItem("username")
+      });
+    }
+} */
 
 
 
@@ -46,13 +62,17 @@ const Quiz = ({ data }) => {
       setRandomQuest(randomData[[Math.floor(Math.random() * 9)]]);
     } else if (timer === 0) {
       setCompletedQuiz(true);
-      setScore(score * timer); 
+      setTimer(false)
+      setFinalScore(score * (1 + (timer * 0.01)))
+      // addData();
     } else if (answerCounter < 9) {
       const randomData = [...data].sort(() => 0.5 - Math.random());
       setRandomQuest(randomData[[Math.floor(Math.random() * 9)]]);
     } else {
       setCompletedQuiz(true);
-      setScore(score * timer);
+      setTimer(false)
+      setFinalScore(score * (1 + (timer * 0.01)))
+      // addData()
     }
     setUsername(localStorage.getItem("username"))
   };
@@ -123,25 +143,25 @@ const Quiz = ({ data }) => {
             </div>
           </div>
         )}
-        {completedQuiz && (
+        {completedQuiz && finalScore && (
           <div className={styles.Question__Container}>
             <div className={styles.Completed__Quiz}>
-              <h2>Username</h2>
+              <h2>{username}</h2>
               <h3>
                 Correct answers: <strong>{correctCounter}</strong>
               </h3>
               <h3>
-                Your score: <strong>{score}</strong>
+                Your score: <strong>{finalScore}</strong>
               </h3>
-              {openModal ? <button onClick={() => startQuiz()}>Restart</button> : <button onClick={() => onHandleModal()}>Leaderboard</button>}
+              {finalScore ? <button onClick={returnHome}>Back to home!</button> : <button onClick={() => onHandleModal()}>Leaderboard</button>}
             </div>
           </div>
         )}
       </div>
-      {completedQuiz && openModal && 
+      {/* {completedQuiz && openModal && !timer &&
       <div className={styles.Leaderboard__Sidebar}>
-        <Leaderboard score={score} complete={completedQuiz}/>
-      </div>}
+        <Leaderboard score={finalScore} complete={completedQuiz}/>
+      </div>} */}
     </div>
   );
 };
