@@ -8,7 +8,7 @@
 
 body {
   font-family: "Jura", sans-serif;
-  /*   cursor: url(/spacecraft/spaceship1.png), auto; */
+  background-color: black;
 }
 
 .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {

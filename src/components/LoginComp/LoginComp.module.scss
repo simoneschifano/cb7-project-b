@@ -80,14 +80,6 @@
           justify-content: center;
           flex-direction: column;
           gap: 12px;
-
-          /*       
-          &__Skin {
-          }
-
-          &__Suit {
-          } 
-          */
         }
       }
     }
@@ -200,19 +192,13 @@
 
 @media screen and (max-width: 767px) {
   /* This is for mobile devices */
-  .LoginBody {
-    height: 50%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
   .Login {
     object-fit: cover;
     min-height: none;
-    height: 150vh;
+    height: 100vh;
     flex-direction: column;
-
     width: fit-content;
+    gap: 8px;
 
     &__Settings {
       display: flex;
@@ -225,19 +211,32 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      padding: 2px; 
+      margin: 24px;
+
       &__Title {
+        margin-top: 12px;
         text-align: center;
         color: $color-heading;
+        font-size: 1.8rem;
       }
     }
+
+    &__Form {
+      padding: 0 12px;
+
+      select {
+        background-color: black;
+        border: none;
+        padding: 4px 8px;
+        border: 1px solid white;
+        border-radius: 6px;
+        color: rgb(119, 119, 119);
+      }
+    }
+
     .SpaceShipImg {
       top: -120px;
       width: 60px;
-    }
-    .LoginSubmit {
-      top: -10px;
-      left: -3px;
     }
   }
 
@@ -251,10 +250,6 @@
     .SpaceShipImg {
       top: -100px;
       width: 120px;
-    }
-    .LoginSubmit {
-      top: 180px;
-      left: -115px;
     }
   }
 

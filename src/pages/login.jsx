@@ -8,7 +8,7 @@ export default function Login() {
   return (
     <>
       <Head>
-        <title>Cb-7 Final Project gruppo-B</title>
+        <title>Spacemony - Login </title>
         <meta name="description" content="Cb-7 Final Project gruppo-B" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link
