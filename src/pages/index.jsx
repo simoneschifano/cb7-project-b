@@ -43,7 +43,6 @@ export default function Home() {
   }, [router, state]);
 
   // State/function relative allo swiper
-  // const [pageValue, setPageValue] = useState();
   const [distanceValue, setDistanceValue] = useState(0);
 
   const distanceCalc = (reference) => {
@@ -63,7 +62,8 @@ export default function Home() {
     );
     setDistanceValue(distanceValue + shift);
   };
-//Modale delle istruzioni
+
+  //Modale delle istruzioni
   const [modalInstructions, setModalInstructions] = useState(true);
   const [showButton, setShowButton] = useState(false);
 
@@ -96,7 +96,6 @@ export default function Home() {
 
   //Crea gli stati della modale
   const [showModal, setShowModal] = useState(false);
-  //crea gli stati per la modale istruzioni
 
   const [selectedPlanet, setSelectedPlanet] = useState(null);
 
@@ -105,9 +104,9 @@ export default function Home() {
     const selectedPlanet = planetsData.find(
       (planet) => planet.name === planetName
     );
+
     //stati della modale cambiati
     setSelectedPlanet(selectedPlanet);
-    setShowModal(true);
   };
 
   const solarSystem = [
@@ -300,17 +299,14 @@ export default function Home() {
               {showButton && (
                 <button
                   onClick={onHandleClickModalClose}
-                  className={styles.Modal__BtnContinue}
-                >
-                  <span>
-                  Continue to the journey
-                  </span>
+                  className={styles.Modal__BtnContinue}>
+                  <span>Continue to the journey</span>
                 </button>
               )}
             </div>
           </div>
         )}
-          {/*Fine Modale Delle istruzioni */}
+
         <Topbar />
 
         <div className={styles.Swiper__Container}>
@@ -340,14 +336,12 @@ export default function Home() {
                 translate: ["50%", 250, 0],
               },
             }}
-            modules={[EffectCreative, Keyboard, Mousewheel, Pagination]}
-          >
+            modules={[EffectCreative, Keyboard, Mousewheel, Pagination]}>
             {solarSystem.map((planet) => (
               <SwiperSlide className={styles.Swiper__Slide} key={planet.id}>
                 <div
                   className={styles.Swiper__Slide__Content}
-                  onClick={() => handlePlanetClick(planet.name)}
-                >
+                  onClick={() => handlePlanetClick(planet.name)}>
                   <Planet
                     link={planet.link}
                     speed={planet.speed}
@@ -363,64 +357,61 @@ export default function Home() {
 
         {showModal && selectedPlanet && (
           <div className={styles.Modal}>
-            <div className={styles.Modal__Content}>
-              <p
-                className={styles.Modal__Button}
-                onClick={() => setShowModal(false)}
-              >
-                ❌
-              </p>
+            <p
+              className={styles.Modal__Button}
+              onClick={() => setShowModal(false)}>
+              ❌
+            </p>
 
-              <h2>{selectedPlanet.name}</h2>
+            <h2 className={styles.Modal__Title}>{selectedPlanet.name}</h2>
 
-              <p>
-                <span className={styles.Modal__Important}> Mass: </span>
-                {selectedPlanet.mass}
-              </p>
+            <p>
+              <span className={styles.Modal__Important}> Mass: </span>
+              {selectedPlanet.mass}
+            </p>
 
-              <p>
-                <span className={styles.Modal__Important}>Type: </span>
-                {selectedPlanet.type}
-              </p>
+            <p>
+              <span className={styles.Modal__Important}>Type: </span>
+              {selectedPlanet.type}
+            </p>
 
-              <p>
-                <span className={styles.Modal__Important}>Radius: </span>
-                {selectedPlanet.radius}
-              </p>
+            <p>
+              <span className={styles.Modal__Important}>Radius: </span>
+              {selectedPlanet.radius}
+            </p>
 
-              <p>
-                <span className={styles.Modal__Important}>Composition:</span>{" "}
-                {selectedPlanet.composition}
-              </p>
-              <p>
-                <span className={styles.Modal__Important}>Description:</span>{" "}
-                {selectedPlanet.description}
-              </p>
+            <p>
+              <span className={styles.Modal__Important}>Composition: </span>
+              {selectedPlanet.composition}
+            </p>
+            <p>
+              <span className={styles.Modal__Important}>Description: </span>
+              {selectedPlanet.description}
+            </p>
+            <p>
+              <span className={styles.Modal__Important}>
+                Distance from the Sun:
+              </span>
+              {selectedPlanet.distance_from_sun}
+            </p>
+
+            {selectedPlanet.average_temperature && (
               <p>
                 <span className={styles.Modal__Important}>
-                  Distance from the Sun:
+                  Average Temperature:
                 </span>
-                {selectedPlanet.distance_from_sun}
+                {selectedPlanet.average_temperature}
               </p>
+            )}
 
-              {selectedPlanet.average_temperature && (
-                <p>
-                  <span className={styles.Modal__Important}>
-                    Average Temperature:
-                  </span>
-                  {selectedPlanet.average_temperature}
-                </p>
-              )}
-
-              {selectedPlanet.surface_temperature && (
-                <p>
-                  <span className={styles.Modal__Important}>
-                    Surface Temperature:
-                  </span>
-                  {selectedPlanet.surface_temperature}
-                </p>
-              )}
-            </div>
+            {selectedPlanet.surface_temperature && (
+              <p>
+                <span className={styles.Modal__Important}>
+                  Surface Temperature:
+                </span>
+                {selectedPlanet.surface_temperature}
+              </p>
+            )}
           </div>
         )}
 

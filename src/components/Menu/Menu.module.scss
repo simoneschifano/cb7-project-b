@@ -5,6 +5,7 @@
 @media screen and (max-width: 767px) {
   .BurgerWrapper {
     display: block;
+    z-index: 9999;
   }
 
   .Burger {
@@ -14,10 +15,10 @@
   label .menu {
     position: fixed;
     right: -100px;
-    top: -100px;
+    top: -92px;
     z-index: 100;
     width: 200px;
-    height: 200px;
+    height: 150px;
     background: #fff;
     border-radius: 50% 50% 50% 50%;
     -webkit-transition: 0.5s ease-in-out;

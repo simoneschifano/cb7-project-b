@@ -115,7 +115,7 @@ export const planetsData = [
     radius: "1.188 km",
     composition: "Nitrogen, Methane and Carbon Monoxide",
     description:
-      "Pluto is the ninth-largest and tenth most massive known object directly orbiting the Sun. It is the first Kuiper Belt object to be discovered and it is the largest known plutoid.",
+      "Pluto is the ninth-largest and tenth most massive known object directly orbiting the Sun.",
     distance_from_sun: "5.9 billion km",
     average_temperature: "-229 °C",
   },
