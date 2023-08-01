@@ -9,6 +9,7 @@ import styles from "./SearchWiki.module.scss";
 const SearchWiki = () => {
   const urlStars = "https://api.api-ninjas.com/v1/stars?name=";
   const urlPlanets = "https://api.api-ninjas.com/v1/planets?name=";
+  
   const listRandomPlanets = [
     {
       name: "HAT-P-7b",

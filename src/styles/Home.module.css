@@ -29,7 +29,7 @@
   color: #ffffff;
   height: 100%;
   width: 100%;
-  filter: drop-shadow(0 0 100px black);
+  filter: drop-shadow(5px 6px 100px #000);
 }
 
 .Modal {
@@ -82,10 +82,4 @@
   color: #ffffff;
   border-radius: 4px;
 }
-
-
-/* .swiper-pagination {
-} */
-
-/* .swiper-slide-active{} */
 
