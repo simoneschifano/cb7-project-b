@@ -3,7 +3,7 @@ import styles from "./PlanetCard.module.scss";
 const PlanetCard = ({ data }) => {
   return (
     <>
-      <div className={styles.Card__Wrapper}>
+      <div className={styles.Card__Wrapper} draggable>
         <div className={styles.Card__Main}>
           {data.name && <h3> Name: {data.name} </h3>}
 
