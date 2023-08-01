@@ -167,25 +167,31 @@
 }
 
 @media screen and (max-width: 767px) {
-
-  .Preview__Main{
-    height:150vh;
+  .Preview__Main {
+    height: 100vh;
     width: fit-content;
+    padding: 12px;
   }
+
   .Preview {
     display: flex;
     align-items: center;
     justify-content: center;
 
     &__Header {
-     
       text-align: center;
+      font-size: 1.8rem;
     }
-  
-    &__Buttons{
+
+    &__Buttons {
       flex-direction: column;
     }
 
+    &__Container {
+      &__Question {
+        text-align: center;
+      }
+    }
   }
   .PreviewComp {
     margin: 12px;
@@ -216,11 +222,9 @@
   }
 }
 
-@media screen and (min-width:600) and (max-width :1024px) {
-
-  .Preview__Main{
-    height:150vh;
+@media screen and (min-width: 600) and (max-width: 1024px) {
+  .Preview__Main {
+    height: 150vh;
     width: 100%;
   }
-
 }

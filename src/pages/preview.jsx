@@ -63,7 +63,7 @@ const Preview = () => {
   return (
     <>
       <Head>
-        <title>Cb-7 Final Project gruppo-B</title>
+        <title>Spacemony - Preview </title>
         <meta name="description" content="Cb-7 Final Project gruppo-B" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link
@@ -109,7 +109,9 @@ const Preview = () => {
             </div>
           )}
 
-          <h3>Are you sure to continue with these settings?</h3>
+          <p className={styles.Preview__Container__Question}>
+            Are you sure to continue with these settings?
+          </p>
 
           <div className={styles.Preview__Buttons}>
             <button

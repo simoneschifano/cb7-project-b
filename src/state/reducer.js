@@ -2,7 +2,7 @@ export const initialState = {
     username: "",
     skinColor: "#ffcc66",
     suitColor: "#ffffff",
-    spacecraft: "spaceShip1",
+    spacecraft: "space-Ship1",
   };
 
   //Funzioni reducer per tenere traccia dello stato
