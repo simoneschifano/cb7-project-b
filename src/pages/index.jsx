@@ -74,8 +74,8 @@ export default function Home() {
       (planet) => planet.name === planetName
     );
     //stati della modale cambiati
-    // setSelectedPlanet(selectedPlanet);
-    // setShowModal(true);
+    setSelectedPlanet(selectedPlanet);
+    setShowModal(true);
   };
 
   const solarSystem = [
@@ -236,6 +236,7 @@ export default function Home() {
             keyboard={{
               enabled: true,
             }}
+            /* lazy={true} */
             mousewheel={true}
             pagination={pagination}
             creativeEffect={{
@@ -253,7 +254,8 @@ export default function Home() {
               <SwiperSlide className={styles.Swiper__Slide} key={planet.id}>
                 <div
                   className={styles.Swiper__Slide__Content}
-                  onClick={() => handlePlanetClick(planet.name)}>
+                  onClick={() => handlePlanetClick(planet.name)}
+                >
                   <Planet
                     link={planet.link}
                     speed={planet.speed}

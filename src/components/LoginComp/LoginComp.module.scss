@@ -27,6 +27,16 @@
     justify-content: center;
     flex-direction: column;
     padding: 24px;
+
+    select {
+      background-color: black;
+      border: none;
+      padding: 4px 8px;
+      border: 1px solid #7af68344;
+
+      border-radius: 6px;
+      color: rgb(119, 119, 119);
+    }
   }
 
   &__Settings {
