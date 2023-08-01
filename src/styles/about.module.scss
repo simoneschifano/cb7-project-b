@@ -84,3 +84,21 @@
 
 .paragraph {
 }
+
+.Close__Button {
+  color: white;
+  font-size: 3rem;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(180deg);
+  padding: 20px;
+  cursor: pointer;
+  z-index: 999;
+  .Back__Button__Image{
+    filter: invert(100%);
+    transform: scaleX(-1);
+   
+  }
+}

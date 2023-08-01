@@ -1,8 +1,18 @@
 import styles from "../styles/about.module.scss";
+import Image from "next/image";
+import Router from "next/router";
 
 export default function About() {
+
+  const returnHome = () => {
+    Router.push("/");
+  };
+
   return (
     <>
+      <div className={styles.Close__Button} onClick={returnHome}>
+        <Image className={styles.Back__Button__Image} src={'https://www.svgrepo.com/show/18507/back-button.svg'} width={40} height={40} alt="back_button_image" />
+      </div>
       <div className={styles.Wrapper}>
         <div className={styles.Wrapper__Text}>
           <h1>About Us</h1>

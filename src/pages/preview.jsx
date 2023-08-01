@@ -56,6 +56,7 @@ const Preview = () => {
       localStorage.removeItem("skinColor");
       localStorage.removeItem("suitColor");
       localStorage.removeItem("spacecraft");
+      localStorage.removeItem("hasSeenInstructions");
       router.push(`/login`);
     }
   };

@@ -66,12 +66,20 @@ export default function Home() {
 //Modale delle istruzioni
   const [modalInstructions, setModalInstructions] = useState(true);
   const [showButton, setShowButton] = useState(false);
+  
+  useEffect(() => {
+    const hasSeenInstructions = localStorage.getItem("hasSeenInstructions");
+    if (hasSeenInstructions) {
+      setModalInstructions(false);
+    }
+  }, []);
 
   useEffect(() => {
     // Chiude automaticamente la modale dopo 5 secondi
     if (modalInstructions) {
       const timeoutId = setTimeout(() => {
         setModalInstructions(false);
+        localStorage.setItem("hasSeenInstructions", "true");
       }, 7000);
 
       // Pulizia del timeout quando il componente viene smontato
