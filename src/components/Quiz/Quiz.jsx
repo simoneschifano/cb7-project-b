@@ -31,12 +31,11 @@ const Quiz = ({ data }) => {
     setCorrectCounter(correctCounter + 1)
     setScore(score + (difficulty))
     setAnswerCounter(answerCounter + 1)
-    doneAnswer.current.style.border = '4px 4px #7af683ff'
     setTimeout(() => {
         doneAnswer.current.style.display = 'none';
         startQuiz()
-    }, 1000)
-    ;
+    }, 1000);
+    doneAnswer.current.style.border = '2px solid #7af683ff'
 }
 
   const startQuiz = () => {
@@ -59,12 +58,13 @@ const Quiz = ({ data }) => {
   };
 
   const wrongAnswer = () => {
+    doneAnswer.current.style.border = '2px solid #dc143c'
     setAnswerCounter(answerCounter + 1);
-    doneAnswer.current.style.border = '4px 4px #dc143c'
     setTimeout(() => {
       doneAnswer.current.style.display = "none";
       startQuiz();
     }, 1000);
+    
   };
 
   const returnHome = () => {
@@ -132,7 +132,7 @@ const Quiz = ({ data }) => {
               <h3>
                 Your score: <strong>{score}</strong>
               </h3>
-              <button onClick={() => onHandleModal()}>Scoreboard</button>
+              {openModal ? <button onClick={() => startQuiz()}>Restart</button> : <button onClick={() => onHandleModal()}>Leaderboard</button>}
             </div>
           </div>
         )}
