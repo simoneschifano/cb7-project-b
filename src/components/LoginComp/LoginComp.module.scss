@@ -1,6 +1,6 @@
 .Login {
   background-image: url("/Milky.jpg");
-  object-fit: contain;
+  object-fit: cover;
 
   height: 100vh;
   min-height: 800px;
@@ -14,11 +14,7 @@
   color: $color-text;
 
   &__Info {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 12px;
+    text-align: center;
 
     &__Title {
       color: $color-heading;
@@ -211,49 +207,69 @@
     flex-direction: column;
   }
   .Login {
-    height: 150vh;
+    object-fit: cover;
+    min-height: none;
+    height: 100vh;
     flex-direction: column;
 
     width: fit-content;
-  }
-  .SpaceShipImg {
-    top: -120px;
-    width: 60px;
-  }
-  .LoginSubmit {
-    top: -10px;
-    left: -3px;
-  }
-}
 
-/* This is for tablet devices */
-  @media screen and (min-width:601px) and (max-width :1024px) {
-  .Login {
-    gap :40px;
-    height: auto;
-    width: 100%;
-  }
-  .SpaceShipImg {
-    top : -100px; 
-    width :120px;
-  }
-  .LoginSubmit {
-    top :180px; 
-    left :-115px; 
-  }
- } 
+    &__Settings {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
 
-/* This is for laptop devices */
-@media screen and (min-width: 1025px) {
-  .login {
-    gap: 60px;
+    &__Info {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 2px; 
+      &__Title {
+        text-align: center;
+        color: $color-heading;
+      }
+    }
+    .SpaceShipImg {
+      top: -120px;
+      width: 60px;
+    }
+    .LoginSubmit {
+      top: -10px;
+      left: -3px;
+    }
   }
-  .SpaceShipImg {
-    top: -140px;
-    width: 150px;
+
+  /* This is for tablet devices */
+  @media screen and (min-width: 601px) and (max-width: 1024px) {
+    .Login {
+      gap: 40px;
+      height: auto;
+      width: 100%;
+    }
+    .SpaceShipImg {
+      top: -100px;
+      width: 120px;
+    }
+    .LoginSubmit {
+      top: 180px;
+      left: -115px;
+    }
   }
-  .LoginSubmit {
-    top: 220px;
-    left: -155px;
+
+  /* This is for laptop devices */
+  @media screen and (min-width: 1025px) {
+    .login {
+      gap: 60px;
+    }
+    .SpaceShipImg {
+      top: -140px;
+      width: 150px;
+    }
+    .LoginSubmit {
+      top: 220px;
+      left: -155px;
+    }
   }
 }

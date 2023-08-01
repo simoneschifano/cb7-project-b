@@ -176,7 +176,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    &__Header {
+      text-align: center;
+    }
   
+    &__Buttons{
+      flex-direction: column;
+    }
 
   }
   .PreviewComp {
