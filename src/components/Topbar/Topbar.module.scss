@@ -1,0 +1,42 @@
+.Topbar {
+  position: fixed;
+  height: 80px;
+  width: 100%;
+  padding: 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  list-style-type: none;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: $color-text;
+  z-index: 999;
+
+  &__List {
+    list-style-type: none;
+    display: flex;
+    gap: 18px;
+    cursor: pointer;
+    text-transform: uppercase;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      padding: 2px;
+
+      &:hover {
+        border-bottom: 1px solid $color-heading;
+        background-color: $color-heading;
+        color: $color-black;
+        // font-weight: bold;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .Topbar {
+    display: none;
+  }
+}

@@ -1,0 +1,58 @@
+.Leaderboard {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border-left: 1px solid rgba(255, 255, 255, 0.241);
+    &__Header {
+        width: 100%;
+        height: auto;
+        font-size: 2rem;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: center;
+        h2 {
+            color: $color-heading;
+        }
+        .Leaderboard__close {
+        color: white;
+        font-size: 2.5rem;
+        cursor: pointer;
+        transform: rotate(180deg);
+        padding: 20px;
+        }
+    }
+    &__Main {
+        width: 100%;
+        min-height: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        .Leaderboard__row {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            h3 {
+                font-size: 1.6rem;
+                color: $color-heading
+            }
+            h4 {
+                font-size: 1.2rem;
+                color: white;
+            }
+            p {
+                font-size: 1.6rem;
+                color: $color-heading;
+            }
+        }
+    }
+
+    
+}

@@ -1,29 +1,280 @@
-.LoginBody {
-  background-color: rgba(92, 78, 183, 0.615);
-  height: 100vh;
-}
+.Login {
+  background-image: url("/Milky.jpg");
+  object-fit: cover;
 
-.login {
+  height: 100vh;
+  min-height: 800px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
-  gap: 60px;
-}
-.SpaceShipImg {
-  margin-bottom: 90px;
-  width: 200px;
+  flex-direction: column;
+  gap: 24px;
+
+  color: $color-text;
+
+  &__Info {
+    text-align: center;
+
+    &__Title {
+      color: $color-heading;
+    }
+  }
+
+  &__Form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 24px;
+
+    select {
+      background-color: black;
+      border: none;
+      padding: 4px 8px;
+      border: 1px solid #7af68344;
+
+      border-radius: 6px;
+      color: rgb(119, 119, 119);
+    }
+  }
+
+  &__Settings {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 90px;
+    padding: 12px;
+
+    &__Avatar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 24px;
+
+      .Avatar {
+        &__Name {
+          padding: 12px 24px;
+          margin-top: 68px;
+
+          border: none;
+          outline: none;
+
+          max-width: 190px;
+          transition: 0.4s;
+
+          outline: none;
+
+          transition: 0.4s;
+
+          border-radius: 4px;
+          // background: linear-gradient(225deg, #191b1b, #1e2020);
+          background-color: transparent;
+          // box-shadow: -5px 5px 4px #181a1a, 5px -5px 4px #202323;
+          border: 1px solid #7af68344;
+          color: $color-text;
+
+          &:hover {
+            box-shadow: 0 0 8px 8px #7af68344;
+          }
+
+          &:focus {
+            box-shadow: 0 0 2px 3px #7af683ff;
+          }
+        }
+
+        &__Color {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          gap: 12px;
+        }
+      }
+    }
+
+    &__Spacecraft {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 24px;
+
+      select {
+        padding: 6px 12px;
+      }
+    }
+  }
+
+  &__Submit {
+    margin-top: 24px;
+    display: inline-block;
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid $color-heading;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease-in;
+    z-index: 1;
+
+    input {
+      width: 100%;
+      height: 100%;
+      font-size: 1rem;
+      background-color: transparent;
+      border: none;
+      color: $color-text;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+
+      &:hover {
+        color: $color-black;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 0;
+      height: 100%;
+      transform: skew(15deg);
+      transition: all 0.5s;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    &::before {
+      left: -10px;
+      background: $color-heading;
+    }
+
+    &::after {
+      right: -10px;
+      background: $color-heading;
+    }
+
+    &:hover::before,
+    &:hover::after {
+      width: 58%;
+    }
+
+    &:hover span {
+      transition: 0.3s;
+    }
+
+    & span {
+      color: #03045e;
+      font-size: 18px;
+      transition: all 0.3s ease-in;
+    }
+  }
 }
 
-.Avatar {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 20px;
+.SpaceShipImg {
+  /* TODO: fix dimensioni al ridimensionamento */
+  height: auto;
+  aspect-ratio: 1/1;
+  width: 100px;
+  animation: Levitation 5s 1s infinite ease-in-out;
+  overflow: visible;
 }
-.SpaceCraft {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 20px;
+
+/* ================================================================ */
+
+@keyframes Levitation {
+  0% {
+    transform: translateY(20px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(20px);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* This is for mobile devices */
+  .Login {
+    object-fit: cover;
+    min-height: none;
+    height: 100vh;
+    flex-direction: column;
+    width: fit-content;
+    gap: 8px;
+
+    &__Settings {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    &__Info {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin: 24px;
+
+      &__Title {
+        margin-top: 12px;
+        text-align: center;
+        color: $color-heading;
+        font-size: 1.8rem;
+      }
+    }
+
+    &__Form {
+      padding: 0 12px;
+
+      select {
+        background-color: black;
+        border: none;
+        padding: 4px 8px;
+        border: 1px solid white;
+        border-radius: 6px;
+        color: rgb(119, 119, 119);
+      }
+    }
+
+    .SpaceShipImg {
+      top: -120px;
+      width: 60px;
+    }
+  }
+
+  /* This is for tablet devices */
+  @media screen and (min-width: 601px) and (max-width: 1024px) {
+    .Login {
+      gap: 40px;
+      height: auto;
+      width: 100%;
+    }
+    .SpaceShipImg {
+      top: -100px;
+      width: 120px;
+    }
+  }
+
+  /* This is for laptop devices */
+  @media screen and (min-width: 1025px) {
+    .login {
+      gap: 60px;
+    }
+    .SpaceShipImg {
+      top: -140px;
+      width: 150px;
+    }
+    .LoginSubmit {
+      top: 220px;
+      left: -155px;
+    }
+  }
 }

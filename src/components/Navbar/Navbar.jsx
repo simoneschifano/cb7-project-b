@@ -8,35 +8,37 @@ import AvatarSvg from "@/components/AvatarSvg";
 
 import styles from "./Navbar.module.scss";
 
-const Navbar = () => {
+const Navbar = ({ distanceValue }) => {
   const { state, dispatch } = useContext(MainContext);
 
-  console.log(state);
   return (
     <>
-      <h2>Welcome, {state.username}!</h2>
+      <div className={styles.Navbar}>
+        <div className={styles.Navbar__BackEffect}>
+          <div className={styles.Navbar__Details}>
+            <div className={styles.AvatarHome}>
+              <div className={styles.Avatar__Wrapper}>
+                <AvatarSvg
+                  skinColor={state.skinColor}
+                  suitColor={state.suitColor}
+                />
+              </div>
+            </div>
 
-      <div className={styles.wrapper}>
-        {/* Immagine di sfondo */}
-        <Image
-          className={styles.navPng}
-          src="/navbar.png"
-          width={700}
-          height={200}
-          alt="prova"
-        />
-
-        <div className={styles.NavbarDetails}>
-          <div className={styles.AvatarHome}>
-            <AvatarSvg
-              skinColor={state.skinColor}
-              suitColor={state.suitColor}
+            <Image
+              className={styles.SpacecraftHome}
+              src={`/spacecraft/${state.spacecraft}.png`}
+              alt="Selected spacecraft image"
+              width={80}
+              height={80}
             />
-          </div>
 
-          <img
-            className={styles.SpacecraftHome}
-            src={`/spacecraft/${state.spacecraft}.png`}></img>
+            <div className={styles.wrappertxt}>
+              <h5 className={styles.navbar__currentDistance}>
+                Distanza Percorsa: <br /> {distanceValue.toFixed(2)} au
+              </h5>
+            </div>
+          </div>
         </div>
       </div>
     </>

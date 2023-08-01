@@ -1,43 +1,95 @@
-.wrapper {
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
+.Navbar {
+  font-size: 2rem;
+  color: $color-heading;
+  z-index: 99;
 
-  .navPng {
-    margin-bottom: 15px;
-    border-radius: 12px;
-    width: 60%;
-    height: 25%;
-  }
-}
+  width: 700px;
+  height: 120px;
+  border: 1px solid $color-heading;
+  box-shadow: 0 0 6px 2px $color-heading;
+  background-color: #ffffff;
 
-.NavbarDetails {
-  display: flex;
-  align-items: flex-end;
-  justify-content: end;
-  flex-direction: column;
   position: fixed;
   bottom: 0;
-  left: 35%;
+  left: 50%;
   transform: translateX(-50%);
-  padding: 12px;
-  gap: 10px;
+  border-radius: 46% 46% 0 0;
+
+  padding: 1px;
+
+  &__BackEffect {
+    border: 1px solid $color-heading;
+    background-color: rgb(0, 0, 0);
+    height: 100%;
+    width: 100%;
+    border-radius: 46% 46% 0 0;
+    box-shadow: inset 0 0 6px 4px $color-heading;
+  }
+
+  &__Details {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+  }
 }
 
 .AvatarHome {
   padding: 12px;
   border: 1px solid rgba(0, 0, 0, 0.192);
   border-radius: 50%;
-  width: 100px;
+  width: 80px;
+  height: 80px;
+}
+
+/* Sistemare questo layout, div inutile? */
+.Avatar__Wrapper {
+  position: relative;
+  bottom: 40px;
 }
 
 .SpacecraftHome {
-  width: 100px;
+  width: 80px;
   padding: 12px;
   border: 1px solid;
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.192);
+  filter: drop-shadow(8px 8px 10px black);
+}
+
+.wrappertxt {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.provalink {
+  z-index: 999;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  .Navbar {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(+20%) scale(0.55);
+  }
+}
+
+@keyframes Levitation {
+  0% {
+    transform: translateY(100px);
+  }
+  50% {
+    transform: translateY(80px);
+  }
+  100% {
+    transform: translateY(100px);
+  }
 }

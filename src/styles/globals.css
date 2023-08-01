@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -7,4 +8,64 @@
 
 body {
   font-family: "Jura", sans-serif;
+  background-color: black;
+}
+
+.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
+  position: fixed;
+  top: 100px;
+  left: 0;
+}
+
+.swiper-pagination {
+  width: 100%;
+  height: 10%;
+  color: white;
+  z-index: -1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: row;
+  gap: 40px;
+}
+
+.swiper-pagination .swiper-pagination-bullet {
+  width: 30px;
+  background-color: transparent;
+}
+
+.swiper-pagination-bullet-active {
+  text-transform: uppercase;
+  color: #7af683ff;
+}
+
+@media screen and (max-width: 767px) {
+  .swiper-pagination {
+    visibility: hidden;
+  }
+
+  .swiper-pagination-bullet-active {
+    font-size: 1.3rem;
+    visibility: visible;
+  }
+
+  .swiper-pagination .swiper-pagination-bullet {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: all 400ms ease;
+    font-size: 2rem;
+    width: 100%;
+    background-color: transparent;
+  }
+
+  .swiper-slide {
+    visibility: hidden;
+  }
+
+  .swiper-slide.swiper-slide-visible.swiper-slide-active {
+    visibility: visible;
+  }
 }
