@@ -17,17 +17,19 @@ const Topbar = () => {
   }, [dispatch]);
 
   return (
-    <div className={styles.top_navbar}>
-      <ul className={styles.top_nav_ul}>
-        <li>
-          {state.username && (
-            <h1 className={styles.topNavbar__Header}>
+    <div className={styles.Navbar}>
+         {state.username && (
+            <h1 className={styles.Navbar__Title}>
               Welcome, {state.username}!
             </h1>
           )}
-        </li>
+      <ul className={styles.Navbar__List}>
         <li>
           <Link href="/wiki">Wiki</Link>
+        </li>
+
+        <li>
+          <Link href={"/astroquiz"}>AstroQuiz</Link>
         </li>
 
         <li>
@@ -35,12 +37,10 @@ const Topbar = () => {
         </li>
 
         <li>
-          <Link href={"/astroquiz"}>Mini-Game</Link>
-        </li>
-        <li>
           <Link href={"/preview"}>Back to settings</Link>
         </li>
       </ul>
+      {/* <p className={styles.Navbar__Hover}>Hover me</p> */}
     </div>
   );
 };

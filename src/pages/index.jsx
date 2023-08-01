@@ -48,6 +48,8 @@ export default function Home() {
   const distanceCalc = (reference) => {
     const activeIndex = reference.activeIndex;
     const previousIndex = reference.previousIndex;
+    const currentPlanet = solarSystem[activeIndex];
+    handlePlanetClick(currentPlanet.name);
 
     const firstPlanetDistance = solarSystem.find(
       (planet) => planet.id === activeIndex + 1
@@ -72,8 +74,8 @@ export default function Home() {
       (planet) => planet.name === planetName
     );
     //stati della modale cambiati
-    setSelectedPlanet(selectedPlanet);
-    setShowModal(true);
+    // setSelectedPlanet(selectedPlanet);
+    // setShowModal(true);
   };
 
   const solarSystem = [
@@ -83,7 +85,9 @@ export default function Home() {
       link: "/Textures/Sun.jpg",
       speed: -0.01,
       distance: 0,
-      // dimension: 3,
+      dimension: 3,
+      ring: false,
+      satellites: false,
     },
 
     {
@@ -92,7 +96,9 @@ export default function Home() {
       link: "/Textures/Mercury.jpg",
       speed: -0.0008,
       distance: 0.387,
-      // dimension: 3,
+      dimension: 1.5,
+      ring: false,
+      satellites: false,
     },
 
     {
@@ -101,7 +107,9 @@ export default function Home() {
       link: "/Textures/Venus_Surph.jpg",
       speed: -0.0009,
       distance: 0.723,
-      // dimension: 5,
+      dimension: 1.75,
+      ring: false,
+      satellites: false,
     },
 
     {
@@ -110,7 +118,9 @@ export default function Home() {
       link: "/Textures/Earth.jpg",
       speed: -0.003,
       distance: 0.94,
-      // dimension: 4,
+      dimension: 1.85,
+      ring: false,
+      satellites: true,
     },
 
     {
@@ -119,7 +129,9 @@ export default function Home() {
       link: "/Textures/Mars.jpg",
       speed: -0.0026,
       distance: 1.524,
-      // dimension: 3,
+      dimension: 1.65,
+      ring: false,
+      satellites: false,
     },
 
     {
@@ -128,7 +140,9 @@ export default function Home() {
       link: "/Textures/Jupiter.jpg",
       speed: -0.009,
       distance: 5.209,
-      // dimension: 5,
+      dimension: 2.8,
+      ring: false,
+      satellites: false,
     },
 
     {
@@ -137,7 +151,9 @@ export default function Home() {
       link: "/Textures/Saturn.jpg",
       speed: +0.003,
       distance: 9.539,
-      // dimension: 3,
+      dimension: 2.65,
+      ring: false,
+      satellites: false,
     },
 
     {
@@ -146,7 +162,9 @@ export default function Home() {
       link: "/Textures/Uranus.jpg",
       speed: -0.003,
       distance: 19.18,
-      // dimension: 2,
+      dimension: 2.3,
+      ring: false,
+      satellites: false,
     },
 
     {
@@ -155,7 +173,9 @@ export default function Home() {
       link: "/Textures/Neptune.jpg",
       speed: +0.0055,
       distance: 30.06,
-      // dimension: 2,
+      dimension: 2.1,
+      ring: false,
+      satellites: false,
     },
 
     {
@@ -164,7 +184,9 @@ export default function Home() {
       link: "/Textures/Pluto.jpg",
       speed: -0.0009,
       distance: 39.44,
-      // dimension: 3,
+      dimension: 1,
+      ring: false,
+      satellites: false,
     },
   ];
 
@@ -199,8 +221,6 @@ export default function Home() {
 
       <main className={styles.Main}>
         <Topbar />
-
-        <span className={styles.Distance}> {distanceValue} au</span>
 
         <div className={styles.Swiper__Container}>
           <Swiper
@@ -237,7 +257,9 @@ export default function Home() {
                   <Planet
                     link={planet.link}
                     speed={planet.speed}
-                    /* dimension={planet.dimension} */
+                    scale={planet.dimension}
+                    ring={planet?.ring}
+                    satellites={planet?.satellites}
                   />
                 </div>
               </SwiperSlide>
@@ -245,8 +267,6 @@ export default function Home() {
           </Swiper>
         </div>
 
-        {/* Oggetto della modale che viene scatenato all'onClick su un pianeta e genera i valori passati */}
-        {/* TODO: necessario aggiornamento allo swipe del pianeta */}
         {showModal && selectedPlanet && (
           <div className={styles.Modal}>
             <div className={styles.Modal__Content}>
@@ -309,7 +329,7 @@ export default function Home() {
           </div>
         )}
 
-        <Navbar />
+        <Navbar distanceValue={distanceValue} />
       </main>
     </>
   );

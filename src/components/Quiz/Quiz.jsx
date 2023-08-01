@@ -57,6 +57,7 @@ const Quiz = ({ data }) => {
     setUsername(localStorage.getItem("username"))
   };
 
+
   const wrongAnswer = () => {
     doneAnswer.current.style.border = '2px solid #dc143c'
     setAnswerCounter(answerCounter + 1);

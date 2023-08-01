@@ -2,12 +2,14 @@ import { useState } from "react";
 import { GET } from "@/utils/http";
 import PlanetCard from "../PlanetCard";
 import StarCard from "../StarCard";
+import Router from "next/router";
 
 import styles from "./SearchWiki.module.scss";
 
 const SearchWiki = () => {
   const urlStars = "https://api.api-ninjas.com/v1/stars?name=";
   const urlPlanets = "https://api.api-ninjas.com/v1/planets?name=";
+  
   const listRandomPlanets = [
     {
       name: "HAT-P-7b",
@@ -79,6 +81,7 @@ const SearchWiki = () => {
   const [inputStarValue, setStarInputValue] = useState(false);
   const [previewResultStar, setPreviewResultStar] = useState(false);
   const [previewResultPlanet, setPreviewResultPlanet] = useState(false);
+ 
 
   const onHandlePlanetSearch = (e) => {
     e.preventDefault();
@@ -87,7 +90,9 @@ const SearchWiki = () => {
   const onHandlePlanetInput = (e) => {
     if (e.target.value.length > 2) {
       setPlanetInputValue(e.target.value);
+    
       GET(urlPlanets, e.target.value).then((data) => setPreviewResultPlanet(data));
+      setResultPlanet(false);
     } else {
       setPlanetInputValue(false);
       setPreviewResultPlanet(false);
@@ -105,7 +110,8 @@ const SearchWiki = () => {
   const onHandleStarInput = (e) => {
     if (e.target.value.length > 2) {
       setStarInputValue(e.target.value);
-      GET(urlPlanets, e.target.value).then((data) => setPreviewResultStar(data));
+      GET(urlStars, e.target.value).then((data) => setPreviewResultStar(data));
+      setResultStar(false);
     } else {
       setStarInputValue(false);
       setPreviewResultStar(false);
@@ -113,65 +119,79 @@ const SearchWiki = () => {
     }
   };
   const onHandleStarPreviewClick = (planetName) => {
-    GET(urlPlanets, planetName).then((data) => setResultStar(data));
+    GET(urlStars, planetName).then((data) => setResultStar(data));
+  };
+
+  const returnHome = () => {
+    Router.push("/");
   };
 
   return (
     <>
       <div className={styles.Wrapper__Wiki}>
+        <div className={styles.Close__Button} onClick={returnHome} >
+          ᐅ
+        </div>
         <h1>Welcome to the Wiki 🌎</h1>
-        <form className={styles.SearchForm} onSubmit={onHandlePlanetSearch}>
-          <input className={styles.SearchInput} type="text" name="searchText" placeholder="Insert your planet here!" onChange={onHandlePlanetInput} />
-          <button onClick={onHandlePlanetSearch}>
-            <svg class={styles.svgIcon} viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg">
-              <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm50.7-186.9L162.4 380.6c-19.4 7.5-38.5-11.6-31-31l55.5-144.3c3.3-8.5 9.9-15.1 18.4-18.4l144.3-55.5c19.4-7.5 38.5 11.6 31 31L325.1 306.7c-3.2 8.5-9.9 15.1-18.4 18.4zM288 256a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"></path>
-            </svg>
-            Search
-          </button>
-        </form>
-        {previewResultPlanet.length > 0 && (
-          <div>
-            {previewResultPlanet.slice(0, 5).map((planet, index) => (
-              <p onClick={() => onHandlePlanetPreviewClick(planet.name)} key={index}>{planet.name}</p>
-            ))}
-          </div>
-        )}
+
+        {/* Sezione ricerca dei pianeti */}
+        <div className={styles.Search__Form__Container}>
+          <form className={styles.SearchForm} onSubmit={onHandlePlanetSearch}>
+            <input className={styles.SearchInput} type="text" name="searchText" placeholder="Insert your planet here!" onChange={onHandlePlanetInput} />
+            <button onClick={onHandlePlanetSearch}>
+              <svg className={styles.svgIcon} viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg">
+                <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm50.7-186.9L162.4 380.6c-19.4 7.5-38.5-11.6-31-31l55.5-144.3c3.3-8.5 9.9-15.1 18.4-18.4l144.3-55.5c19.4-7.5 38.5 11.6 31 31L325.1 306.7c-3.2 8.5-9.9 15.1-18.4 18.4zM288 256a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"></path>
+              </svg>
+              Search
+            </button>
+          </form>
+          {previewResultPlanet.length > 0  && !resultPlanet  &&(
+            <div className={styles.Dropdown__Preview}>
+              {previewResultPlanet.slice(0, 5).map((planet, index) => (
+                <p className={styles.Dropdown__Item} onClick={() => onHandlePlanetPreviewClick(planet.name)} key={index}>{planet.name}</p>
+              ))}
+            </div>
+          )}
+        </div>
         {resultPlanet ? (
-          <div className={styles.listPlanets}>
+          <div className={styles.List_Elements} draggable>
             {resultPlanet.length > 0 ? resultPlanet.map((planet, index) => <PlanetCard data={planet} key={index} />) : <div>not found</div>}
           </div>
         ) : (
-          <div className={styles.listPlanets}>
-            {listRandomPlanets.map((planet, index) => (
+          <div className={styles.List_Elements} draggable>
+            {!inputPlanetValue && listRandomPlanets.map((planet, index) => (
               <PlanetCard data={planet} key={index} />
             ))}
           </div>
         )}
 
+        {/* Sezione ricerca delle stelle */}
+        <div className={styles.Search__Form__Container}>
         <form className={styles.SearchForm} onSubmit={onHandleStarSearch}>
           <input className={styles.SearchInput} type="text" name="saerchText" placeholder="Insert your star here!" onChange={onHandleStarInput} />
-          <button onClick={onHandlePlanetSearch}>
-            <svg class={styles.svgIcon} viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg">
+          <button onClick={onHandleStarSearch}>
+            <svg className={styles.svgIcon} viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg">
               <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm50.7-186.9L162.4 380.6c-19.4 7.5-38.5-11.6-31-31l55.5-144.3c3.3-8.5 9.9-15.1 18.4-18.4l144.3-55.5c19.4-7.5 38.5 11.6 31 31L325.1 306.7c-3.2 8.5-9.9 15.1-18.4 18.4zM288 256a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"></path>
             </svg>
             Search
           </button>
         </form>
-        {previewResultStar.length > 0 && (
-          <div>
+        {previewResultStar.length > 0 && !resultStar && (
+          <div className={styles.Dropdown__Preview}>
             {previewResultStar.slice(0, 5).map((star, index) => (
-              <p onClick={() => onHandleStarPreviewClick(star.name)} key={index}>{star.name}</p>
+              <p className={styles.Dropdown__Item} onClick={() => onHandleStarPreviewClick(star.name)} key={index}>{star.name}</p>
             ))}
           </div>
         )}
+        </div>
         {resultStar ? (
-          <div className={styles.listStars}>
-            {resultStar.length > 0 ? resultStar.map((planet, index) => <StarCard data={planet} key={index} />) : <div>not found</div>}
+          <div className={styles.List_Elements}>
+            {resultStar.length > 0 ? resultStar.map((star, index) => <StarCard data={star} key={index} />) : <div>not found</div>}
           </div>
         ) : (
-          <div className={styles.listStars}>
-            {listRandomStars.map((star, index) => (
-              <StarCard data={star} key={index}/>
+          <div className={styles.List_Elements}>
+            {!inputStarValue && listRandomStars.map((star, index) => (
+              <StarCard data={star} key={index} />
             ))}
           </div>
         )}
