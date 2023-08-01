@@ -42,7 +42,7 @@ export default function Home() {
   }, [router, state]);
 
   // State/function relative allo swiper
-  const [pageValue, setPageValue] = useState();
+  // const [pageValue, setPageValue] = useState();
   const [distanceValue, setDistanceValue] = useState(0);
 
   const distanceCalc = (reference) => {
@@ -61,7 +61,6 @@ export default function Home() {
       firstPlanetDistance.distance - secondPlanetDistance.distance
     );
     setDistanceValue(distanceValue + shift);
-    /* TODO: arrotondare il risultato di distanceValue */
   };
 
   //Crea gli stati della modale
@@ -74,8 +73,8 @@ export default function Home() {
       (planet) => planet.name === planetName
     );
     //stati della modale cambiati
-    setSelectedPlanet(selectedPlanet);
-    setShowModal(true);
+    // setSelectedPlanet(selectedPlanet);
+    // setShowModal(true);
   };
 
   const solarSystem = [
@@ -210,7 +209,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Cb-7 Final Project gruppo-B</title>
+        <title>Spacemony</title>
         <meta name="description" content="Cb-7 Final Project gruppo-B" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link
@@ -254,8 +253,7 @@ export default function Home() {
               <SwiperSlide className={styles.Swiper__Slide} key={planet.id}>
                 <div
                   className={styles.Swiper__Slide__Content}
-                  onClick={() => handlePlanetClick(planet.name)}
-                >
+                  onClick={() => handlePlanetClick(planet.name)}>
                   <Planet
                     link={planet.link}
                     speed={planet.speed}

@@ -65,7 +65,7 @@
   flex-direction: column;
   gap: 20px;
   text-align: center;
-  text-transform:uppercase ;
+  text-transform: uppercase;
 }
 
 .provalink {
@@ -78,12 +78,10 @@
 }
 
 @media screen and (max-width: 767px) {
-  .top_nav_ul {
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: center;
-    display: none;
-  }
+  // .Navbar {
+
+  // }
+
   .BurgerWrapper {
     display: block;
   }
