@@ -63,9 +63,41 @@ export default function Home() {
     );
     setDistanceValue(distanceValue + shift);
   };
+//Modale delle istruzioni
+  const [modalInstructions, setModalInstructions] = useState(true);
+  const [showButton, setShowButton] = useState(false);
+
+  useEffect(() => {
+    // Chiude automaticamente la modale dopo 5 secondi
+    if (modalInstructions) {
+      const timeoutId = setTimeout(() => {
+        setModalInstructions(false);
+      }, 7000);
+
+      // Pulizia del timeout quando il componente viene smontato
+      return () => clearTimeout(timeoutId);
+    }
+  }, []);
+
+  useEffect(() => {
+    // Imposta lo stato showButton su true dopo 3 secondi
+    const timer = setTimeout(() => {
+      setShowButton(true);
+    }, 2500);
+
+    // Assicurati di cancellare il timer quando il componente si smonta
+    return () => clearTimeout(timer);
+  }, []);
+
+  const onHandleClickModalClose = () => {
+    setModalInstructions(false);
+  };
+  //Fine modale delle istruzioni
 
   //Crea gli stati della modale
   const [showModal, setShowModal] = useState(false);
+  //crea gli stati per la modale istruzioni
+
   const [selectedPlanet, setSelectedPlanet] = useState(null);
 
   //Funzione che all'onClick scorre l'array e trova la corrispondenza con nome di planetsData
@@ -74,8 +106,8 @@ export default function Home() {
       (planet) => planet.name === planetName
     );
     //stati della modale cambiati
-    // setSelectedPlanet(selectedPlanet);
-    // setShowModal(true);
+    setSelectedPlanet(selectedPlanet);
+    setShowModal(true);
   };
 
   const solarSystem = [
@@ -220,6 +252,65 @@ export default function Home() {
       </Head>
 
       <main className={styles.Main}>
+        {/* Modale Delle istruzioni */}
+        {modalInstructions && (
+          <div className={styles.Modal__Instructions}>
+            <h2 className={styles.Modal__Instructions__Header}>
+              Loading your journey...
+            </h2>
+            <div className={styles.Modal__Content__Instructions}>
+              <h2 className={styles.Modal__Instructions__Header2}>
+                Here the instructions for movement within the journey
+              </h2>
+
+              <p className={styles.Modal__Content__Instructions__para}>
+                Use the Keyboard arrow for move within planets
+              </p>
+              <div className={styles.Modal__Content__Instructions__keyboard}>
+                <div className={styles.Modal__Content__Instructions__left}>
+                  ⬅️
+                </div>
+                <div className={styles.Modal__Content__Instruction__right}>
+                  ➡️
+                </div>
+              </div>
+              <p className={styles.Ondrag__para}>
+                Drag the mouse (swipe) on a planet to move to the subsequent or
+                previous.
+              </p>
+              <p className={styles.Ondrag__para__mobile}>
+                Swipe on a planet to move to the subsequent or previous.
+              </p>
+              <div className={styles.Ondrag}>
+                <div className={styles.Instruction__scroll}>
+                  <div className={styles.Dot}></div>
+                  <div className={styles.Instruction__mousey}>
+                    <div className={styles.Instruction__scroller2}></div>
+                  </div>
+                </div>
+              </div>
+              <p className={styles.Instruction__scroll__para}>
+                You can also use the mouse wheel as a scroll
+              </p>
+              <div className={styles.Instruction__scroll}>
+                <div className={styles.Instruction__mousey}>
+                  <div className={styles.Instruction__scroller}></div>
+                </div>
+              </div>
+              {showButton && (
+                <button
+                  onClick={onHandleClickModalClose}
+                  className={styles.Modal__BtnContinue}
+                >
+                  <span>
+                  Continue to the journey
+                  </span>
+                </button>
+              )}
+            </div>
+          </div>
+        )}
+          {/*Fine Modale Delle istruzioni */}
         <Topbar />
 
         <div className={styles.Swiper__Container}>
@@ -249,12 +340,14 @@ export default function Home() {
                 translate: ["50%", 250, 0],
               },
             }}
-            modules={[EffectCreative, Keyboard, Mousewheel, Pagination]}>
+            modules={[EffectCreative, Keyboard, Mousewheel, Pagination]}
+          >
             {solarSystem.map((planet) => (
               <SwiperSlide className={styles.Swiper__Slide} key={planet.id}>
                 <div
                   className={styles.Swiper__Slide__Content}
-                  onClick={() => handlePlanetClick(planet.name)}>
+                  onClick={() => handlePlanetClick(planet.name)}
+                >
                   <Planet
                     link={planet.link}
                     speed={planet.speed}
@@ -273,7 +366,8 @@ export default function Home() {
             <div className={styles.Modal__Content}>
               <p
                 className={styles.Modal__Button}
-                onClick={() => setShowModal(false)}>
+                onClick={() => setShowModal(false)}
+              >
                 ❌
               </p>
 
