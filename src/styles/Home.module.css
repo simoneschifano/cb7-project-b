@@ -82,11 +82,10 @@
     justify-content: center;
   }
 
-  /* TODO: Sistemare spostamento verso destra */
   .Swiper__Slide__Content {
     transform: scale(0.8);
     position: relative;
-    left: 20%;
+    left: 10%;
   }
 }
 

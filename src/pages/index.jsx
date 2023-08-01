@@ -7,6 +7,7 @@ import { MainContext } from "@/state";
 
 import Navbar from "@/components/Navbar";
 import Planet from "@/components/Planets/Planet/Planet";
+import Menu from "@/components/Menu";
 
 import { planetsData } from "@/mock/planetsData";
 
@@ -330,6 +331,7 @@ export default function Home() {
         )}
 
         <Navbar distanceValue={distanceValue} />
+        <Menu />
       </main>
     </>
   );
