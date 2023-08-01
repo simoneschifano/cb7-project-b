@@ -63,23 +63,15 @@ export default function Home() {
     );
     setDistanceValue(distanceValue + shift);
   };
-  //Modale delle istruzioni
+//Modale delle istruzioni
   const [modalInstructions, setModalInstructions] = useState(true);
   const [showButton, setShowButton] = useState(false);
-
-  useEffect(() => {
-    const hasSeenInstructions = localStorage.getItem("hasSeenInstructions");
-    if (hasSeenInstructions) {
-      setModalInstructions(false);
-    }
-  }, []);
 
   useEffect(() => {
     // Chiude automaticamente la modale dopo 5 secondi
     if (modalInstructions) {
       const timeoutId = setTimeout(() => {
         setModalInstructions(false);
-        localStorage.setItem("hasSeenInstructions", "true");
       }, 7000);
 
       // Pulizia del timeout quando il componente viene smontato
@@ -88,7 +80,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    // Imposta lo stato showButton su true dopo 2.5 secondi
+    // Imposta lo stato showButton su true dopo 3 secondi
     const timer = setTimeout(() => {
       setShowButton(true);
     }, 2500);
@@ -100,11 +92,11 @@ export default function Home() {
   const onHandleClickModalClose = () => {
     setModalInstructions(false);
   };
-
   //Fine modale delle istruzioni
 
   //Crea gli stati della modale
   const [showModal, setShowModal] = useState(false);
+  //crea gli stati per la modale istruzioni
 
   const [selectedPlanet, setSelectedPlanet] = useState(null);
 
@@ -310,13 +302,15 @@ export default function Home() {
                   onClick={onHandleClickModalClose}
                   className={styles.Modal__BtnContinue}
                 >
-                  <span>Continue to the journey</span>
+                  <span>
+                  Continue to the journey
+                  </span>
                 </button>
               )}
             </div>
           </div>
         )}
-        {/*Fine Modale Delle istruzioni */}
+          {/*Fine Modale Delle istruzioni */}
         <Topbar />
 
         <div className={styles.Swiper__Container}>
