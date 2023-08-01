@@ -206,9 +206,15 @@
   /* This is for mobile devices */
   .LoginBody {
     height: 50%;
-  }
-  .login {
+    display: flex;
+    align-items: center;
     flex-direction: column;
+  }
+  .Login {
+    height: 150vh;
+    flex-direction: column;
+
+    width: fit-content;
   }
   .SpaceShipImg {
     top: -120px;
@@ -221,9 +227,11 @@
 }
 
 /* This is for tablet devices */
-/*  @media screen and (min-width:601px) and (max-width :1024px) {
-  .login {
+  @media screen and (min-width:601px) and (max-width :1024px) {
+  .Login {
     gap :40px;
+    height: auto;
+    width: 100%;
   }
   .SpaceShipImg {
     top : -100px; 
@@ -233,7 +241,7 @@
     top :180px; 
     left :-115px; 
   }
- } */
+ } 
 
 /* This is for laptop devices */
 @media screen and (min-width: 1025px) {
