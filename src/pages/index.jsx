@@ -231,7 +231,7 @@ export default function Home() {
             onSlideChange={(swiper) => distanceCalc(swiper)}
             initialSlide={3}
             effect={"creative"}
-            grabCursor={true}
+            // grabCursor={true}
             keyboard={{
               enabled: true,
             }}

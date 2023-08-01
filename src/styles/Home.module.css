@@ -71,9 +71,22 @@
     justify-content: center;
   }
 
+  .Swiper__Container {
+    width: 100vw;
+    margin: 0 auto;
+  }
+
+  .Swiper__Slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* TODO: Sistemare spostamento verso destra */
   .Swiper__Slide__Content {
-    transform: scale(0.7);
-    /* transform: translate(-20%, 10%); */
+    transform: scale(0.8);
+    position: relative;
+    left: 20%;
   }
 }
 
