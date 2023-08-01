@@ -13,7 +13,7 @@ body {
 
 .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
   position: fixed;
-  top: 0;
+  top: 100px;
   left: 0;
 }
 
@@ -29,9 +29,6 @@ body {
   gap: 40px;
 }
 
-
-
-
 .swiper-pagination .swiper-pagination-bullet {
   width: 30px;
   background-color: transparent;
@@ -39,46 +36,30 @@ body {
 
 .swiper-pagination-bullet-active {
   text-transform: uppercase;
-  color: rgb(139, 219, 20);
+  color: #7af683ff;
 }
 
 /* 
-.swiper-pagination {
-  padding: 12px;
-  background-color: white;
-  height: 200px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-
-  width: 300px;
+.Swiper__Slide__Content,
+.swiper-slide,
+.swiper-slide-visible .swiper-slide-active {
+  filter: drop-shadow(5px 6px 100px #000000);
 }
 
-.swiper-pagination-bullet {
-  border: 100%;
-  background-color: none;
-  height: 30px;
-  width: 40px;
-}
+.swiper-slide-prev.swiper-slide{
+  opacity: 0.4;
+  transform: translate(-50%, -50%);
+} */
 
-.swiper-pagination-bullet-active {
-  color: black;
-  font-size: 1.1rem;
-  background-color: none;
-}
- */
+/* PROVA MOBILE */
 
- /* PROVA MOBILE */
-
- @media screen and (max-width: 767px) {
+@media screen and (max-width: 767px) {
   .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
     position: fixed;
     top: 0;
     left: 0;
   }
-  
+
   .swiper-pagination {
     width: 10%;
     height: 100%;
@@ -95,5 +76,4 @@ body {
     width: 20px;
     background-color: transparent;
   }
-
- }
+}

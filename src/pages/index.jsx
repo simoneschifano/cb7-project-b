@@ -152,7 +152,7 @@ export default function Home() {
       speed: +0.003,
       distance: 9.539,
       dimension: 2.65,
-      ring: true,
+      ring: false,
       satellites: false,
     },
 
@@ -267,8 +267,6 @@ export default function Home() {
           </Swiper>
         </div>
 
-        {/* Oggetto della modale che viene scatenato all'onClick su un pianeta e genera i valori passati */}
-        {/* TODO: necessario aggiornamento allo swipe del pianeta */}
         {showModal && selectedPlanet && (
           <div className={styles.Modal}>
             <div className={styles.Modal__Content}>

@@ -42,7 +42,7 @@ const Moon = () => {
   return (
     <div className={styles.Moon}>
       <Canvas className="canvas">
-        <OrbitControls enableZoom={false} />
+        {/* <OrbitControls enableZoom={false} /> */}
         <ambientLight intensity={0.9} />
         <directionalLight position={[-2, 5, 2]} />
         <Suspense fallback={null}>

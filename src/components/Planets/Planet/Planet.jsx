@@ -46,7 +46,7 @@ const Planet = ({ link, speed, scale, ring, satellites }) => {
       {satellites && <Moon />}
       {!ring && (
         <Canvas className="canvas">
-          <OrbitControls enableZoom={false} />
+          {/* <OrbitControls enableZoom={false} /> */}
           <ambientLight intensity={0.9} />
           <directionalLight position={[-2, 5, 2]} />
 
