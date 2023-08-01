@@ -39,41 +39,33 @@ body {
   color: #7af683ff;
 }
 
-/* 
-.Swiper__Slide__Content,
-.swiper-slide,
-.swiper-slide-visible .swiper-slide-active {
-  filter: drop-shadow(5px 6px 100px #000000);
-}
-
-.swiper-slide-prev.swiper-slide{
-  opacity: 0.4;
-  transform: translate(-50%, -50%);
-} */
-
-/* PROVA MOBILE */
-
 @media screen and (max-width: 767px) {
-  .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
-    position: fixed;
-    top: 0;
-    left: 0;
+  .swiper-pagination {
+    visibility: hidden;
   }
 
-  .swiper-pagination {
-    width: 10%;
-    height: 100%;
-    color: white;
-    z-index: -1;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
-    gap: 40px;
+  .swiper-pagination-bullet-active {
+    font-size: 1.3rem;
+    visibility: visible;
   }
 
   .swiper-pagination .swiper-pagination-bullet {
-    width: 20px;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: all 400ms ease;
+    font-size: 2rem;
+    width: 100%;
     background-color: transparent;
+  }
+
+  .swiper-slide {
+    visibility: hidden;
+  }
+
+  .swiper-slide.swiper-slide-visible.swiper-slide-active {
+    visibility: visible;
   }
 }

@@ -43,7 +43,7 @@ const Planet = ({ link, speed, scale, ring, satellites }) => {
 
   return (
     <div className={styles.Planet}>
-      {satellites && <Moon />}
+      {/* {satellites && <Moon />} */}
       {!ring && (
         <Canvas className="canvas">
           {/* <OrbitControls enableZoom={false} /> */}
@@ -52,11 +52,13 @@ const Planet = ({ link, speed, scale, ring, satellites }) => {
 
           <Suspense fallback={null}>
             {/* {satellites && console.log("coap")} */}
-            <SpherePlanet speed={speed} texture={texture} scale={scale} />
+            {texture && (
+              <SpherePlanet speed={speed} texture={texture} scale={scale} />
+            )}
           </Suspense>
         </Canvas>
       )}
-      {ring && <Saturn />}
+      {/* {ring && <Saturn />} */}
     </div>
   );
 };

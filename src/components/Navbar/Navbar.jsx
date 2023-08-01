@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import { useContext } from "react";
 
@@ -36,35 +35,9 @@ const Navbar = ({ distanceValue }) => {
 
             <div className={styles.wrappertxt}>
               <h5 className={styles.navbar__currentDistance}>
-                Distanza Percorsa: <br /> {distanceValue.toFixed(2)} au{" "}
+                Distanza Percorsa: <br /> {distanceValue.toFixed(2)} au
               </h5>
             </div>
-
-            <label className={styles.BurgerWrapper}>
-              <input type="checkbox" name="Burger" className={styles.Burger} />
-
-              <span className={styles.menu}>
-                <span className={styles.hamburger}></span>
-              </span>
-
-              <ul className={styles.BurgerUl}>
-                <li className={styles.BurgerLi}>
-                  <Link href="/wiki">Wiki</Link>
-                </li>
-
-                <li className={styles.BurgerLi}>
-                  <Link href={"/about"}>About Us</Link>
-                </li>
-
-                <li className={styles.BurgerLi}>
-                  <Link href={"/minigame"}>Mini-Game</Link>
-                </li>
-
-                <li className={styles.BurgerLi}>
-                  <Link href={"/preview"}>Back to Settings</Link>
-                </li>
-              </ul>
-            </label>
           </div>
         </div>
       </div>
