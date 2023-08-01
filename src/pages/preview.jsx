@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import Image from "next/image";
 
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { MainContext } from "@/state";
 
@@ -14,6 +14,8 @@ const Preview = () => {
   const router = useRouter();
 
   const { state, dispatch } = useContext(MainContext);
+  const [openPopup, setOpenPopup] = useState(false);
+  const [confirmBack, setConfirmBack] = useState(false)
 
   useEffect(() => {
     const usernameFromLocalStorage = localStorage.getItem("username");
@@ -47,19 +49,22 @@ const Preview = () => {
   const onHandleBack = (e) => {
     e.preventDefault();
     // Mostra un alert con conferma
-    const confirmed = window.confirm(
-      "If you go back you will discard all changes"
-    );
-    if (confirmed) {
-      // Resetta i dati nel localStorage
-      localStorage.removeItem("username");
-      localStorage.removeItem("skinColor");
-      localStorage.removeItem("suitColor");
-      localStorage.removeItem("spacecraft");
-      localStorage.removeItem("hasSeenInstructions");
-      router.push(`/login`);
-    }
+    setOpenPopup(true);
   };
+
+  const onHandlePopupChoiceYes = () => {
+    // Resetta i dati nel localStorage
+    localStorage.removeItem("username");
+    localStorage.removeItem("skinColor");
+    localStorage.removeItem("suitColor");
+    localStorage.removeItem("spacecraft");
+    localStorage.removeItem("hasSeenInstructions");
+    router.push(`/login`);
+  }
+
+  const onHandlePopupChoiceNo = () => {
+    setOpenPopup(false);
+  }
 
   return (
     <>
@@ -128,6 +133,17 @@ const Preview = () => {
             </button>
           </div>
         </form>
+        <div className={openPopup ? styles.Container__Popup : styles.Container__Popup__Closed}>
+          <div className={openPopup ? styles.Back__Popup : styles.Back__Popup__Closed}>
+            <h3>Are you sure?</h3>
+            <div className={styles.Container__Choices}>
+              <button onClick={onHandlePopupChoiceYes}> <span>Yes</span></button>
+              <button onClick={onHandlePopupChoiceNo}> <span>No</span></button>
+            </div>
+          </div>
+        </div>
+
+
       </main>
     </>
   );
