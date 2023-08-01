@@ -11,9 +11,9 @@ import AvatarSvg from "../AvatarSvg";
 import styles from "./LoginComp.module.scss";
 
 const spacecraftOptions = [
-  { value: "spaceShip1", label: "Spaceship 1" },
-  { value: "spaceShip2", label: "Spaceship 2" },
-  { value: "spaceShip3", label: "Spaceship 3" },
+  { value: "space-Ship1", label: "Spaceship 1" },
+  { value: "space-Ship2", label: "Spaceship 2" },
+  { value: "space-Ship3", label: "Spaceship 3" },
 ];
 
 const LoginComp = () => {
