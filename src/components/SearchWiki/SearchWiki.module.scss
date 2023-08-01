@@ -14,7 +14,6 @@
   h3 {
     color: white;
   }
-
   .Search__Form__Container {
     position: relative;
     display: flex;
@@ -122,10 +121,10 @@
   height: 270px;
   display: flex;
   justify-content: center;
+  padding-left: 120px;
   gap: 20px;
   overflow-x: auto;
   overflow-y: hidden;
-
   &::-webkit-scrollbar {
     height: 8px;
   }
@@ -166,7 +165,38 @@
   top: 0;
   left: 0;
   transform: rotate(180deg);
-  padding: 20px;
+  padding: 10px;
   cursor: pointer;
   z-index: 999;
+  .Back__Button__Image{
+    filter: invert(100%);
+    transform: scaleX(-1);
+   
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* This is for mobile devices */
+  .Wrapper__Wiki {
+    
+    margin-top: 70px;
+    h1 {
+      font-size: 1.7rem;
+    }
+    .List_Elements{
+    display: flex;
+    justify-content: space-between;
+    padding: 22px;
+    height: 220px;
+    }
+  }
+  
+  /* This is for tablet devices */
+  @media screen and (min-width: 601px) and (max-width: 1024px) {
+  }
+
+  /* This is for laptop devices */
+  @media screen and (min-width: 1025px) {
+    
+  }
 }

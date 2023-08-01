@@ -34,6 +34,24 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
+        .Leaderboard__row {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            h3 {
+                font-size: 1.6rem;
+                color: $color-heading
+            }
+            h4 {
+                font-size: 1.2rem;
+                color: white;
+            }
+            p {
+                font-size: 1.6rem;
+                color: $color-heading;
+            }
+        }
     }
 
     
