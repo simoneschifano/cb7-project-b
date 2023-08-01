@@ -6,17 +6,21 @@ import { useState, useEffect, useContext } from "react";
 const Leaderboard = ({score, complete}) => {
     
     const [scoresData, setScoresData] = useState([])
+    const [openModal, setOpenModal] = useState(true)
 
     useEffect(() => {
         if (complete === true) {
           addData();
         }
-        getData().then((data) => {
-          let orderedData = data.sort((x, y) => x.score - y.score);
-          let scoreboard = orderedData.slice(0, 10);
-          setScoresData(scoreboard);
-        });
       }, [complete]);
+
+    useEffect(() => {
+        getData().then((data) => {
+            let orderedData = data.sort((x, y) => x.score - y.score);
+            let scoreboard = orderedData.slice(0, 10);
+            setScoresData(scoreboard);
+          });
+    }, [data])
     
 
     const addData = async () => {
@@ -36,12 +40,16 @@ const Leaderboard = ({score, complete}) => {
 
         return data
     }
+
+    const closeModal = () => {
+        setOpenModal(false)
+    }
    
 
-    return <div className={styles.Leaderboard}>
+    return <>{openModal && <div className={styles.Leaderboard}>
         <div className={styles.Leaderboard__Header}>
             <h2>Leaderboard</h2>
-            <div className={styles.Leaderboard__close}></div>
+            <div className={styles.Leaderboard__close} onClick={closeModal}>x</div>
         </div>
         <div className={styles.Leaderboard__Main}>
             {scoresData && scoresData.map((score, index) => {
@@ -53,7 +61,8 @@ const Leaderboard = ({score, complete}) => {
             })
             }
         </div>
-    </div>
+    </div>}
+    </>
 }
 
 export default Leaderboard;
