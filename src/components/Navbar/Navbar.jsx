@@ -35,7 +35,7 @@ const Navbar = ({ distanceValue }) => {
 
             <div className={styles.wrappertxt}>
               <h5 className={styles.navbar__currentDistance}>
-                Distanza Percorsa: <br /> {distanceValue.toFixed(2)} au
+                Travelled distance: <br /> {distanceValue.toFixed(2)} au
               </h5>
             </div>
           </div>
