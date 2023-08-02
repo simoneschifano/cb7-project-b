@@ -13,9 +13,7 @@
   }
 
   label .menu {
-    position: fixed;
-    right: -100px;
-    top: -92px;
+    @include position(fixed, -92px, -100px, null, null);
     z-index: 100;
     width: 200px;
     height: 150px;
@@ -29,9 +27,7 @@
   }
 
   label .hamburger {
-    position: absolute;
-    top: 135px;
-    left: 50px;
+    @include position(absolute, 135px, null, null, 50px);
     width: 30px;
     height: 2px;
     background: #ffffff;

@@ -8,9 +8,7 @@
   box-shadow: 0 0 6px 2px $color-heading;
   background-color: #ffffff;
 
-  position: fixed;
-  bottom: 0;
-  left: 50%;
+  @include position(fixed, null, null, 0, 50%);
   transform: translateX(-50%);
   border-radius: 46% 46% 0 0;
 
@@ -29,9 +27,7 @@
     position: fixed;
     height: 100%;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flexDirection(row, center, center);
     gap: 40px;
   }
 }
@@ -74,9 +70,7 @@
 
 @media screen and (max-width: 767px) {
   .Navbar {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
+    @include position(fixed, null, null, 50%, 0);
     transform: translateX(-50%) translateY(+20%) scale(0.55);
   }
 }

@@ -14,11 +14,13 @@ $basesize: 16px;
     align-items: $align;
     
   }
-  
-  @mixin absolutePosition($firstReference, $firstValue, $secondReference, $secondValue) {
-    position: absolute;
-    $firstReference: $firstValue;
-    $secondReference: $secondValue;
+
+  @mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
   }
   
   @mixin centerAbsolute($xPerc, $yPerc) {

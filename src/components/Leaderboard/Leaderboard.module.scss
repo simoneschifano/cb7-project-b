@@ -2,20 +2,14 @@
     width: 100%;
     height: 100%;
     background-color: transparent;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    @include flexDirection(column, center, center);
     gap: 12px;
     border-left: 1px solid rgba(255, 255, 255, 0.241);
     &__Header {
         width: 100%;
         height: auto;
         font-size: 2rem;
-        display: flex;
-        flex-direction: row-reverse;
-        align-items: center;
-        justify-content: center;
+        @include flexDirection(row-reverse, center, center);
         h2 {
             color: $color-heading;
         }
@@ -30,15 +24,10 @@
     &__Main {
         width: 100%;
         min-height: 90%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
+        @include flexDirection(column,  center, space-around);
         .Leaderboard__row {
             display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
+            @include flexDirection(row, center, space-between);
             h3 {
                 font-size: 1.6rem;
                 color: $color-heading

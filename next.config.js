@@ -4,6 +4,7 @@ const nextConfig = {
   sassOptions: {
     additionalData: `
   @import "./src/styles/variables/colors.scss";
+  @import "./src/styles/variables/helpers.scss";
   `,
   },
 };

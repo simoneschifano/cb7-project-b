@@ -5,10 +5,7 @@
   height: 100vh;
   min-height: 800px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  @include flexDirection(column, center, center);
   gap: 24px;
 
   color: $color-text;
@@ -22,10 +19,7 @@
   }
 
   &__Form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    @include flexDirection(column, center, center);
     padding: 24px;
 
     select {
@@ -40,17 +34,12 @@
   }
 
   &__Settings {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flexDirection(row, center, center);
     gap: 90px;
     padding: 12px;
 
     &__Avatar {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
+      @include flexDirection(column, center, center);
       gap: 24px;
 
       .Avatar {
@@ -85,20 +74,14 @@
         }
 
         &__Color {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-direction: column;
+          @include flexDirection(column, center, center);
           gap: 12px;
         }
       }
     }
 
     &__Spacecraft {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
+      @include flexDirection(column, center, center);
       gap: 24px;
 
       select {
@@ -217,10 +200,7 @@
     }
 
     &__Info {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
+      @include flexDirection(column, center, center);
       margin: 24px;
 
       &__Title {
