@@ -46,12 +46,11 @@
   backdrop-filter: blur(6.1px);
   -webkit-backdrop-filter: blur(6.1px);
 }
-.Modal__Title{
+.Modal__Title {
   font-size: 1.7rem;
   margin-bottom: 10px;
   color: #7af683ff;
 }
-
 
 .Modal__Title {
   font-size: 1.7rem;
@@ -235,13 +234,20 @@
 
   z-index: 9999;
   position: absolute;
-  top: 12%;
-  left: 80%;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: none;
+  cursor: pointer;
+  padding: 8px 16px;
 
-  background-color: #262322ff;
+  border: 1px solid rgb(105, 105, 105);
+  background: none;
+  /* background-color: #262322ff; */
   color: #7af683ff;
   transition: 0.45s;
 }
+
 .Toggle__Container:hover {
   background-color: rgb(98, 207, 105);
   color: #262322ff;
@@ -323,14 +329,16 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
-  
+
   .Toggle__Container {
     width: 100px;
-    height: 70px;
-    margin:8px;
+    height: 60px;
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 14px;
+    left: 68px;
+    color: #fff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
   }
 }
 

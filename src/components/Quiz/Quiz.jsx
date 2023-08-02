@@ -1,60 +1,60 @@
-import { useState, useEffect, useRef} from "react";
+import { useState, useEffect, useRef } from "react";
 import { db } from "@/plugins/firebase";
 import { collection, addDoc } from "firebase/firestore";
-import styles from "./Quiz.module.scss"
+import styles from "./Quiz.module.scss";
 import Leaderboard from "../Leaderboard";
 import Router from "next/router";
 import Image from "next/image";
 
-
 const Quiz = ({ data }) => {
   const [randomQuest, setRandomQuest] = useState(false);
   const [startedQuiz, setStartedQuiz] = useState(false);
-  const [username, setUsername] = useState("")
+  const [username, setUsername] = useState("");
   const doneAnswer = useRef();
   const [correctCounter, setCorrectCounter] = useState(0);
   const [answerCounter, setAnswerCounter] = useState(0);
   const [completedQuiz, setCompletedQuiz] = useState(false);
   const [score, setScore] = useState(0);
-  const [openModal, setOpenModal] = useState(false)
+  const [openModal, setOpenModal] = useState(false);
   const [timer, setTimer] = useState(false);
-  const [finalScore, setFinalScore] = useState(false)
+  const [finalScore, setFinalScore] = useState(false);
 
- useEffect(() => {
+  useEffect(() => {
     if (timer === 0) {
-    setTimer(0)
-    setCompletedQuiz(true);
-    setStartedQuiz(false);
+      setTimer(0);
+      setCompletedQuiz(true);
+      setStartedQuiz(false);
     }
     timer && timer > 0 && setTimeout(() => setTimer(timer - 1), 1000);
-  }, [timer]); 
+  }, [timer]);
 
-
-const addData = async () => {
-    console.log("added data")
+  const addData = async () => {
+    console.log("added data");
     if (finalScore) {
-      setOpenModal(true)
-      console.log("testo")
-    const docRef = await addDoc(collection(db, "scoreboard"), {
-        id: `${localStorage.getItem("username")}${localStorage.getItem("skinColor")}${localStorage.getItem("suitColor")}`,
+      setOpenModal(true);
+      console.log("testo");
+      const docRef = await addDoc(collection(db, "scoreboard"), {
+        id: `${localStorage.getItem("username")}${localStorage.getItem(
+          "skinColor"
+        )}${localStorage.getItem("suitColor")}`,
         score: finalScore,
-        username: localStorage.getItem("username")
+        username: localStorage.getItem("username"),
       });
-    } else {console.log("non testo")}
-}
-
-
+    } else {
+      console.log("non testo");
+    }
+  };
 
   const rightAnswer = (difficulty) => {
-    setCorrectCounter(correctCounter + 1)
-    setScore(score + (difficulty))
-    setAnswerCounter(answerCounter + 1)
+    setCorrectCounter(correctCounter + 1);
+    setScore(score + difficulty);
+    setAnswerCounter(answerCounter + 1);
     setTimeout(() => {
-        doneAnswer.current.style.display = 'none';
-        startQuiz()
+      doneAnswer.current.style.display = "none";
+      startQuiz();
     }, 1000);
-    doneAnswer.current.style.border = '2px solid #7af683ff'
-}
+    doneAnswer.current.style.border = "2px solid #7af683ff";
+  };
 
   const startQuiz = () => {
     setStartedQuiz(true);
@@ -62,55 +62,58 @@ const addData = async () => {
       setTimer(60);
       const randomData = [...data].sort(() => 0.5 - Math.random());
       setRandomQuest(randomData[[Math.floor(Math.random() * 9)]]);
-     } else if (timer === 0) {
+    } else if (timer === 0) {
       setCompletedQuiz(true);
-      setTimer(false)
-      setFinalScore(score * (1 + (timer * 0.01)))
+      setTimer(false);
+      setFinalScore(score * (1 + timer * 0.01));
     } else if (answerCounter < 9) {
       const randomData = [...data].sort(() => 0.5 - Math.random());
       setRandomQuest(randomData[[Math.floor(Math.random() * 9)]]);
     } else {
       setCompletedQuiz(true);
-      setTimer(false)
-      setFinalScore(score * (1 + (timer * 0.01)))
+      setTimer(false);
+      setFinalScore(score * (1 + timer * 0.01));
     }
-    setUsername(localStorage.getItem("username"))
+    setUsername(localStorage.getItem("username"));
   };
 
-
   const wrongAnswer = () => {
-    doneAnswer.current.style.border = '2px solid #dc143c'
+    doneAnswer.current.style.border = "2px solid #dc143c";
     setAnswerCounter(answerCounter + 1);
     setTimeout(() => {
       doneAnswer.current.style.display = "none";
       startQuiz();
     }, 1000);
-    
   };
 
   const returnHome = () => {
-      Router.push("/");
-    };
+    Router.push("/");
+  };
 
-    const onHandleModal = () => {
-        setOpenModal(!openModal)
-    }
+  const onHandleModal = () => {
+    setOpenModal(!openModal);
+  };
 
   return (
     <div className={styles.Quiz__main}>
       <h1>ASTROquiz</h1>
       {completedQuiz ? null : <h2>{username}</h2>}
       <div className={styles.Close__Button} onClick={returnHome}>
-        <Image className={styles.Back__Button__Image} src={'https://www.svgrepo.com/show/18507/back-button.svg'} width={40} height={40} alt="back_button_image" />
+        <Image
+          className={styles.Back__Button__Image}
+          src={"https://www.svgrepo.com/show/18507/back-button.svg"}
+          width={40}
+          height={40}
+          alt="back_button_image"
+        />
       </div>
 
       {completedQuiz ? null : (
         <div className={styles.Quiz__Info}>
-          <h3>Timer: {timer}</h3> 
+          <h3>Timer: {timer}</h3>
           <h4>Correct answers: {correctCounter}</h4>
           <h6>Given answers: {answerCounter}</h6>
         </div>
-
       )}
       <div className={styles.Quiz__Container}>
         {startedQuiz === false && completedQuiz === false ? (
@@ -153,15 +156,20 @@ const addData = async () => {
               <h3>
                 Your score: <strong>{finalScore}</strong>
               </h3>
-              {finalScore ? <button onClick={addData}>Add your score!</button> : <button onClick={() => onHandleModal()}>Leaderboard</button>}
+              {finalScore ? (
+                <button onClick={addData}>Add your score!</button>
+              ) : (
+                <button onClick={() => onHandleModal()}>Leaderboard</button>
+              )}
             </div>
           </div>
         )}
       </div>
-      {completedQuiz && openModal &&
-      <div className={styles.Leaderboard__Sidebar}>
-        <Leaderboard username={username}/>
-      </div>}
+      {completedQuiz && openModal && (
+        <div className={styles.Leaderboard__Sidebar}>
+          <Leaderboard username={username} />
+        </div>
+      )}
     </div>
   );
 };

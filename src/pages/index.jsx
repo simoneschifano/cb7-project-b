@@ -69,7 +69,7 @@ export default function Home() {
       // Pulizia del timeout quando il componente viene smontato
       return () => clearTimeout(timeoutId);
     }
-  }, []);
+  }, [modalInstructions]);
 
   useEffect(() => {
     // Imposta lo stato showButton su true dopo 3 secondi
@@ -201,16 +201,16 @@ export default function Home() {
       satellites: false,
     },
 
-    {
-      id: 10,
-      name: "Pluto",
-      link: "/Textures/Pluto.jpg",
-      speed: -0.0009,
-      distance: 39.44,
-      dimension: 1,
-      ring: false,
-      satellites: false,
-    },
+    // {
+    //   id: 10,
+    //   name: "Pluto",
+    //   link: "/Textures/Pluto.jpg",
+    //   speed: -0.0009,
+    //   distance: 39.44,
+    //   dimension: 1,
+    //   ring: false,
+    //   satellites: false,
+    // },
   ];
 
   const pagination = {
@@ -279,14 +279,15 @@ export default function Home() {
           </div>
         )}
 
-
         <button
           className={styles.Toggle__Container}
           onClick={() => setPersistentModal(!persistentModal)}
         >
           Planets Info
         </button>
+
         <Topbar />
+
         <div className={styles.Swiper__Container}>
           <Swiper
             className={`mySwiper ${styles.Swiper__Main}`}
