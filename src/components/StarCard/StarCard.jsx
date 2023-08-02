@@ -5,15 +5,15 @@ const StarCard = ({ data }) => {
     <>
       <div className={styles.Card__Wrapper}>
         <div className={styles.Card__Main}>
-          {data.name && <h3> Name:{data.name} </h3>}
+          {data.name && <p> <strong>Name:</strong>{data.name} </p>}
 
-          {data.constellation && <h3> Constellation:{data.constellation} </h3>}
+          {data.constellation && <p> <strong>Constellation:</strong>{data.constellation} </p>}
 
-          {data.right_ascension && <h3> Right Ascension:{data.right_ascension} </h3>}
+          {data.right_ascension && <p> <strong>Right Ascension:</strong>{data.right_ascension} </p>}
 
-          {data.spectral_class && <h3> Spectral Class:{data.spectral_class} </h3>}
+          {data.spectral_class && <p> <strong>Spectral Class:</strong>{data.spectral_class} </p>}
 
-          {data.distance_light_year && <h3> Distance Light Year:{data.distance_light_year} </h3>}
+          {data.distance_light_year && <p> <strong>Distance Light Year:</strong>{data.distance_light_year} </p>}
         </div>
       </div>
     </>

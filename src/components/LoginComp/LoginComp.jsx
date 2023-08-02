@@ -20,6 +20,7 @@ const LoginComp = () => {
   const router = useRouter();
   const { state, dispatch } = useContext(MainContext); // usa il contesto
   const [selectedSpacecraft, setSelectedSpacecraft] = useState("space-Ship1");
+  const [openPopup, setOpenPopup] = useState(false);
 
   //Intercetta i dati localStorage
   const saveUserDataToLocalStorage = () => {
@@ -37,9 +38,13 @@ const LoginComp = () => {
       saveUserDataToLocalStorage();
       router.push("/preview");
     } else {
-      alert(`Username must be at least ${minLength} characters long.`);
+      setOpenPopup(true);
     }
   };
+
+  const onHandlePopup = () => {
+    setOpenPopup(false);
+  }
 
   //se i dati sono già stati caricati precendentemente fa un controllo in caso
   useEffect(() => {
@@ -158,6 +163,14 @@ const LoginComp = () => {
           <span className={styles.Login__Submit__Span}></span>
         </div>
       </form>
+
+      <div className={openPopup ? styles.Container__Popup : styles.Container__Popup__Closed }>
+        <div className={openPopup ? styles.Popup__Alert : styles.Popup__Al__Closed }>
+          Username must be at least 4 characters long.
+          <button onClick={onHandlePopup}> <span>Ok</span> </button>
+        </div>
+      </div>
+
     </div>
   );
 };
