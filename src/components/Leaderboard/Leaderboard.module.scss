@@ -1,21 +1,29 @@
 .Leaderboard {
     width: 100%;
     height: 100%;
-    background-color: transparent;
+    background-image: url("/Milky.jpg");
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 12px;
+    padding-top: 40px;
     border-left: 1px solid rgba(255, 255, 255, 0.241);
     &__Header {
         width: 100%;
         height: auto;
         font-size: 2rem;
         display: flex;
-        flex-direction: row-reverse;
-        align-items: center;
+        flex-direction: row;
+        align-items: flex-start;
         justify-content: center;
+        &__Username {
+            color: $color-text;
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 12px;
+        }
         h2 {
             color: $color-heading;
         }
@@ -26,33 +34,115 @@
         transform: rotate(180deg);
         padding: 20px;
         }
+        &__Center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            button {
+                cursor: pointer;
+                position: relative;
+                background-color: $color-text;
+                border-radius: 12px;
+                padding: 12px;
+                font-size: 1.2rem;
+                text-transform: uppercase;
+                color: $color-text;
+                width: 200px;
+                height: 60px;
+                background: rgba(35, 35, 35, 0.581);
+                border: 2px solid white;
+          
+                &:hover {
+                  background-color: $color-black;
+                  color: $color-heading;
+                  border: 2px solid $color-text;
+                  transform: scale(1.04);
+                  transition: all 400ms ease;
+                }
+              }
+        }
     }
+
+    .Close__Button {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 16px;
+        .Back__Button__Image{
+            filter: invert(100%);
+            transform: scaleX(1);
+            cursor: pointer;
+        }
+    }
+
     &__Main {
-        width: 100%;
-        min-height: 90%;
+        width: 60%;
+        min-height: 70%;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-between;
         .Leaderboard__row {
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
+            gap: 12px;
             h3 {
                 font-size: 1.6rem;
                 color: $color-heading
             }
             h4 {
-                font-size: 1.2rem;
+                font-size: 1.6rem;
                 color: white;
             }
             p {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
                 color: $color-heading;
+            }
+            &:hover {
+                border-radius: 12px;
+                border: 1px solid white;
+                transform: scale(1.2);
+                padding: 6px;
             }
         }
     }
 
     
+}
+
+@media screen and (max-width: 767px) {
+    .Leaderboard {
+        &__Header {
+            width: 100%;
+            height: auto;
+            font-size: 2rem;
+            &__Username {
+                display: none;
+            }
+            h2 {
+                color: $color-heading;
+            }
+            .Leaderboard__close {
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transform: rotate(180deg);
+            padding: 20px;
+            }
+            &__Center {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+    }
+    &__Main {
+        width: 100%;
+        
+    }
+}
 }

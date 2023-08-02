@@ -1,9 +1,15 @@
 import styles from "../styles/about.module.scss";
+import Image from "next/image";
+import Router from "next/router";
 
 import Image from "next/image";
 import Head from "next/head";
 
 export default function About() {
+  const returnHome = () => {
+    Router.push("/");
+  };
+
   return (
     <>
       <Head>

@@ -8,6 +8,7 @@ import { MainContext } from "@/state";
 import Navbar from "@/components/Navbar";
 import Planet from "@/components/Planets/Planet/Planet";
 import Menu from "@/components/Menu";
+import ProgressBar from "@/components/ProgressBar";
 
 import { planetsData } from "@/mock/planetsData";
 
@@ -30,7 +31,22 @@ export default function Home() {
   const { state, dispatch } = useContext(MainContext);
   const router = useRouter();
   //Rendering della pagina, esegue un controllo sui dati se non esistono va in /login altrimenti
+  //Progress bar
+  const [completed, setCompleted] = useState(0);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Incrementa completed gradualmente fino a 100
+      if (completed < 100) {
+        setCompleted(completed + 1);
+      } else {
+        clearInterval(interval); // Interrompi l'intervallo quando completed raggiunge 100
+      }
+    }, 1); // Aggiornamento frequente ogni 30 ms
+
+    return () => clearInterval(interval); // Cleanup dell'intervallo quando il componente si smonta
+  }, [completed]);
+  //Fine progressbar
   useEffect(() => {
     if (
       !state.username ||
@@ -43,7 +59,6 @@ export default function Home() {
   }, [router, state]);
 
   // State/function relative allo swiper
-  // const [pageValue, setPageValue] = useState();
   const [distanceValue, setDistanceValue] = useState(0);
 
   const distanceCalc = (reference) => {
@@ -64,18 +79,60 @@ export default function Home() {
     setDistanceValue(distanceValue + shift);
   };
 
+  //Modale delle istruzioni
+  const [modalInstructions, setModalInstructions] = useState(true);
+  const [showButton, setShowButton] = useState(false);
+
+  useEffect(() => {
+    const hasSeenInstructions = localStorage.getItem("hasSeenInstructions");
+    if (hasSeenInstructions) {
+      setModalInstructions(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    // Chiude automaticamente la modale dopo 5 secondi
+    if (modalInstructions) {
+      const timeoutId = setTimeout(() => {
+        setModalInstructions(false);
+        localStorage.setItem("hasSeenInstructions", "true");
+      }, 7000);
+
+      // Pulizia del timeout quando il componente viene smontato
+      return () => clearTimeout(timeoutId);
+    }
+  }, [modalInstructions]);
+
+  useEffect(() => {
+    // Imposta lo stato showButton su true dopo 3 secondi
+    const timer = setTimeout(() => {
+      setShowButton(true);
+    }, 2500);
+
+    // Assicurati di cancellare il timer quando il componente si smonta
+    return () => clearTimeout(timer);
+  }, []);
+
+  const onHandleClickModalClose = () => {
+    setModalInstructions(false);
+  };
+  //Fine modale delle istruzioni
+
   //Crea gli stati della modale
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(true);
+
   const [selectedPlanet, setSelectedPlanet] = useState(null);
+
+  const [persistentModal, setPersistentModal] = useState(false); // Stato per il toggle della modale persistente
 
   //Funzione che all'onClick scorre l'array e trova la corrispondenza con nome di planetsData
   const handlePlanetClick = (planetName) => {
     const selectedPlanet = planetsData.find(
       (planet) => planet.name === planetName
     );
+
     //stati della modale cambiati
-    // setSelectedPlanet(selectedPlanet);
-    // setShowModal(true);
+    setSelectedPlanet(selectedPlanet);
   };
 
   const solarSystem = [
@@ -178,16 +235,16 @@ export default function Home() {
       satellites: false,
     },
 
-    {
-      id: 10,
-      name: "Pluto",
-      link: "/Textures/Pluto.jpg",
-      speed: -0.0009,
-      distance: 39.44,
-      dimension: 1,
-      ring: false,
-      satellites: false,
-    },
+    // {
+    //   id: 10,
+    //   name: "Pluto",
+    //   link: "/Textures/Pluto.jpg",
+    //   speed: -0.0009,
+    //   distance: 39.44,
+    //   dimension: 1,
+    //   ring: false,
+    //   satellites: false,
+    // },
   ];
 
   const pagination = {
@@ -220,6 +277,71 @@ export default function Home() {
       </Head>
 
       <main className={styles.Main}>
+        {/* Modale Delle istruzioni */}
+        {modalInstructions && (
+          <div className={styles.Modal__Instructions}>
+          <ProgressBar bgcolor={"#7af683ff"} completed={completed} />
+            <h2 className={styles.Modal__Instructions__Header}>
+              Loading your journey...
+            </h2>
+            <div className={styles.Modal__Content__Instructions}>
+              <h2 className={styles.Modal__Instructions__Header2}>
+                Here the instructions for movement within the journey
+              </h2>
+
+              <p className={styles.Modal__Content__Instructions__para}>
+                Use the Keyboard arrow for move within planets
+              </p>
+              <div className={styles.Modal__Content__Instructions__keyboard}>
+                <div className={styles.Modal__Content__Instructions__left}>
+                  ⬅️
+                </div>
+                <div className={styles.Modal__Content__Instruction__right}>
+                  ➡️
+                </div>
+              </div>
+              <p className={styles.Ondrag__para}>
+                Drag the mouse (swipe) on a planet to move to the subsequent or
+                previous.
+              </p>
+              <p className={styles.Ondrag__para__mobile}>
+                Swipe on a planet to move to the subsequent or previous.
+              </p>
+              <div className={styles.Ondrag}>
+                <div className={styles.Instruction__scroll}>
+                  <div className={styles.Dot}></div>
+                  <div className={styles.Instruction__mousey}>
+                    <div className={styles.Instruction__scroller2}></div>
+                  </div>
+                </div>
+              </div>
+              <p className={styles.Instruction__scroll__para}>
+                You can also use the mouse wheel as a scroll
+              </p>
+              <div className={styles.Instruction__scroll}>
+                <div className={styles.Instruction__mousey}>
+                  <div className={styles.Instruction__scroller}></div>
+                </div>
+              </div>
+              {showButton && (
+                <button
+                  onClick={onHandleClickModalClose}
+                  className={styles.Modal__BtnContinue}
+                >
+                  <span>Continue to the journey</span>
+                </button>
+              )}
+            </div>
+          </div>
+        )}
+
+        <button
+          className={styles.Toggle__Container}
+          onClick={() => setPersistentModal(!persistentModal)}
+        >
+          Planets Info
+        </button>
+
         <Topbar />
 
         <div className={styles.Swiper__Container}>
@@ -249,12 +371,14 @@ export default function Home() {
                 translate: ["50%", 250, 0],
               },
             }}
-            modules={[EffectCreative, Keyboard, Mousewheel, Pagination]}>
+            modules={[EffectCreative, Keyboard, Mousewheel, Pagination]}
+          >
             {solarSystem.map((planet) => (
               <SwiperSlide className={styles.Swiper__Slide} key={planet.id}>
                 <div
                   className={styles.Swiper__Slide__Content}
-                  onClick={() => handlePlanetClick(planet.name)}>
+                  onClick={() => handlePlanetClick(planet.name)}
+                >
                   <Planet
                     link={planet.link}
                     speed={planet.speed}
@@ -268,69 +392,69 @@ export default function Home() {
           </Swiper>
         </div>
 
-        {showModal && selectedPlanet && (
+        {!persistentModal && showModal && selectedPlanet && (
           <div className={styles.Modal}>
-            <div className={styles.Modal__Content}>
-              <p
-                className={styles.Modal__Button}
-                onClick={() => setShowModal(false)}>
-                ❌
-              </p>
+            <p
+              className={styles.Modal__Button}
+              onClick={() => setPersistentModal(!persistentModal)}
+            >
+              ❌
+            </p>
 
-              <h2>{selectedPlanet.name}</h2>
+            <h2 className={styles.Modal__Title}>{selectedPlanet.name}</h2>
 
-              <p>
-                <span className={styles.Modal__Important}> Mass: </span>
-                {selectedPlanet.mass}
-              </p>
+            <p>
+              <span className={styles.Modal__Important}> Mass: </span>
+              {selectedPlanet.mass}
+            </p>
 
-              <p>
-                <span className={styles.Modal__Important}>Type: </span>
-                {selectedPlanet.type}
-              </p>
+            <p>
+              <span className={styles.Modal__Important}>Type: </span>
+              {selectedPlanet.type}
+            </p>
 
-              <p>
-                <span className={styles.Modal__Important}>Radius: </span>
-                {selectedPlanet.radius}
-              </p>
+            <p>
+              <span className={styles.Modal__Important}>Radius: </span>
+              {selectedPlanet.radius}
+            </p>
 
-              <p>
-                <span className={styles.Modal__Important}>Composition:</span>{" "}
-                {selectedPlanet.composition}
-              </p>
-              <p>
-                <span className={styles.Modal__Important}>Description:</span>{" "}
-                {selectedPlanet.description}
-              </p>
+            <p>
+              <span className={styles.Modal__Important}>Composition: </span>
+              {selectedPlanet.composition}
+            </p>
+            <p>
+              <span className={styles.Modal__Important}>Description: </span>
+              {selectedPlanet.description}
+            </p>
+            <p>
+              <span className={styles.Modal__Important}>
+                Distance from the Sun:{" "}
+              </span>
+              {selectedPlanet.distance_from_sun}
+            </p>
+
+            {selectedPlanet.average_temperature && (
               <p>
                 <span className={styles.Modal__Important}>
-                  Distance from the Sun:
+                  Average Temperature:{" "}
                 </span>
-                {selectedPlanet.distance_from_sun}
+                {selectedPlanet.average_temperature}
               </p>
+            )}
 
-              {selectedPlanet.average_temperature && (
-                <p>
-                  <span className={styles.Modal__Important}>
-                    Average Temperature:
-                  </span>
-                  {selectedPlanet.average_temperature}
-                </p>
-              )}
-
-              {selectedPlanet.surface_temperature && (
-                <p>
-                  <span className={styles.Modal__Important}>
-                    Surface Temperature:
-                  </span>
-                  {selectedPlanet.surface_temperature}
-                </p>
-              )}
-            </div>
+            {selectedPlanet.surface_temperature && (
+              <p>
+                <span className={styles.Modal__Important}>
+                  Surface Temperature:
+                </span>
+                {selectedPlanet.surface_temperature}
+              </p>
+            )}
           </div>
         )}
 
         <Navbar distanceValue={distanceValue} />
+
         <Menu />
       </main>
     </>

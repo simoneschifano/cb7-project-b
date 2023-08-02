@@ -49,6 +49,10 @@ body {
     visibility: visible;
   }
 
+  .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
+    top: 24px;
+  }
+
   .swiper-pagination .swiper-pagination-bullet {
     display: block;
     position: fixed;

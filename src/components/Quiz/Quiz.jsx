@@ -1,58 +1,56 @@
-import { useState, useEffect, useRef} from "react";
+import { useState, useEffect, useRef } from "react";
 import { db } from "@/plugins/firebase";
-import { collection, getDocs, addDoc } from "firebase/firestore";
-import styles from "./Quiz.module.scss"
+import { collection, addDoc } from "firebase/firestore";
+import styles from "./Quiz.module.scss";
 import Leaderboard from "../Leaderboard";
 import Router from "next/router";
-
+import Image from "next/image";
 
 const Quiz = ({ data }) => {
   const [randomQuest, setRandomQuest] = useState(false);
   const [startedQuiz, setStartedQuiz] = useState(false);
-  const [username, setUsername] = useState("")
+  const [username, setUsername] = useState("");
   const doneAnswer = useRef();
   const [correctCounter, setCorrectCounter] = useState(0);
   const [answerCounter, setAnswerCounter] = useState(0);
   const [completedQuiz, setCompletedQuiz] = useState(false);
   const [score, setScore] = useState(0);
-  const [openModal, setOpenModal] = useState(false)
-  const [timer, setTimer] = useState("");
-  const [finalScore, setFinalScore] = useState(false)
+  const [openModal, setOpenModal] = useState(false);
+  const [timer, setTimer] = useState(false);
+  const [finalScore, setFinalScore] = useState(false);
 
   useEffect(() => {
     if (timer === 0) {
-    setTimer(0)
-    setCompletedQuiz(true);
-    setStartedQuiz(false);
+      setTimer(0);
+      setCompletedQuiz(true);
+      setStartedQuiz(false);
     }
     timer && timer > 0 && setTimeout(() => setTimer(timer - 1), 1000);
-  }, [timer]); 
+  }, [timer]);
 
-/* 
-const addData = async () => {
-    console.log("added data")
+  const addData = async () => {
     if (finalScore) {
-      console.log("testo")
-    const docRef = await addDoc(collection(db, "scores-list"), {
-        id: `${localStorage.getItem("username")}${localStorage.getItem("skinColor")}${localStorage.getItem("suitColor")}`,
+      setOpenModal(true);
+      const docRef = await addDoc(collection(db, "scoreboard"), {
+        id: `${localStorage.getItem("username")}${localStorage.getItem(
+          "skinColor"
+        )}${localStorage.getItem("suitColor")}`,
         score: finalScore,
-        username: localStorage.getItem("username")
+        username: localStorage.getItem("username"),
       });
-    }
-} */
-
-
+    } 
+  };
 
   const rightAnswer = (difficulty) => {
-    setCorrectCounter(correctCounter + 1)
-    setScore(score + (difficulty))
-    setAnswerCounter(answerCounter + 1)
+    setCorrectCounter(correctCounter + 1);
+    setScore(score + difficulty);
+    setAnswerCounter(answerCounter + 1);
     setTimeout(() => {
-        doneAnswer.current.style.display = 'none';
-        startQuiz()
+      doneAnswer.current.style.display = "none";
+      startQuiz();
     }, 1000);
-    doneAnswer.current.style.border = '2px solid #7af683ff'
-}
+    doneAnswer.current.style.border = "2px solid #7af683ff";
+  };
 
   const startQuiz = () => {
     setStartedQuiz(true);
@@ -62,46 +60,48 @@ const addData = async () => {
       setRandomQuest(randomData[[Math.floor(Math.random() * 9)]]);
     } else if (timer === 0) {
       setCompletedQuiz(true);
-      setTimer(false)
-      setFinalScore(score * (1 + (timer * 0.01)))
-      // addData();
+      setTimer(false);
+      setFinalScore(score * (1 + timer * 0.01));
     } else if (answerCounter < 9) {
       const randomData = [...data].sort(() => 0.5 - Math.random());
       setRandomQuest(randomData[[Math.floor(Math.random() * 9)]]);
     } else {
       setCompletedQuiz(true);
-      setTimer(false)
-      setFinalScore(score * (1 + (timer * 0.01)))
-      // addData()
-    }
-    setUsername(localStorage.getItem("username"))
+      setTimer(false);
+      setFinalScore(score * (1 + timer * 0.01));
+    } 
+    setUsername(localStorage.getItem("username"));
   };
 
-
   const wrongAnswer = () => {
-    doneAnswer.current.style.border = '2px solid #dc143c'
+    doneAnswer.current.style.border = "2px solid #dc143c";
     setAnswerCounter(answerCounter + 1);
     setTimeout(() => {
       doneAnswer.current.style.display = "none";
       startQuiz();
     }, 1000);
-    
   };
 
   const returnHome = () => {
-      Router.push("/");
-    };
+    Router.push("/");
+  };
 
-    const onHandleModal = () => {
-        setOpenModal(!openModal)
-    }
+  const onHandleModal = () => {
+    setOpenModal(!openModal);
+  };
 
   return (
     <div className={styles.Quiz__main}>
       <h1>ASTROquiz</h1>
       {completedQuiz ? null : <h2>{username}</h2>}
       <div className={styles.Close__Button} onClick={returnHome}>
-        ᐅ
+        <Image
+          className={styles.Back__Button__Image}
+          src={"https://www.svgrepo.com/show/18507/back-button.svg"}
+          width={40}
+          height={40}
+          alt="back_button_image"
+        />
       </div>
 
       {completedQuiz ? null : (
@@ -110,7 +110,6 @@ const addData = async () => {
           <h4>Correct answers: {correctCounter}</h4>
           <h6>Given answers: {answerCounter}</h6>
         </div>
-
       )}
       <div className={styles.Quiz__Container}>
         {startedQuiz === false && completedQuiz === false ? (
@@ -151,17 +150,20 @@ const addData = async () => {
                 Correct answers: <strong>{correctCounter}</strong>
               </h3>
               <h3>
-                Your score: <strong>{finalScore}</strong>
+                Your score: <strong>{finalScore.toFixed(2)}</strong>
               </h3>
-              {finalScore ? <button onClick={returnHome}>Back to home!</button> : <button onClick={() => onHandleModal()}>Leaderboard</button>}
+              {finalScore && 
+                <button onClick={addData}>Add your score!</button>
+              }
             </div>
           </div>
         )}
       </div>
-      {/* {completedQuiz && openModal && !timer &&
-      <div className={styles.Leaderboard__Sidebar}>
-        <Leaderboard score={finalScore} complete={completedQuiz}/>
-      </div>} */}
+      {completedQuiz && openModal && (
+        <div className={styles.Leaderboard__Sidebar}>
+          <Leaderboard username={username} />
+        </div>
+      )}
     </div>
   );
 };

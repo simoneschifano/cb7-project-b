@@ -29,39 +29,228 @@
 }
 
 .Modal {
+  text-align: center;
   position: fixed;
-  top: 30%;
+  text-align: center;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
   padding: 24px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
   z-index: 9999;
   color: #ffffff;
   line-height: 1.5rem;
-
   background: rgba(68, 68, 68, 0.4);
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
+  box-shadow: 0 0 10px #bebebe, 0px 0px 10px #7af683ff;
   backdrop-filter: blur(6.1px);
   -webkit-backdrop-filter: blur(6.1px);
+}
+.Modal__Title {
+  font-size: 1.7rem;
+  margin-bottom: 10px;
+  color: #7af683ff;
+}
+
+.Modal__Title {
+  font-size: 1.7rem;
+  margin-bottom: 10px;
+  color: #7af683ff;
 }
 
 .Modal__Important {
   text-transform: uppercase;
+  font-weight: 700;
 }
 
 .Modal__Button {
   width: fit-content;
   padding: 4px;
   cursor: pointer;
+  position: absolute;
+  right: 18px;
+  top: 18px;
 }
 
 .Modal__Button:hover {
   background-color: rgba(222, 13, 13, 0.499);
   color: #ffffff;
   border-radius: 4px;
+}
+
+/* Inizio css della modale delle istruzioni */
+.Modal__Instructions {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  padding: 24px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  z-index: 99999;
+  color: #ffffff;
+  line-height: 1.5rem;
+
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url("/Milky.jpg");
+
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(1.1px);
+  -webkit-backdrop-filter: blur(1.1px);
+}
+
+.Modal__Content__Instructions {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.Modal__Instructions__Header {
+  padding-top: 50px;
+  text-align: center;
+}
+
+.Modal__Instructions__Header2 {
+  margin-bottom: 20px;
+}
+
+.Modal__Content__Instructions__keyboard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Modal__Content__Instructions__left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  margin: 20px;
+  border: 1px solid rgba(57, 57, 57, 0.532);
+  animation: pulseAnimation 1.5s infinite;
+}
+
+.Modal__Content__Instruction__right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  margin: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  border: 1px solid rgba(57, 57, 57, 0.712);
+  animation: pulseAnimation 1.5s infinite;
+}
+
+.Ondrag {
+  animation: mouseAnimation 4s infinite;
+}
+.Ondrag__para__mobile {
+  display: none;
+}
+
+.Dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background-color: #f28c38;
+}
+
+.Instruction__scroller2 {
+  width: 3px;
+  height: 10px;
+  border-radius: 25%;
+  background-color: #fff;
+}
+
+.Instruction__scroll__para {
+  margin-top: 30px;
+}
+
+.Instruction__scroll {
+  margin: auto;
+
+  width: 34px;
+  height: 55px;
+}
+
+.Instruction__mousey {
+  margin-top: 12px;
+  width: 3px;
+  padding: 10px 15px;
+  height: 35px;
+  border: 2px solid #fff;
+  border-radius: 25px;
+  opacity: 0.75;
+  box-sizing: content-box;
+}
+.Instruction__scroller {
+  width: 3px;
+  height: 10px;
+  border-radius: 25%;
+  background-color: #fff;
+  animation-name: scroll;
+  animation-duration: 2.2s;
+  animation-timing-function: cubic-bezier(0.15, 0.41, 0.69, 0.94);
+  animation-iteration-count: infinite;
+}
+
+.Modal__BtnContinue {
+  position: fixed;
+  left: 450px;
+  display: inline-block;
+  width: 200px;
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid #7af683ff;
+
+  overflow: hidden;
+  transition: all 0.5s ease-in;
+  color: #fff;
+  z-index: 1;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.Modal__BtnContinue:hover {
+  background-color: #7af683ff;
+  color: #262322ff;
+}
+
+/* Fine della modale delle istruzioni */
+
+.Toggle__Container {
+  height: 40px;
+  border-radius: 12px;
+  padding: 4px;
+
+  z-index: 9999;
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: none;
+  cursor: pointer;
+  padding: 8px 16px;
+
+  border: 1px solid rgb(105, 105, 105);
+  background: none;
+  /* background-color: #262322ff; */
+  color: #7af683ff;
+  transition: 0.45s;
+}
+
+.Toggle__Container:hover {
+  background-color: rgb(98, 207, 105);
+  color: #262322ff;
 }
 
 @media screen and (max-width: 767px) {
@@ -86,8 +275,110 @@
     transform: scale(0.8);
     position: relative;
     left: 10%;
+    top: 24%;
+  }
+
+  .Modal {
+    width: 95%;
+    top: 31%;
+  }
+
+  .Modal__Button {
+    display: none;
+  }
+
+  .Modal__Title {
+    display: none;
+  }
+
+  .Modal__Content__Instructions__para {
+    display: none;
+  }
+
+  .Modal__Content__Instructions__keyboard {
+    display: none;
+  }
+
+  .Instruction__scroll__para {
+    display: none;
+  }
+
+  .Instruction__scroll {
+    display: none;
+  }
+
+  .Ondrag__para {
+    display: none;
+  }
+
+  .Modal__Instructions__Header {
+    text-align: center;
+  }
+
+  .Modal__Instructions__Header2 {
+    text-align: center;
+  }
+
+  .Ondrag__para__mobile {
+    text-align: center;
+    display: block;
+    margin-top: 12px;
+  }
+  .Modal__BtnContinue {
+    top: 140%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .Toggle__Container {
+    width: 100px;
+    height: 60px;
+    position: fixed;
+    top: 14px;
+    left: 68px;
+    color: #fff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
   }
 }
 
 /* @media screen and (min-width: 601px) and (max-width: 1024px) {
 } */
+
+@keyframes scroll {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(15px);
+    opacity: 0;
+  }
+}
+
+@keyframes mouseAnimation {
+  0% {
+    transform: translateX(-20%);
+  }
+  50% {
+    transform: translateX(20%);
+  }
+  100% {
+    transform: translateX(-20%);
+  }
+}
+
+@keyframes pulseAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

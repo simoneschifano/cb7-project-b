@@ -19,6 +19,8 @@
     background-color: #1a1a1a;
     border-radius: 12px;
     transition: all 0.2s;
+    scroll-snap-align: center;
+    color: $color-text;
 
     &:hover {
       transform: scale(0.98);
