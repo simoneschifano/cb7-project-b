@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef} from "react";
 import { db } from "@/plugins/firebase";
-import { collection, getDocs, addDoc } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import styles from "./Quiz.module.scss"
 import Leaderboard from "../Leaderboard";
 import Router from "next/router";
@@ -17,10 +17,10 @@ const Quiz = ({ data }) => {
   const [completedQuiz, setCompletedQuiz] = useState(false);
   const [score, setScore] = useState(0);
   const [openModal, setOpenModal] = useState(false)
-  const [timer, setTimer] = useState("");
+  const [timer, setTimer] = useState(false);
   const [finalScore, setFinalScore] = useState(false)
 
-  useEffect(() => {
+ useEffect(() => {
     if (timer === 0) {
     setTimer(0)
     setCompletedQuiz(true);
@@ -29,18 +29,19 @@ const Quiz = ({ data }) => {
     timer && timer > 0 && setTimeout(() => setTimer(timer - 1), 1000);
   }, [timer]); 
 
-/* 
+
 const addData = async () => {
     console.log("added data")
     if (finalScore) {
+      setOpenModal(true)
       console.log("testo")
-    const docRef = await addDoc(collection(db, "scores-list"), {
+    const docRef = await addDoc(collection(db, "scoreboard"), {
         id: `${localStorage.getItem("username")}${localStorage.getItem("skinColor")}${localStorage.getItem("suitColor")}`,
         score: finalScore,
         username: localStorage.getItem("username")
       });
-    }
-} */
+    } else {console.log("non testo")}
+}
 
 
 
@@ -61,11 +62,10 @@ const addData = async () => {
       setTimer(60);
       const randomData = [...data].sort(() => 0.5 - Math.random());
       setRandomQuest(randomData[[Math.floor(Math.random() * 9)]]);
-    } else if (timer === 0) {
+     } else if (timer === 0) {
       setCompletedQuiz(true);
       setTimer(false)
       setFinalScore(score * (1 + (timer * 0.01)))
-      // addData();
     } else if (answerCounter < 9) {
       const randomData = [...data].sort(() => 0.5 - Math.random());
       setRandomQuest(randomData[[Math.floor(Math.random() * 9)]]);
@@ -73,7 +73,6 @@ const addData = async () => {
       setCompletedQuiz(true);
       setTimer(false)
       setFinalScore(score * (1 + (timer * 0.01)))
-      // addData()
     }
     setUsername(localStorage.getItem("username"))
   };
@@ -107,7 +106,7 @@ const addData = async () => {
 
       {completedQuiz ? null : (
         <div className={styles.Quiz__Info}>
-          <h3>Timer: {timer}</h3>
+          <h3>Timer: {timer}</h3> 
           <h4>Correct answers: {correctCounter}</h4>
           <h6>Given answers: {answerCounter}</h6>
         </div>
@@ -154,15 +153,15 @@ const addData = async () => {
               <h3>
                 Your score: <strong>{finalScore}</strong>
               </h3>
-              {finalScore ? <button onClick={returnHome}>Back to home!</button> : <button onClick={() => onHandleModal()}>Leaderboard</button>}
+              {finalScore ? <button onClick={addData}>Add your score!</button> : <button onClick={() => onHandleModal()}>Leaderboard</button>}
             </div>
           </div>
         )}
       </div>
-      {/* {completedQuiz && openModal && !timer &&
+      {completedQuiz && openModal &&
       <div className={styles.Leaderboard__Sidebar}>
-        <Leaderboard score={finalScore} complete={completedQuiz}/>
-      </div>} */}
+        <Leaderboard username={username}/>
+      </div>}
     </div>
   );
 };
