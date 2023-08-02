@@ -29,8 +29,8 @@
 }
 
 .Modal {
+  text-align: center;
   position: fixed;
-  border: 1px solid #7af683ff;
   text-align: center;
   top: 50%;
   left: 50%;
@@ -39,7 +39,6 @@
   z-index: 9999;
   color: #ffffff;
   line-height: 1.5rem;
-
   background: rgba(68, 68, 68, 0.4);
   border-radius: 16px;
   /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
@@ -47,6 +46,12 @@
   backdrop-filter: blur(6.1px);
   -webkit-backdrop-filter: blur(6.1px);
 }
+.Modal__Title{
+  font-size: 1.7rem;
+  margin-bottom: 10px;
+  color: #7af683ff;
+}
+
 
 .Modal__Title {
   font-size: 1.7rem;
@@ -223,6 +228,25 @@
 
 /* Fine della modale delle istruzioni */
 
+.Toggle__Container {
+  height: 40px;
+  border-radius: 12px;
+  padding: 4px;
+
+  z-index: 9999;
+  position: absolute;
+  top: 12%;
+  left: 80%;
+
+  background-color: #262322ff;
+  color: #7af683ff;
+  transition: 0.45s;
+}
+.Toggle__Container:hover {
+  background-color: rgb(98, 207, 105);
+  color: #262322ff;
+}
+
 @media screen and (max-width: 767px) {
   .Main {
     display: flex;
@@ -298,6 +322,15 @@
     top: 140%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+  
+  .Toggle__Container {
+    width: 100px;
+    height: 70px;
+    margin:8px;
+    position: fixed;
+    top: 0;
+    left: 0;
   }
 }
 
