@@ -1,16 +1,27 @@
 import styles from "../styles/about.module.scss";
 
 import Image from "next/image";
+import Head from "next/head";
 
 export default function About() {
   return (
     <>
-      <div className={styles.Wrapper}>
-        <div className={styles.Wrapper__Text}>
-          <h1>About Us</h1>
-          <h3>Developed with ❤️ by:</h3>
-        </div>
-        <main>
+      <Head>
+        <title>Spacemony - About</title>
+        <meta name="description" content="Cb-7 Final Project gruppo-B" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+          rel="icon"
+          href="https://img.freepik.com/free-vector/astronaut-holding-flag-space-cartoon-icon-illustration-technology-space-icon-isolated-flat-cartoon-style_138676-3099.jpg?w=2000"
+        />
+      </Head>
+      <main>
+        <div className={styles.Wrapper}>
+          <div className={styles.Wrapper__Text}>
+            <h1>About Us</h1>
+            <h3>Developed with ❤️ by:</h3>
+          </div>
+
           <div className={styles.Wrapper__Devs}>
             <div className={styles.Container__Dev__1}>
               <Image src={"/imgs/skinny.jpeg"} width={250} height={250} alt="Giovanni Geraci" />
@@ -87,8 +98,8 @@ export default function About() {
 
             <p className={styles.paragraph}>Designed and Coded with ❤️. Final Project x Edgemony 💎</p>
           </div>
-        </main>
-      </div>
+        </div>
+      </main>
     </>
   );
 }
