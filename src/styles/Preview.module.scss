@@ -281,6 +281,11 @@
 }
 
 @media screen and (max-width: 767px) {
+  
+  .Container__Choices{
+    display: flex;
+    flex-direction: column;
+  }
   .Preview__Main {
     height: 100vh;
     width: fit-content;
