@@ -41,7 +41,6 @@
     transform: rotate(180deg);
     padding: 20px;
     cursor: pointer;
-    z-index: 999;
     .Back__Button__Image{
       filter: invert(100%);
       transform: scaleX(-1);
@@ -88,7 +87,7 @@
       width: 250px;
       height: 80px;
       background: rgba(35, 35, 35, 0.581);
-      border: 2px solid red;
+      border: 2px solid white;
 
       &:hover {
         background-color: $color-black;
