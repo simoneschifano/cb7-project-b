@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { db } from "@/plugins/firebase";
 import { collection, addDoc } from "firebase/firestore";
-import styles from "./Quiz.module.scss";
 import Leaderboard from "../Leaderboard";
 import Router from "next/router";
 import Image from "next/image";
+import styles from "./Quiz.module.scss";
 
 const Quiz = ({ data }) => {
   const [randomQuest, setRandomQuest] = useState(false);

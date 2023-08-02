@@ -1,9 +1,9 @@
-import styles from "./Leaderboard.module.scss"
 import { db } from "@/plugins/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import Router from "next/router";
+import styles from "./Leaderboard.module.scss"
 
 const Leaderboard = ({username}) => {
     
