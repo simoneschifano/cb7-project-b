@@ -29,10 +29,8 @@ const Quiz = ({ data }) => {
   }, [timer]);
 
   const addData = async () => {
-    console.log("added data");
     if (finalScore) {
       setOpenModal(true);
-      console.log("testo");
       const docRef = await addDoc(collection(db, "scoreboard"), {
         id: `${localStorage.getItem("username")}${localStorage.getItem(
           "skinColor"
@@ -40,9 +38,7 @@ const Quiz = ({ data }) => {
         score: finalScore,
         username: localStorage.getItem("username"),
       });
-    } else {
-      console.log("non testo");
-    }
+    } 
   };
 
   const rightAnswer = (difficulty) => {
@@ -73,7 +69,7 @@ const Quiz = ({ data }) => {
       setCompletedQuiz(true);
       setTimer(false);
       setFinalScore(score * (1 + timer * 0.01));
-    }
+    } 
     setUsername(localStorage.getItem("username"));
   };
 
@@ -154,13 +150,11 @@ const Quiz = ({ data }) => {
                 Correct answers: <strong>{correctCounter}</strong>
               </h3>
               <h3>
-                Your score: <strong>{finalScore}</strong>
+                Your score: <strong>{finalScore.toFixed(2)}</strong>
               </h3>
-              {finalScore ? (
+              {finalScore && 
                 <button onClick={addData}>Add your score!</button>
-              ) : (
-                <button onClick={() => onHandleModal()}>Leaderboard</button>
-              )}
+              }
             </div>
           </div>
         )}

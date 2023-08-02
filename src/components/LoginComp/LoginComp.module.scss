@@ -323,7 +323,7 @@
     min-height: none;
     height: 100vh;
     flex-direction: column;
-    width: fit-content;
+    width: 100vw;
     gap: 8px;
 
     &__Settings {
@@ -367,33 +367,34 @@
   }
 
   /* This is for tablet devices */
-  @media screen and (min-width: 601px) and (max-width: 1024px) {
-    .Login {
-      gap: 40px;
-      height: auto;
-      width: 100%;
-    }
+}
 
-    .SpaceShipImg {
-      top: -100px;
-      width: 120px;
-    }
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  .Login {
+    gap: 40px;
+    height: auto;
+    width: 100%;
   }
 
-  /* This is for laptop devices */
-  @media screen and (min-width: 1025px) {
-    .login {
-      gap: 60px;
-    }
+  .SpaceShipImg {
+    top: -100px;
+    width: 120px;
+  }
+}
 
-    .SpaceShipImg {
-      top: -140px;
-      width: 150px;
-    }
+/* This is for laptop devices */
+@media screen and (min-width: 1025px) {
+  .login {
+    gap: 60px;
+  }
 
-    .LoginSubmit {
-      top: 220px;
-      left: -155px;
-    }
+  .SpaceShipImg {
+    top: -140px;
+    width: 150px;
+  }
+
+  .LoginSubmit {
+    top: 220px;
+    left: -155px;
   }
 }
