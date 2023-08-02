@@ -44,7 +44,7 @@ const LoginComp = () => {
 
   const onHandlePopup = () => {
     setOpenPopup(false);
-  }
+  };
 
   //se i dati sono già stati caricati precendentemente fa un controllo in caso
   useEffect(() => {
@@ -164,13 +164,20 @@ const LoginComp = () => {
         </div>
       </form>
 
-      <div className={openPopup ? styles.Container__Popup : styles.Container__Popup__Closed }>
-        <div className={openPopup ? styles.Popup__Alert : styles.Popup__Al__Closed }>
+      <div
+        className={
+          openPopup ? styles.Container__Popup : styles.Container__Popup__Closed
+        }>
+        <div
+          className={
+            openPopup ? styles.Popup__Alert : styles.Popup__Al__Closed
+          }>
           Username must be at least 4 characters long.
-          <button onClick={onHandlePopup}> <span>Ok</span> </button>
+          <button onClick={onHandlePopup}>
+            <span>Ok</span>
+          </button>
         </div>
       </div>
-
     </div>
   );
 };

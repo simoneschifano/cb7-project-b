@@ -149,7 +149,7 @@ const SearchWiki = () => {
               className={styles.SearchInput}
               type="text"
               name="searchText"
-              placeholder="Insert your planet here!"
+              placeholder="Search here for a planet!"
               onChange={onHandlePlanetInput}
             />
             <button onClick={onHandlePlanetSearch}>
@@ -204,7 +204,7 @@ const SearchWiki = () => {
               className={styles.SearchInput}
               type="text"
               name="saerchText"
-              placeholder="Insert your star here!"
+              placeholder="Search here for a star!"
               onChange={onHandleStarInput}
             />
             <button onClick={onHandleStarSearch}>

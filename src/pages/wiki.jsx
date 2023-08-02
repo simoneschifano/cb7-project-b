@@ -1,13 +1,11 @@
-import Navbar from "@/components/Navbar";
 import SearchWiki from "@/components/SearchWiki";
-import { GET } from "@/utils/http";
 import Head from "next/head";
 
 export default function Wiki() {
   return (
     <>
       <Head>
-        <title>Cb-7 Final Project gruppo-B</title>
+        <title>Spacemony - Wiki</title>
         <meta name="description" content="Cb-7 Final Project gruppo-B" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link

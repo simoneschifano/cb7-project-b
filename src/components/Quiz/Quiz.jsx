@@ -38,7 +38,7 @@ const Quiz = ({ data }) => {
         score: finalScore,
         username: localStorage.getItem("username"),
       });
-    } 
+    }
   };
 
   const rightAnswer = (difficulty) => {
@@ -69,7 +69,7 @@ const Quiz = ({ data }) => {
       setCompletedQuiz(true);
       setTimer(false);
       setFinalScore(score * (1 + timer * 0.01));
-    } 
+    }
     setUsername(localStorage.getItem("username"));
   };
 
@@ -107,8 +107,8 @@ const Quiz = ({ data }) => {
       {completedQuiz ? null : (
         <div className={styles.Quiz__Info}>
           <h3>Timer: {timer}</h3>
-          <h4>Correct answers: {correctCounter}</h4>
-          <h6>Given answers: {answerCounter}</h6>
+          <h3>Correct answers: {correctCounter}</h3>
+          <h3>Given answers: {answerCounter}</h3>
         </div>
       )}
       <div className={styles.Quiz__Container}>
@@ -152,9 +152,7 @@ const Quiz = ({ data }) => {
               <h3>
                 Your score: <strong>{finalScore.toFixed(2)}</strong>
               </h3>
-              {finalScore && 
-                <button onClick={addData}>Add your score!</button>
-              }
+              {finalScore && <button onClick={addData}>Add your score!</button>}
             </div>
           </div>
         )}

@@ -286,7 +286,7 @@ export default function Home() {
             </h2>
             <div className={styles.Modal__Content__Instructions}>
               <h2 className={styles.Modal__Instructions__Header2}>
-                Here the instructions for movement within the journey
+                Here are the instructions for movement within the journey
               </h2>
 
               <p className={styles.Modal__Content__Instructions__para}>
@@ -428,7 +428,7 @@ export default function Home() {
             </p>
             <p>
               <span className={styles.Modal__Important}>
-                Distance from the Sun:{" "}
+                Distance from the Sun:
               </span>
               {selectedPlanet.distance_from_sun}
             </p>
@@ -436,7 +436,7 @@ export default function Home() {
             {selectedPlanet.average_temperature && (
               <p>
                 <span className={styles.Modal__Important}>
-                  Average Temperature:{" "}
+                  Average Temperature:
                 </span>
                 {selectedPlanet.average_temperature}
               </p>

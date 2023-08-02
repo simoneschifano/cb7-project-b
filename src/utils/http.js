@@ -1,5 +1,3 @@
-const BASE_URL = "https://api.api-ninjas.com/v1/planets?name=";
-
 export const GET = async (url,endpoint) => {
   const res = await fetch(`${url}${endpoint}`,{
     method:'GET',

@@ -22,9 +22,6 @@ export default function Astroquiz({ data }) {
 }
 
 export async function getServerSideProps() {
-  // https://api.npoint.io/3f1369f30e5911d71f1b
-  // + /n/id
-
   const res = await fetch(`https://api.npoint.io/92fd30e95786d9a41d9a`);
   const data = res.status === 200 ? await res.json() : {};
 

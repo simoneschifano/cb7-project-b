@@ -26,6 +26,7 @@
   height: 100%;
   width: 100%;
   filter: drop-shadow(5px 6px 100px #000);
+  cursor:grab;
 }
 
 .Modal {

@@ -5,8 +5,6 @@ import { OrbitControls } from "@react-three/drei";
 import { MeshDistortMaterial, Sphere } from "@react-three/drei";
 
 import { TextureLoader } from "three";
-import Moon from "../Moon";
-import Saturn from "../Saturn";
 
 import styles from "./Planet.module.scss";
 
@@ -43,7 +41,6 @@ const Planet = ({ link, speed, scale, ring, satellites }) => {
 
   return (
     <div className={styles.Planet}>
-      {/* {satellites && <Moon />} */}
       {!ring && (
         <Canvas className="canvas">
           {/* <OrbitControls enableZoom={false} /> */}
@@ -51,14 +48,12 @@ const Planet = ({ link, speed, scale, ring, satellites }) => {
           <directionalLight position={[-2, 5, 2]} />
 
           <Suspense fallback={null}>
-            {/* {satellites && console.log("coap")} */}
             {texture && (
               <SpherePlanet speed={speed} texture={texture} scale={scale} />
             )}
           </Suspense>
         </Canvas>
       )}
-      {/* {ring && <Saturn />} */}
     </div>
   );
 };

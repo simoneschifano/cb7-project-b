@@ -217,7 +217,6 @@
     align-items: center;
     z-index: 3;
 
-
     &__Closed {
       display: none;
     }
@@ -295,7 +294,6 @@
       }
 
       //Cambiare colore tasto back
-
     }
   }
 }
@@ -317,7 +315,6 @@
 }
 
 @media screen and (max-width: 767px) {
-
   /* This is for mobile devices */
   .Login {
     object-fit: cover;
