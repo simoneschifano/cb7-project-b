@@ -1,7 +1,6 @@
 import styles from "../styles/about.module.scss";
 import Image from "next/image";
 import Router from "next/router";
-import { ImageLoader } from "three";
 
 export default function About() {
   const returnHome = () => {
@@ -76,13 +75,10 @@ export default function About() {
             <p>Front-End Developer</p>
             <div className={styles.Wrapper__Buttons}>
               <button>
-                {" "}
                 <a href="https://github.com/Miles0908">Github</a>{" "}
               </button>
               <button>
-                {" "}
                 <a href="https://www.linkedin.com/in/claudio-ventimiglia-402305273/">
-                  {" "}
                   LinkedIn
                 </a>
               </button>
@@ -90,7 +86,7 @@ export default function About() {
           </div>
 
           <div className={styles.Container__Dev__4}>
-            <ImageLoader
+            <Image
               src="https://media.licdn.com/dms/image/C4E35AQH-uSi-DAefhw/profile-framedphoto-shrink_800_800/0/1618839058346?e=1691229600&v=beta&t=A1-xQCk3QmU_hwdooKSc6RTIVHr8iXE2I52r_MDndfk"
               width={250}
               height={250}
