@@ -38,6 +38,20 @@ height: auto;
   animation: Levitation 6s 1s infinite ease-in-out;
   overflow: visible;
 }
+
+@media screen and (max-width: 767px){
+  .Error{
+    width: fit-content;
+    height: 200vh;
+
+  }
+  .Error__Img{
+    width: 200px;
+    height: 240px;
+  } 
+  
+  
+}
 @keyframes Levitation {
   0% {
     transform: translateY(240%) rotate(0);
