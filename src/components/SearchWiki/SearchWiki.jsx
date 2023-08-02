@@ -156,7 +156,7 @@ const SearchWiki = () => {
         </div>
         {resultPlanet ? (
           <div className={styles.List_Elements} draggable>
-            {resultPlanet.length > 0 ? resultPlanet.map((planet, index) => <PlanetCard data={planet} key={index} />) : <div>not found</div>}
+            {resultPlanet.length > 0 ? resultPlanet.map((planet, index) => <PlanetCard data={planet} key={index} />) : <div className= {styles.Not__Found}>not found</div>}
           </div>
         ) : (
           <div className={styles.List_Elements} draggable>
@@ -187,7 +187,7 @@ const SearchWiki = () => {
         </div>
         {resultStar ? (
           <div className={styles.List_Elements}>
-            {resultStar.length > 0 ? resultStar.map((star, index) => <StarCard data={star} key={index} />) : <div>not found</div>}
+            {resultStar.length > 0 ? resultStar.map((star, index) => <StarCard data={star} key={index} />) : <div className= {styles.Not__Found}>not found</div>}
           </div>
         ) : (
           <div className={styles.List_Elements}>

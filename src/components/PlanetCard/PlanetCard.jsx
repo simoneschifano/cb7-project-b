@@ -5,15 +5,15 @@ const PlanetCard = ({ data }) => {
     <>
       <div className={styles.Card__Wrapper} draggable>
         <div className={styles.Card__Main}>
-          {data.name && <h3> Name: {data.name} </h3>}
+          {data.name && <p> <strong>Name:</strong>  {data.name} </p>}
 
-          {data.mass && <h3> Mass: {data.mass} </h3>}
+          {data.mass && <p> <strong>Mass:</strong> {data.mass} </p>}
 
-          {data.radius && <h3> Radius: {data.radius} </h3>}
+          {data.radius && <p> <strong>Radius:</strong> {data.radius} </p>}
 
-          {data.temperature && <h3> Temperature: {data.temperature} </h3>}
+          {data.temperature && <p> <strong>Temperature:</strong> {data.temperature} </p>}
 
-          {data.period && <h3> Period: {data.period} </h3>}
+          {data.period && <p> <strong>Period:</strong> {data.period} </p>}
         </div>
       </div>
     </>
