@@ -1,7 +1,7 @@
+import { useEffect } from "react";
+
 import Link from "next/link";
 import Image from "next/image";
-
-import { useEffect } from "react";
 
 import styles from "@/styles/Custom404.module.scss";
 

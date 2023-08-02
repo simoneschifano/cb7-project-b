@@ -17,8 +17,9 @@ Indossa il tuo casco e parti alla scoperta dell’universo🚀🧑‍🚀
 ## Tecnologie
     - Next.js
     - SASS
-    - Spline
-    - Three.js
+    - React Three Fiber
+    - Swiper
+    
 ## Funzionalità
 ##  Start project
     - npm i
