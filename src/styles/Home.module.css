@@ -29,8 +29,9 @@
 }
 
 .Modal {
+  text-align: center;
   position: fixed;
-  top: 30%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 24px;
@@ -44,6 +45,12 @@
   backdrop-filter: blur(6.1px);
   -webkit-backdrop-filter: blur(6.1px);
 }
+.Modal__Title{
+  font-size: 1.7rem;
+  margin-bottom: 10px;
+  color: #7af683ff;
+}
+
 
 .Modal__Important {
   text-transform: uppercase;
@@ -213,6 +220,25 @@
 
 /* Fine della modale delle istruzioni */
 
+.Toggle__Container {
+  height: 40px;
+  border-radius: 12px;
+  padding: 4px;
+
+  z-index: 9999;
+  position: absolute;
+  top: 12%;
+  left: 80%;
+
+  background-color: #262322ff;
+  color: #7af683ff;
+  transition: 0.45s;
+}
+.Toggle__Container:hover {
+  background-color: rgb(98, 207, 105);
+  color: #262322ff;
+}
+
 @media screen and (max-width: 767px) {
   .Main {
     display: flex;
@@ -287,9 +313,18 @@
   .Modal__BtnContinue {
     top: 140%;
     left: 50%;
-    transform: translate(-50% , -50%);
- 
-   }
+    transform: translate(-50%, -50%);
+  }
+  .Toggle__Container {
+    width: 100px;
+    height: 70px;
+    margin:8px;
+   
+    position: fixed;
+    
+    top: 0;
+    left: 0;
+  }
 }
 
 /* @media screen and (min-width: 601px) and (max-width: 1024px) {

@@ -66,7 +66,7 @@ export default function Home() {
   //Modale delle istruzioni
   const [modalInstructions, setModalInstructions] = useState(true);
   const [showButton, setShowButton] = useState(false);
-  
+
   useEffect(() => {
     const hasSeenInstructions = localStorage.getItem("hasSeenInstructions");
     if (hasSeenInstructions) {
@@ -103,9 +103,11 @@ export default function Home() {
   //Fine modale delle istruzioni
 
   //Crea gli stati della modale
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(true);
 
   const [selectedPlanet, setSelectedPlanet] = useState(null);
+
+  const [persistentModal, setPersistentModal] = useState(false); // Stato per il toggle della modale persistente
 
   //Funzione che all'onClick scorre l'array e trova la corrispondenza con nome di planetsData
   const handlePlanetClick = (planetName) => {
@@ -307,7 +309,8 @@ export default function Home() {
               {showButton && (
                 <button
                   onClick={onHandleClickModalClose}
-                  className={styles.Modal__BtnContinue}>
+                  className={styles.Modal__BtnContinue}
+                >
                   <span>Continue to the journey</span>
                 </button>
               )}
@@ -315,8 +318,14 @@ export default function Home() {
           </div>
         )}
 
-        <Topbar />
 
+        <button
+          className={styles.Toggle__Container}
+          onClick={() => setPersistentModal(!persistentModal)}
+        >
+          Planets Info
+        </button>
+        <Topbar />
         <div className={styles.Swiper__Container}>
           <Swiper
             className={`mySwiper ${styles.Swiper__Main}`}
@@ -344,12 +353,14 @@ export default function Home() {
                 translate: ["50%", 250, 0],
               },
             }}
-            modules={[EffectCreative, Keyboard, Mousewheel, Pagination]}>
+            modules={[EffectCreative, Keyboard, Mousewheel, Pagination]}
+          >
             {solarSystem.map((planet) => (
               <SwiperSlide className={styles.Swiper__Slide} key={planet.id}>
                 <div
                   className={styles.Swiper__Slide__Content}
-                  onClick={() => handlePlanetClick(planet.name)}>
+                  onClick={() => handlePlanetClick(planet.name)}
+                >
                   <Planet
                     link={planet.link}
                     speed={planet.speed}
@@ -363,11 +374,12 @@ export default function Home() {
           </Swiper>
         </div>
 
-        {showModal && selectedPlanet && (
+        {!persistentModal && showModal && selectedPlanet && (
           <div className={styles.Modal}>
             <p
               className={styles.Modal__Button}
-              onClick={() => setShowModal(false)}>
+              onClick={() => setPersistentModal(!persistentModal)}
+            >
               ❌
             </p>
 
@@ -422,8 +434,9 @@ export default function Home() {
             )}
           </div>
         )}
-
+      
         <Navbar distanceValue={distanceValue} />
+
         <Menu />
       </main>
     </>
