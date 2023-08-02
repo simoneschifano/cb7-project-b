@@ -22,7 +22,7 @@ const Menu = () => {
           </li>
 
           <li className={styles.BurgerLi}>
-            <Link href={"/minigame"}>Mini-Game</Link>
+            <Link href={"/astroquiz"}>AstroQuiz</Link>
           </li>
 
           <li className={styles.BurgerLi}>
